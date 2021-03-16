@@ -19,20 +19,29 @@ fs.readFile("./transactions_0121.json", function(error,data){
     data = JSON.parse(data);
     // console.log(data);
 
+    //Remove Transfers and Credit Card Payments
+    const dataNoTransfers = d3.filter(data, function(d) {return d.mcategory != "Transfer" && d.mcategory != "Credit Card Payment"});
+    // console.log(dataNoTransfers);
+
     //Data Pre-Processing
-    data.forEach(element => {
+    dataNoTransfers.forEach(element => {
+
+
         //Amount Formatting
         element.amount = element.amount.substring(1);
         element.amount = _.replace(element.amount,',','');
         element.amount = +element.amount;
 
         //Date Formatting
-        element.date = new Date(2010, convertMonth(element.date.substring(0,3)), element.date.substring(4));
+        element.date = new Date(2021, convertMonth(element.date.substring(0,3)), element.date.substring(4));
     })
     // console.log(data);
 
-    const income = d3.filter(data, function(d) {return d.isDebit == false});
+    const income = d3.filter(dataNoTransfers, function(d) {return d.isDebit == false});
     console.log(income);
+
+    const totalIncome = d3.sum(income, function(d) {return d.amount});
+    console.log(totalIncome);
 
     // const maxTransaction = d3.max(data, function(d) {return d.id});
     // console.log(maxTransaction);
