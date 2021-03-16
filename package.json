@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "d3": "^6.6.0",
+    "lodash": "^4.17.21",
+    "puppeteer": "^8.0.0"
+  },
+  "name": "scraper",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
