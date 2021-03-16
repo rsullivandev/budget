@@ -35,13 +35,13 @@ fs.readFile("./transactions_0121.json", function(error,data){
         //Date Formatting
         element.date = new Date(2021, convertMonth(element.date.substring(0,3)), element.date.substring(4));
     })
-    // console.log(data);
+    console.log(data);
 
-    const income = d3.filter(dataNoTransfers, function(d) {return d.isDebit == false});
-    console.log(income);
+    // const income = d3.filter(dataNoTransfers, function(d) {return d.isDebit == false});
+    // console.log(income);
 
-    const totalIncome = d3.sum(income, function(d) {return d.amount});
-    console.log(totalIncome);
+    // const totalIncome = d3.sum(income, function(d) {return d.amount});
+    // console.log(totalIncome);
 
     // const maxTransaction = d3.max(data, function(d) {return d.id});
     // console.log(maxTransaction);
