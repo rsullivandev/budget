@@ -3,12 +3,13 @@ const _ = require('lodash');
 const fs = require('fs');
 const { applyCategoryRules } = require("./categoryRules");
 
-fs.readFile("../input/transactions_0121.csv", "utf8", function (error, data) {
+fs.readFile("../input/Transactions_0121.csv", "utf8", function (error, data) {
     if (error) { console.error(error) };
     data = d3.csvParse(data);
 
     //Remove Transfers and Credit Card Payments
     let dataNoTransfers = d3.filter(data, function (d) { return d.Category != "Transfer" && d.Category != "Credit Card Payment" });
+    dataNoTransfers = d3.filter(dataNoTransfers, function (d) {return d.Category != "Income" && !d.Description.includes("ACH")});
 
     //Data Pre-Processing
     dataNoTransfers.forEach(element => {
@@ -36,6 +37,7 @@ fs.readFile("../input/transactions_0121.csv", "utf8", function (error, data) {
     // console.log(d3.filter(dataNoTransfers, function(d) {return d.BudgetCategory == "Unknown"}));
 
     const income = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'credit' });
+    console.log(income);
     const totalIncome = d3.sum(income, function (d) { return d.Amount });
     console.log("Income: ", d3.format('.2f')(totalIncome));
 
@@ -46,7 +48,7 @@ fs.readFile("../input/transactions_0121.csv", "utf8", function (error, data) {
     console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
 
     formattedOutput = d3.csvFormat(dataNoTransfers);
-    fs.writeFile("../output/Transactions_0121.csv", formattedOutput, function (error) {
+    fs.writeFile("../output/Transactions_Formatted_0121.csv", formattedOutput, function (error) {
         if (error) console.error("error writing file");
     })
 
