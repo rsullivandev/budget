@@ -20,7 +20,7 @@ const applyCategoryRules = (element) => {
     else if(element.Category == 'Home Services') return 'HouseCleaning';
     else if(element.Category == 'Union Dues') return 'UnionDues';
     else if(element.Category == 'Mobile Phone') return 'Phone';
-    else if(element.Category == 'Auto Insurance' && element.Amount < Math.abs(100)) return 'AutoInsuranceRob';
+    else if(element.Category == 'Auto Insurance' && Math.abs(element.Amount) < 100) return 'AutoInsuranceRob';
     else if(element.Category == 'Internet') return 'Internet';
     else if(element.Category == 'Gym') return 'Gym';
     else if(element.Category == 'Water') return 'Water';

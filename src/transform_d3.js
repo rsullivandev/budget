@@ -34,10 +34,8 @@ fs.readFile("../input/Transactions_0121.csv", "utf8", function (error, data) {
         element.BudgetCategory = applyCategoryRules(element);
     });
 
-    // console.log(d3.filter(dataNoTransfers, function(d) {return d.BudgetCategory == "Unknown"}));
-
     const income = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'credit' });
-    console.log(income);
+    // console.log(income);
     const totalIncome = d3.sum(income, function (d) { return d.Amount });
     console.log("Income: ", d3.format('.2f')(totalIncome));
 
@@ -51,5 +49,5 @@ fs.readFile("../input/Transactions_0121.csv", "utf8", function (error, data) {
     fs.writeFile("../output/Transactions_Formatted_0121.csv", formattedOutput, function (error) {
         if (error) console.error("error writing file");
     })
-
+    // console.log(dataNoTransfers);
 })
