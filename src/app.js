@@ -5,7 +5,7 @@ const { applyCategoryRules } = require("./categoryRules");
 
 console.log(__dirname);
 
-fs.readFile(`${__dirname}/input/Transactions_0121.csv`, "utf8", function (error, data) {
+fs.readFile(`${__dirname}/input/Transactions_Input_0221.csv`, "utf8", function (error, data) {
     if (error) { console.error(error) };
     data = d3.csvParse(data);
 
@@ -46,7 +46,7 @@ fs.readFile(`${__dirname}/input/Transactions_0121.csv`, "utf8", function (error,
     console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
 
     formattedOutput = d3.csvFormat(dataNoTransfers);
-    fs.writeFile(`${__dirname}/output/Transactions_Formatted_0121.csv`, formattedOutput, function (error) {
+    fs.writeFile(`${__dirname}/output/Transactions_Output_0221.csv`, formattedOutput, function (error) {
         if (error) console.error("error writing file: ", error);
     })
     // console.log(dataNoTransfers);

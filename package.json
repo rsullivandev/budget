@@ -4,12 +4,12 @@
     "lodash": "^4.17.21",
     "puppeteer": "^8.0.0"
   },
-  "name": "scraper",
+  "name": "budget-app",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "./src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node ./src/app.js"
   },
   "author": "",
   "license": "ISC",
