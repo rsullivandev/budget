@@ -14,7 +14,6 @@ fs.readFile("../input/Transactions_0121.csv", "utf8", function (error, data) {
     //Data Pre-Processing
     dataNoTransfers.forEach(element => {
 
-
         //Date Formatting
         element.Date = new Date(element.Date);
 
@@ -35,14 +34,13 @@ fs.readFile("../input/Transactions_0121.csv", "utf8", function (error, data) {
     });
 
     const income = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'credit' });
-    // console.log(income);
     const totalIncome = d3.sum(income, function (d) { return d.Amount });
-    console.log("Income: ", d3.format('.2f')(totalIncome));
 
     const spending = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'debit' });
     let totalSpending = d3.sum(spending, function (d) { return d.Amount });
-    console.log("Outflow: ", d3.format('.2f')(totalSpending));
 
+    console.log("Income: ", d3.format('.2f')(totalIncome));
+    console.log("Outflow: ", d3.format('.2f')(totalSpending));
     console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
 
     formattedOutput = d3.csvFormat(dataNoTransfers);
