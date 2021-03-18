@@ -1,39 +1,53 @@
-const puppeteer = require('puppeteer');
+const d3 = require('d3');
+const _ = require('lodash');
+const fs = require('fs');
+const { applyCategoryRules } = require("./categoryRules");
 
-(async () => {
-  const browser = await puppeteer.launch(
-    {
-      args: [
-        '--no-sandbox',
-        '--remote-debugging-port=9222',
-        '--remote-debugging-address=0.0.0.0',
-      ],
-      slowMo: 20
+console.log(__dirname);
+
+fs.readFile(`${__dirname}/input/Transactions_0121.csv`, "utf8", function (error, data) {
+    if (error) { console.error(error) };
+    data = d3.csvParse(data);
+
+    //Remove Transfers and Credit Card Payments
+    let dataNoTransfers = d3.filter(data, function (d) { return d.Category != "Transfer" && d.Category != "Credit Card Payment" });
+    dataNoTransfers = d3.filter(dataNoTransfers, function (d) {return d.Category != "Income" && !d.Description.includes("ACH")});
+
+    //Data Pre-Processing
+    dataNoTransfers.forEach(element => {
+
+        //Date Formatting
+        element.Date = new Date(element.Date);
+
+        //Remove Strings in Headers
+        element.TransactionType = element['Transaction Type'];
+        element.OriginalDescription = element['Original Description'];
+        element.AccountName = element['Account Name'];
+        delete element['Transaction Type'];
+        delete element['Original Description'];
+        delete element['Account Name'];
+
+        //Amount Formatting
+        element.Amount = +element.Amount;
+        if(element.TransactionType == "debit") element.Amount = element.Amount * -1;
+
+        //Add Budgeting Category
+        element.BudgetCategory = applyCategoryRules(element);
     });
-  const page = await browser.newPage();
-  // await page.goto("https://accounts.intuit.com/");
-  // await page.type('#ius-identifier', 'env.email', { delay: 100 });
-  // await page.click('#ius-sign-in-submit-btn')
-  // await page.waitForSelector('#ius-sign-in-mfa-password-collection-current-password');
-  // await page.waitForTimeout(20000);
-  // await page.type('#ius-sign-in-mfa-password-collection-current-password', 'env.pass');
-  // await page.click('#ius-sign-in-mfa-password-collection-continue-btn');
-  // await page.waitForTimeout(20000);
-  // await page.screenshot({ path: 'example.png' });
 
-  await page.goto('https://jsonplaceholder.typicode.com/todos/1')
-  var innerText = await page.evaluate(() =>  {
-    return JSON.parse(document.querySelector('body').innerText);
-  });
+    const income = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'credit' });
+    const totalIncome = d3.sum(income, function (d) { return d.Amount });
 
-  console.log(innerText);
+    const spending = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'debit' });
+    let totalSpending = d3.sum(spending, function (d) { return d.Amount });
 
+    console.log("Income: ", d3.format('.2f')(totalIncome));
+    console.log("Outflow: ", d3.format('.2f')(totalSpending));
+    console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
 
-
-// Need to figure out the 2 factor Auth. Maybe need to load it once and manually type it in?
-// Once authenticated and at home page. can i just do await.page.goto(<directurlfortransactions>)? Not sure how the authentication is carried over. I guess it is
-// all in one session....
-
-
-  await browser.close();
-})();
+    formattedOutput = d3.csvFormat(dataNoTransfers);
+    fs.writeFile(`${__dirname}/output/Transactions_Formatted_0121.csv`, formattedOutput, function (error) {
+        if (error) console.error("error writing file: ", error);
+    })
+    // console.log(dataNoTransfers);
+})
