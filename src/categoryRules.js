@@ -32,7 +32,7 @@ const applyCategoryRules = (element) => {
     //Periodic / Amortized
     else if(element.Category == 'Utilities' || element.Category == 'Auto Insurance' ||
     element.Category.includes("Registration") || element.Category == 'Hair' ||
-    element.Category.includes('Pet') || element.Category == "Auto Service" ||
+    element.Category.includes('Pet') || element.Category == "Veterinarian" || element.Category == "Auto Service" ||
     element.category == "Amazon Prime" || element.Category == "Ring Insurance"||
     element.category == "Apple Developer Account" || element.Category == "Xbox") return 'Amortized'
 

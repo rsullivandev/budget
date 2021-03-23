@@ -9,9 +9,11 @@ fs.readFile(`${__dirname}/input/Transactions_Input_0221.csv`, "utf8", function (
     if (error) { console.error(error) };
     data = d3.csvParse(data);
 
+
     //Remove Transfers and Credit Card Payments
     let dataNoTransfers = d3.filter(data, function (d) { return d.Category != "Transfer" && d.Category != "Credit Card Payment" });
-    dataNoTransfers = d3.filter(dataNoTransfers, function (d) {return d.Category != "Income" && !d.Description.includes("ACH")});
+    dataNoTransfers = d3.filter(dataNoTransfers, function (d) {return !d.Description.includes("ACH")});
+
 
     //Data Pre-Processing
     dataNoTransfers.forEach(element => {
