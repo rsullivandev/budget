@@ -15,19 +15,30 @@ const readline = require('readline').createInterface({
       slowMo: 20
     });
   const page = await browser.newPage();
-  await page.goto("https://accounts.intuit.com/");
+  // await page.goto("https://accounts.intuit.com/");
+  await page.goto("https://mint.intuit.com/transaction.event?startDate=03/01/2021&endDate=03/31/2021");
+  // await page.waitForNavigation();
+  await page.waitForSelector('#ius-identifier');
   await page.type('#ius-identifier', `${process.env.email}`, { delay: 100 });
-  await page.click('#ius-sign-in-submit-btn');
-  await page.waitForSelector('#ius-sign-in-mfa-password-collection-current-password');
-  await page.waitForTimeout(20000);
+  const [respones1] = await Promise.all([
+    await page.click('#ius-sign-in-submit-btn'),
+    // await page.waitForSelector('#ius-sign-in-mfa-password-collection-current-password');
+    await page.waitForTimeout(10000)
+  ]);
+  // await page.click('#ius-sign-in-submit-btn');
+
+  // await page.waitForTimeout(5000);
   await page.type('#ius-sign-in-mfa-password-collection-current-password', `${process.env.pass}`);
-  await page.click('#ius-sign-in-mfa-password-collection-continue-btn');
+  const [response2] = await Promise.all([
+    page.click('#ius-sign-in-mfa-password-collection-continue-btn'),
+    // page.waitForSelector('#transactionExport', { timeout: 120000, waitUntil: 'networkidle0' })
+    await page.waitForTimeout(60000)
+  ]);
   console.log("pass entered...waiting");
   // await page.waitForTimeout(12000);
   console.log("done waiting, taking screenshot");
   await page.screenshot({ path: 'example.png' });
   console.log("redirecting to mint");
-  await page.goto('https://mint.intuit.com/transaction.event?startDate=03/01/2021&endDate=03/31/2021');
   await page.waitForTimeout(5000);
   await page.click('#transactionExport');
 
