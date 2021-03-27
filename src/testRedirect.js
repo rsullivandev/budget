@@ -19,7 +19,8 @@ const puppeteer = require('puppeteer');
     //     }
     //     request.continue()
     // })
-    await page.goto("https://mint.intuit.com/transaction.event?startDate=03/01/2021&endDate=03/31/2021");
+    // await page.goto("https://mint.intuit.com/transaction.event?startDate=03/01/2021&endDate=03/31/2021");
+    await page.goto("https://accounts.intuit.com/");
     // await page.waitForNavigation({ waitUntil: 'networkidle0' });
 
     await page.waitForSelector('#ius-identifier');
