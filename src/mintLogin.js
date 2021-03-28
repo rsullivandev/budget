@@ -5,6 +5,13 @@ const readline = require('readline').createInterface({
 });
 const fs = require('fs');
 
+const today = new Date();
+let mm = today.getMonth()+1;
+mm = mm.toString().padStart(2, '0');
+let yyyy = today.getFullYear();
+let yy = yyyy.toString().slice(2);
+let dd = new Date(yyyy, mm, 0).getDate().toString().padStart(2, '0');
+
 (async () => {
   const browser = await puppeteer.launch(
     {
@@ -17,7 +24,7 @@ const fs = require('fs');
     });
   const page = await browser.newPage();
   // await page.goto("https://accounts.intuit.com/");
-  await page.goto("https://mint.intuit.com/transaction.event?startDate=03/01/2021&endDate=03/31/2021");
+  await page.goto(`https://mint.intuit.com/transaction.event?startDate=${mm}/01/${yy}&endDate=${mm}/${dd}/${yy}`);
   // await page.waitForNavigation();
   await page.waitForSelector('#ius-identifier');
   await page.type('#ius-identifier', `${process.env.email}`, { delay: 100 });
@@ -41,21 +48,23 @@ const fs = require('fs');
   console.log("pass entered...waiting");
   // await page.waitForTimeout(12000);
   console.log("done waiting, taking screenshot");
-  await page.screenshot({ path: 'example.png' });
-  const cookies = await page.cookies();
-  fs.writeFileSync('session.txt', JSON.stringify(cookies));
+  // await page.screenshot({ path: 'example.png' });
+  // const cookies = await page.cookies();
+  // fs.writeFileSync('session.txt', JSON.stringify(cookies));
 
   console.log("redirecting to mint");
 
-  const downloadedURL = "https://mint.intuit.com/transactionDownload.event?startDate=03%2F01%2F2021&endDate=03%2F31%2F2021&queryNew=&offset=0&filterType=cash&comparableType=8"
+  const downloadedURL = `https://mint.intuit.com/transactionDownload.event?startDate=${mm}%2F01%2F${yyyy}&endDate=${mm}%2F${dd}%2F${yyyy}&queryNew=&offset=0&filterType=cash&comparableType=8`;
   const downloadedContent = await page.evaluate(async downloadedURL => {
     const fetchResp = await fetch(downloadedURL, {credentials: 'include'});
     return await fetchResp.text();
   }, downloadedURL);
 
-  console.log(`Downloaded: ${downloadedContent}`)
+  // console.log(`Downloaded: ${downloadedContent}`)
 
-  fs.writeFileSync('transactions.csv', downloadedContent);
+  fs.writeFileSync(`./input/transactions_input_${mm}${yy}.csv`, downloadedContent);
+
+  await browser.close();
   // await page.goto("https://mint.intuit.com/transactionDownload.event?startDate=03%2F01%2F2021&endDate=03%2F31%2F2021&queryNew=&offset=0&filterType=cash&comparableType=8")
   // await page.waitForTimeout(120000);
   // await page.waitForTimeout(5000);
@@ -81,5 +90,5 @@ const fs = require('fs');
   // all in one session....
 
 
-  await browser.close();
+  
 })();
