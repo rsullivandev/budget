@@ -41,7 +41,7 @@ let dd = new Date(yyyy, mm, 0).getDate().toString().padStart(2, '0');
   }, downloadedURL);
 
 
-  fs.writeFileSync(`./input/transactions_input_${mm}${yy}.csv`, downloadedContent);
+  fs.writeFileSync(`./input/mint/transactions_input_${mm}${yy}.csv`, downloadedContent);
 
   await browser.close();  
 })();
