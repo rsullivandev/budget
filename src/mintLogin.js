@@ -1,12 +1,12 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
+const dateHelper = require('./dateHelper');
 
-const today = new Date();
-let mm = today.getMonth()+1;
-mm = mm.toString().padStart(2, '0');
-let yyyy = today.getFullYear();
-let yy = yyyy.toString().slice(2);
-let dd = new Date(yyyy, mm, 0).getDate().toString().padStart(2, '0');
+
+const mm = getMonth();
+const dd = getDate();
+const yyyy = getYearFull();
+const yy = getYearShort();
 
 (async () => {
   const browser = await puppeteer.launch(
