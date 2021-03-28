@@ -2,10 +2,16 @@ const d3 = require('d3');
 const _ = require('lodash');
 const fs = require('fs');
 const { applyCategoryRules } = require("./categoryRules");
+const dh = require('./dateHelper');
+
+const _dh = new dh.dateHelper(new Date());
+
+const mm = _dh.getMonth();
+const yy = _dh.getYearShort();
 
 console.log(__dirname);
 
-fs.readFile(`${__dirname}/input/Transactions_Input_0221.csv`, "utf8", function (error, data) {
+fs.readFile(`${__dirname}/input/mint/transactions_input_${mm}${yy}.csv`, "utf8", function (error, data) {
     if (error) { console.error(error) };
     data = d3.csvParse(data);
 
@@ -48,7 +54,7 @@ fs.readFile(`${__dirname}/input/Transactions_Input_0221.csv`, "utf8", function (
     console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
 
     formattedOutput = d3.csvFormat(dataNoTransfers);
-    fs.writeFile(`${__dirname}/output/Transactions_Output_0221.csv`, formattedOutput, function (error) {
+    fs.writeFile(`${__dirname}/output/transactions_output_${mm}${yy}.csv`, formattedOutput, function (error) {
         if (error) console.error("error writing file: ", error);
     })
     // console.log(dataNoTransfers);

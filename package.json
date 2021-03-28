@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "d3": "^6.6.0",
+    "dotenv": "^8.2.0",
     "lodash": "^4.17.21",
     "puppeteer": "^8.0.0"
   },
@@ -8,10 +9,15 @@
   "version": "1.0.0",
   "main": "./src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js"
+    "test": "jest",
+    "start": "node ./src/app.js",
+    "start_fetch": "node -r dotenv/config ./src/mintLogin.js",
+    "start_transform": "node -r dotenv/config ./src/runTransform.js"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
 }
