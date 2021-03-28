@@ -1,4 +1,4 @@
-const dateHelper = require('./dateHelper');
+require('./dateHelper');
 
 let date = getDate();
 
