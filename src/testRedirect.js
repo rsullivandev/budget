@@ -12,27 +12,37 @@ const puppeteer = require('puppeteer');
             slowMo: 20
         });
     const page = await browser.newPage();
-    // page.setRequestInterception(true);
-    // page.on('request', request => {
-    //     if (request.isNavigationRequest() && request.resourceType() === 'document') {
-    //         console.log(request.url())
-    //     }
-    //     request.continue()
-    // })
-    // await page.goto("https://mint.intuit.com/transaction.event?startDate=03/01/2021&endDate=03/31/2021");
-    await page.goto("https://accounts.intuit.com/");
-    // await page.waitForNavigation({ waitUntil: 'networkidle0' });
+    page.on('console', consoleObj => console.log(consoleObj.text()));
 
-    await page.waitForSelector('#ius-identifier');
-    await page.screenshot({ path: 'mint.png' });
-    await page.goto("http://example.com");
-    await page.screenshot({ path: 'example.png' });
-    await page.goto("http://google.com");
-    await page.screenshot({ path: 'google.png' });
-    //   const response = await page.goto("http://example.com");
-    //   const chain = response.request().redirectChain();
-    //   console.log(chain.length);
-    //   console.log(chain);
+
+    await page.waitForTimeout(10000);
+
+    otherData = 'rob';
+
+    data = {
+        "test": "12345",
+        "test2": "5678"
+    };
+
+    url = `http://testurl.com/${otherData}`
+
+    const content = await page.evaluate(async ({ url, data }) => {
+        const responseFetch = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+        // console.log(responseFetch);
+        // const jsonObj = await responseFetch.json();
+        // const strData = console.log(jsonObj);
+        // fetch('https://jsonplaceholder.typicode.com/todos/1')
+        //     .then(response => response.json())
+        //     .then(json => console.log(json));
+        // console.log(url);
+        // console.log(JSON.stringify(data));
+        // console.log('test');
+        return await responseFetch.text();
+    }, { url, data })
+
+    console.log(content);
+
+    await page.waitForTimeout(60000);
 
     await browser.close();
 })();
