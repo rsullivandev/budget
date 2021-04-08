@@ -11,7 +11,8 @@
   "scripts": {
     "test": "jest",
     "start": "node ./src/app.js",
-    "start_fetch": "node -r dotenv/config ./src/mintLogin.js",
+    "start_fetch_mint": "node -r dotenv/config ./src/mintLogin.js",
+    "start_fetch_usbank": "node -r dotenv/config ./src/usBankLogin.js",
     "start_transform": "node -r dotenv/config ./src/runTransform.js"
   },
   "author": "",

@@ -2,7 +2,8 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const dh = require('./dateHelper');
 
-const _dh = new dh.dateHelper(new Date());
+// const _dh = new dh.dateHelper(new Date());
+const _dh = new dh.dateHelper(new Date('03-01-2021'));
 
 
 const mm = _dh.getMonth();

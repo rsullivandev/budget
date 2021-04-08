@@ -2,7 +2,8 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const dh = require('./dateHelper');
 
-const _dh = new dh.dateHelper(new Date());
+// const _dh = new dh.dateHelper(new Date());
+const _dh = new dh.dateHelper(new Date('03-01-2021'));
 
 
 const mm = _dh.getMonth();
@@ -49,20 +50,29 @@ const yy = _dh.getYearShort();
 
     const downloadedContent = await page.evaluate(async ({ downloadedURL, data }) => {
 
+        const accessToken = sessionStorage.getItem("AccessToken");
 
-        const fetchResp = await fetch(downloadedURL, {
-            method: 'POST',
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-        });
 
-        return await fetchResp.text();
+        if (accessToken) {
+            const fetchResp = await fetch(downloadedURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                body: JSON.stringify(data),
+            });
+
+            return await fetchResp.text();
+        }
+        else return null;
     }, { downloadedURL, data });
 
+    console.log("download response!");
     console.log(downloadedContent);
+
+
+    await page.waitForTimeout(60000);
 
     fs.writeFileSync(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`, downloadedContent);
 
