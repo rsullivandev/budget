@@ -4,7 +4,8 @@ const fs = require('fs');
 const { applyCategoryRules } = require("./categoryRules");
 const dh = require('./dateHelper');
 
-const _dh = new dh.dateHelper(new Date());
+// const _dh = new dh.dateHelper(new Date());
+const _dh = new dh.dateHelper(new Date('03-01-2021'));
 
 const mm = _dh.getMonth();
 const yy = _dh.getYearShort();
