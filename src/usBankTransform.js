@@ -44,16 +44,21 @@ fs.readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`, "utf8
         temp.Category = "";
         temp.Labels = ""
         temp.Notes = "";
-        temp.TransactionType = element.Transaction;
+        if (element.Amount.includes("-")) {
+            temp.TransactionType = "DEBIT"
+        } else {
+            temp.TrasnactionType = "CREDIT"
+        }
         temp.OriginalDescription = element.Memo;
         temp.AccountName = "Ashley - US Bank"
         temp.BudgetCategory = applyUSBankCategoryRules(element);
+
 
         formattedData.push(temp);
         temp = {}; //unsure why the temp object needs to be reset
     })
 
-    // console.log(formattedData);
+    console.log(formattedData);
 
     formattedOutput = d3.csvFormat(formattedData);
 

@@ -4,7 +4,7 @@ const applyCategoryRules = (element) => {
     if(element.Category == 'Groceries' || element.Category == 'Fast Food' || element.Category == 'Restaurants') return 'FoodBudget';
     
     else if(element.Category == 'Shopping' || element.Category == 'Home Improvement' 
-    || element.Category == 'Home Furnishings' || element.Category == 'Gift' 
+    || element.Category == 'Furnishings' || element.Category == 'Gift' 
     || element.Category == 'Home Supplies' || element.Category == 'Pet Food & Supplies' 
     || element.Category == 'Clothing' || element.Category == 'Hobbies' || element.Category == "Gas & Fuel") return 'ShoppingBudget';
     
