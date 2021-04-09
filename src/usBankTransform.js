@@ -43,9 +43,9 @@ fs.readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`, "utf8
         temp.Amount = element.Amount;
         temp.Category = "";
         temp.Labels = ""
-        temp.Notes = element.Memo;
+        temp.Notes = "";
         temp.TransactionType = element.Transaction;
-        temp.OriginalDescription = "";
+        temp.OriginalDescription = element.Memo;
         temp.AccountName = "Ashley - US Bank"
         temp.BudgetCategory = applyUSBankCategoryRules(element);
 
