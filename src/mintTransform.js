@@ -129,6 +129,11 @@ readFile(`${__dirname}/testInputMintData.csv`)
         console.log(data);
     })
 
+
+//how can i use async/await for this instead of the promise chain?
+//givne that I want to orchestate 3 calls (read file, transform file, write file), is there any way to 
+//avoid having a long promise chain here? What is the right design?
+
 // const data = async (fileLocation) => {
 //     const returnedData = await readFile(`${__dirname}/testInputMintData.csv`);
 //     // console.log(returnedData);
