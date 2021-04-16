@@ -44,7 +44,7 @@ Date,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescriptio
 2021-03-16,Midamerican Energy,-142,Energy,,,debit,MIDAMERICAN      ENERGY     5408,Rob - CHASE CHECKING,Energy
 2021-03-15,American Wall,-33.39,Water,,,debit,IOWA-AMERICAN WA PAYMENT,Rob - CHASE CHECKING,Water
 2021-03-15,JOHN DEERE WORLD PAYROLL PPD ID: 9362382580,2822.48,Paycheck,,,credit,JOHN DEERE WORLD PAYROLL,Rob - CHASE CHECKING,Income
-2021-03-15,To Sh aw Electric 03/15,-175,Furnishings,,,debit,Online Payment 11377854909 To Sh,Rob - CHASE CHECKING,Miscellaneous
+2021-03-15,To Sh aw Electric 03/15,-175,Furnishings,,,debit,Online Payment 11377854909 To Sh,Rob - CHASE CHECKING,ShoppingBudget
 2021-03-15,Mediacom,-84.99,Internet,,$20 overage,debit,MEDIACOM - CHILL EFT PAYMNT 0340,Rob - CHASE CHECKING,Internet
 2021-03-15,INTEREST PAYMENT,0.06,Interest Income,,,credit,INTEREST PAYMENT,Rob - CHASE SAVINGS,Income
 2021-03-15,Amazon,-15.12,Shopping,,,debit,Amazon.com*QK5UA8FA3,CREDIT CARD,ShoppingBudget
@@ -77,7 +77,7 @@ Date,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescriptio
 2021-03-03,Panera Bread,-26.98,Fast Food,,,debit,PANERA BREAD #203201 O,Ashley - CREDIT CARD,FoodBudget
 2021-03-02,CITIZENS MTG payment 8103 029313 WEB ID: 16-1146859,-1903.96,Mortgage & Rent,,,debit,CITIZENS         MTG PMT    8103,Rob - CHASE CHECKING,Mortgage
 2021-03-02,Great Clips,-19.98,Hair,,,debit,4852 GREAT CLIPS AT CELEB,Rob - Freedom,Amortized
-2021-03-01,QuickPay with Zelle payment to B rian Damato 11106130218,-73,Mobile Phone,,,debit,QuickPay with Zelle payment to B,Rob - CHASE CHECKING,PhoneDate,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescription,AccountName,BudgetCategory
+2021-03-01,QuickPay with Zelle payment to B rian Damato 11106130218,-73,Mobile Phone,,,debit,QuickPay with Zelle payment to B,Rob - CHASE CHECKING,Phone
 2021-03-01,ELECTRONIC DEPOSIT DAVENPORT SCHOOL,1903.72,,,Download from usbank.com.,CREDIT,,Ashley - US Bank,Income
 2021-03-01,ELECTRONIC WITHDRAWAL IOWA STATE ED AS,-75.30,,,Download from usbank.com.,DEBIT,,Ashley - US Bank,UnionDues
 2021-03-01,CHECK,-901.42,,,Download from usbank.com.,5201,,Ashley - US Bank,Miscellaneous

@@ -60,23 +60,23 @@ const transformData = (data) => {
     console.log("Outflow: ", d3.format('.2f')(totalSpending));
     console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
 
-    return dataTransformed
+    formattedOutput = d3.csvFormat(dataTransformed);
+    return formattedOutput;
 }
 
 const setFile = async (outputFileLocation, data) => {
-    console.log(data)
-    formattedOutput = d3.csvFormat(data);
     try {
-        await fs.writeFile(outputFileLocation, formattedOutput);
+        await fs.writeFile(outputFileLocation, data);
     } catch (e) {
         console.error(e);
     }
 }
 
 const orchestrateMint = async () => {
-    let data = await readFile(`${__dirname}/testInputMintData.csv`);
+    let data = await readFile(`${__dirname}/testData/testInputMintData.csv`);
     data = transformData(data);
-    await setFile(`${__dirname}/testOutputFormat2.csv`, data);
+    // console.log(data);
+    await setFile(`${__dirname}/testData/testOutputFormat2.csv`, data);
 }
 
 orchestrateMint();
