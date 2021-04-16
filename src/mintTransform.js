@@ -1,6 +1,6 @@
 const d3 = require('d3');
 const _ = require('lodash');
-const fs = require('fs');
+const fs = require('fs').promises;
 const { applyCategoryRules } = require("./categoryRules");
 const dh = require('./dateHelper');
 
@@ -13,82 +13,23 @@ const yy = _dh.getYearShort();
 
 console.log(__dirname);
 
-
-const readFile = inputFile => new Promise((resolve, reject) => {
-    fs.readFile(inputFile, 'utf8', function (error, data) {
-        if (error) reject(error);
-        else resolve(data);
-    })
-})
-
-
-// const getFile = (inputFileLocation) => {
-
-//     readFile(inputFileLocation).then(data=>{console.log(data)});
-
-// fs.readFile(`${__dirname}/input/mint/transactions_input_${mm}${yy}.csv`, "utf8", function (error, data) {
-// fs.readFile(inputFileLocation, "utf8", function (error, data) {
-
-//     if (error) { console.error(error) };
-//     data = d3.csvParse(data);
-
-//     return data;
-
-
-// //Remove Transfers and Credit Card Payments
-// let dataNoTransfers = d3.filter(data, function (d) { return d.Category != "Transfer" && d.Category != "Credit Card Payment" });
-// dataNoTransfers = d3.filter(dataNoTransfers, function (d) { return !d.Description.includes("ACH") });
-
-
-// //Data Pre-Processing
-// dataNoTransfers.forEach(element => {
-
-//     //Date Formatting
-//     element.Date = new Date(element.Date);
-
-//     //Remove Strings in Headers
-//     element.TransactionType = element['Transaction Type'];
-//     element.OriginalDescription = element['Original Description'];
-//     element.AccountName = element['Account Name'];
-//     delete element['Transaction Type'];
-//     delete element['Original Description'];
-//     delete element['Account Name'];
-
-//     //Amount Formatting
-//     element.Amount = +element.Amount;
-//     if (element.TransactionType == "debit") element.Amount = element.Amount * -1;
-
-//     //Add Budgeting Category
-//     element.BudgetCategory = applyCategoryRules(element);
-// });
-
-// const income = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'credit' });
-// const totalIncome = d3.sum(income, function (d) { return d.Amount });
-
-// const spending = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'debit' });
-// let totalSpending = d3.sum(spending, function (d) { return d.Amount });
-
-// console.log("Income: ", d3.format('.2f')(totalIncome));
-// console.log("Outflow: ", d3.format('.2f')(totalSpending));
-// console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
-
-// formattedOutput = d3.csvFormat(dataNoTransfers);
-// fs.writeFile(`${__dirname}/output/transactions_output_${mm}${yy}.csv`, formattedOutput, function (error) {
-// fs.writeFile(outputFileLocation, formattedOutput, function (error) {
-//     if (error) console.error("error writing file: ", error);
-// })
-// console.log(dataNoTransfers);
-// })
-// }
+const readFile = async inputFile => {
+    try {
+        let data = await fs.readFile(inputFile, 'utf8');
+        data = d3.csvParse(data);
+        return data;
+    } catch (e) {
+        console.error(e);
+    }
+}
 
 const transformData = (data) => {
     //Remove Transfers and Credit Card Payments
-    let dataNoTransfers = d3.filter(data, function (d) { return d.Category != "Transfer" && d.Category != "Credit Card Payment" });
-    dataNoTransfers = d3.filter(dataNoTransfers, function (d) { return !d.Description.includes("ACH") });
-
+    let dataTransformed = d3.filter(data, function (d) { return d.Category != "Transfer" && d.Category != "Credit Card Payment" });
+    dataTransformed = d3.filter(dataTransformed, function (d) { return !d.Description.includes("ACH") });    
 
     //Data Pre-Processing
-    dataNoTransfers.forEach(element => {
+    dataTransformed.forEach(element => {
 
         //Date Formatting
         element.Date = new Date(element.Date);
@@ -109,42 +50,36 @@ const transformData = (data) => {
         element.BudgetCategory = applyCategoryRules(element);
     });
 
-    const income = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'credit' });
+    const income = d3.filter(dataTransformed, function (d) { return d.TransactionType == 'credit' });
     const totalIncome = d3.sum(income, function (d) { return d.Amount });
 
-    const spending = d3.filter(dataNoTransfers, function (d) { return d.TransactionType == 'debit' });
+    const spending = d3.filter(dataTransformed, function (d) { return d.TransactionType == 'debit' });
     let totalSpending = d3.sum(spending, function (d) { return d.Amount });
+
+    console.log("Income: ", d3.format('.2f')(totalIncome));
+    console.log("Outflow: ", d3.format('.2f')(totalSpending));
+    console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
+
+    return dataTransformed
 }
 
-const setFile = (outputFileLocation, data) => {
+const setFile = async (outputFileLocation, data) => {
+    console.log(data)
     formattedOutput = d3.csvFormat(data);
-    fs.writeFile(outputFileLocation, formattedOutput, function (error) {
-        if (error) console.error("error writing file: ", error);
-    })
+    try {
+        await fs.writeFile(outputFileLocation, formattedOutput);
+    } catch (e) {
+        console.error(e);
+    }
 }
 
+const orchestrateMint = async () => {
+    let data = await readFile(`${__dirname}/testInputMintData.csv`);
+    data = transformData(data);
+    await setFile(`${__dirname}/testOutputFormat2.csv`, data);
+}
 
-readFile(`${__dirname}/testInputMintData.csv`)
-    .then(data => {
-        console.log(data);
-    })
-
-
-//how can i use async/await for this instead of the promise chain?
-//givne that I want to orchestate 3 calls (read file, transform file, write file), is there any way to 
-//avoid having a long promise chain here? What is the right design?
-
-// const data = async (fileLocation) => {
-//     const returnedData = await readFile(`${__dirname}/testInputMintData.csv`);
-//     // console.log(returnedData);
-//     return returnedData;
-// }
-
-// data('1234');
-
-// console.log(data);
-
-// console.log(inputData);
+orchestrateMint();
 
 module.exports = {
     readFile: readFile,
