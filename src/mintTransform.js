@@ -80,6 +80,7 @@ const orchestrateMint = async () => {
 }
 
 orchestrateMint();
+//orchestration runs every time a function is called outside of the file. May need to move the orchestration execution function to separate file to prevent this?
 
 module.exports = {
     readFile: readFile,
