@@ -1,6 +1,6 @@
 const d3 = require('d3');
 const dh = require('./dateHelper');
-const fs = require('fs');
+const fs = require('fs').promises;
 const { applyUSBankCategoryRules } = require("./usBankCategoryRules");
 
 // const _dh = new dh.dateHelper(new Date());
@@ -9,30 +9,13 @@ const _dh = new dh.dateHelper(new Date('03-01-2021'));
 const mm = _dh.getMonth();
 const yy = _dh.getYearShort();
 
-fs.readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`, "utf8", function (error, data) {
-    if (error) { console.error(error) };
-    data = d3.csvParse(data);
 
-    //Date | Transaction Type | Name | Memo | Amount
-
-    //Date | Description | Amount | Category | Labels | Notes | Transaction Type | Origincal Description | AccountName | Budget Category
-
+const transformDataUSBank = (data) => {
+    
     data = d3.filter(data, function (d) { return !d.Name.includes("CREDIT CRD") });
     data = d3.filter(data, function (d) { return !d.Name.includes("TARGET CARD SRVC") });
     data = d3.filter(data, function (d) { return !d.Name.includes("GreenState CU Ex") });
 
-    // formattedData = [{
-    //     "Date": "",
-    //     "Description" : "",
-    //     "Amount": "",
-    //     "Category" : "",
-    //     "Labels" : "",
-    //     "Notes" : "",
-    //     "Transaction Type": "",
-    //     "Original Description": "",
-    //     "AccountName": "",
-    //     "BudgetCategory": ""
-    // }]
 
     formattedData = [];
     temp = {};
@@ -47,7 +30,7 @@ fs.readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`, "utf8
         if (element.Amount.includes("-")) {
             temp.TransactionType = "DEBIT"
         } else {
-            temp.TrasnactionType = "CREDIT"
+            temp.TransactionType = "CREDIT"
         }
         temp.OriginalDescription = element.Memo;
         temp.AccountName = "Ashley - US Bank"
@@ -58,12 +41,12 @@ fs.readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`, "utf8
         temp = {}; //unsure why the temp object needs to be reset
     })
 
-    console.log(formattedData);
 
     formattedOutput = d3.csvFormat(formattedData);
+    return formattedOutput;
+}
 
-    fs.appendFile(`${__dirname}/output/transactions_output_${mm}${yy}.csv`, formattedOutput, function (error) {
-        if (error) console.error("error writing file: ", error);
-    })
 
-});
+module.exports = {
+    transformDataUSBank: transformDataUSBank,
+}

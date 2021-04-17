@@ -11,19 +11,7 @@ const _dh = new dh.dateHelper(new Date('03-01-2021'));
 const mm = _dh.getMonth();
 const yy = _dh.getYearShort();
 
-console.log(__dirname);
-
-const readFile = async inputFile => {
-    try {
-        let data = await fs.readFile(inputFile, 'utf8');
-        data = d3.csvParse(data);
-        return data;
-    } catch (e) {
-        console.error(e);
-    }
-}
-
-const transformData = (data) => {
+const transformDataMint = (data) => {
     //Remove Transfers and Credit Card Payments
     let dataTransformed = d3.filter(data, function (d) { return d.Category != "Transfer" && d.Category != "Credit Card Payment" });
     dataTransformed = d3.filter(dataTransformed, function (d) { return !d.Description.includes("ACH") });    
@@ -64,26 +52,7 @@ const transformData = (data) => {
     return formattedOutput;
 }
 
-const setFile = async (outputFileLocation, data) => {
-    try {
-        await fs.writeFile(outputFileLocation, data);
-    } catch (e) {
-        console.error(e);
-    }
-}
-
-const orchestrateMint = async () => {
-    let data = await readFile(`${__dirname}/testData/testInputMintData.csv`);
-    data = transformData(data);
-    // console.log(data);
-    await setFile(`${__dirname}/testData/testOutputFormat2.csv`, data);
-}
-
-orchestrateMint();
-//orchestration runs every time a function is called outside of the file. May need to move the orchestration execution function to separate file to prevent this?
 
 module.exports = {
-    readFile: readFile,
-    transformData: transformData,
-    setFile: setFile
+    transformDataMint: transformDataMint,
 }
