@@ -1,7 +1,5 @@
 # Todo #
-1. Handle 2fa in usbank...leverage input field if detected? Also need to figure out when access token is provided.
-1. Adjust date to return previous month
-1. Figure out how to easily pass records from vm to google
+1. Set up API access for google sheets to automatically upload
 
-# On the horizon #
-1. Organize app so that additional banks can be added
+# Nagging issues #
+1. US Bank randomly challenges 2fa. Need to detect this and add prompt for fetch script.
