@@ -1,5 +1,5 @@
 const d3 = require('d3');
-const { applyCategoryRules } = require("./categoryRules");
+const { applyCategoryRules } = require("./mintCategoryRules");
 
 
 const transformDataMint = (data) => {

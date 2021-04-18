@@ -19,7 +19,7 @@ const orchestrateData = async () => {
     //Need to find way to remove header row from usbank data.
 
     let combinedData = transformedDataMint + "\n" + transformedDataUSBank
-    await setFile(`${__dirname}/output/transactions_output_${mm}${yy}.csv`, combinedData);
+    await setFile(`${__dirname}/output/transactions_output_${mm+1}${yy}.csv`, combinedData);
 }
 
 orchestrateData();
