@@ -4,37 +4,35 @@ const { google } = require('googleapis');
 
 const SCOPES = ['https://www.googleapis.com/auth/drive.file'];
 
-const TOKEN_PATH = 'token.json';
+const TOKEN_PATH = `${__dirname}/token.json`;
 
-const executeUpload = async () => {
+const executeUpload = async (combinedData, fileName) => {
     try {
-        const credFile = await fs.readFile('credentials.json');
-        authorize(JSON.parse(credFile), uploadFile);
+        const credFile = await fs.readFile(`${__dirname}/credentials.json`);
+        authorize(JSON.parse(credFile), uploadFile, combinedData, fileName);
     } catch (err) {
         return console.log('Error loading client secret file:', err);
     }
 }
 
-const authorize = async (credentials, callback) => {
+const authorize = async (credentials, callback, data, fileName) => {
     console.log('authorize');
     const { client_secret, client_id, redirect_uris } = credentials.installed;
     const oAuth2Client = new google.auth.OAuth2(
         client_id, client_secret, redirect_uris[0]);
 
-
-
     try {
         const token = await fs.readFile(TOKEN_PATH);
         oAuth2Client.setCredentials(JSON.parse(token));
-        callback(oAuth2Client);
+        callback(oAuth2Client, data, fileName);
     } catch (err) {
-        return getAccessToken(oAuth2Client, callback);
+        return getAccessToken(oAuth2Client, callback, data, fileName);
     }
 
 }
 
 
-const getAccessToken = (oAuth2Client, callback) => {
+const getAccessToken = (oAuth2Client, callback, data, fileName) => {
     console.log("get access token");
     const authUrl = oAuth2Client.generateAuthUrl({
         access_type: 'offline',
@@ -55,49 +53,25 @@ const getAccessToken = (oAuth2Client, callback) => {
                 if (err) return console.error(err);
                 console.log('Token stored to', TOKEN_PATH);
             });
-            callback(oAuth2Client);
+            callback(oAuth2Client, data, fileName);
         });
     });
 }
 
-const listFiles = auth => {
-    const drive = google.drive({ version: 'v3', auth });
-    drive.files.list({
-        pageSize: 10,
-        fields: 'nextPageToken, files(id, name)',
-    }, (err, res) => {
-        if (err) return console.log('The API returned an error: ' + err);
-        const files = res.data.files;
-        if (files.length) {
-            console.log('Files:');
-            files.map((file) => {
-                console.log(`${file.name} (${file.id})`);
-            });
-        } else {
-            console.log('No files found.');
-        }
-    })
-}
-
-const uploadFile = async auth => {
+const uploadFile = async (auth, data, fileName) => {
 
     console.log("UploadFile");
-
     const drive = google.drive({ version: 'v3', auth });
-
-    const uploadFile = await (await fs.readFile('transactions_output_0321.csv')).toString();
-    console.log(uploadFile);
-
 
     const response = await drive.files.create({
         requestBody: {
-            name: 'Test.csv',
+            name: fileName,
             mimeType: 'application/vnd.google-apps.spreadsheet',
             parents: ['1C0g53n8MEs-vCWpGIkh3gnA7dsw_NC-5']
         },
         media: {
             mimeType: 'application/vnd.google-apps.spreadsheet',
-            body: uploadFile
+            body: data
         },
     });
 

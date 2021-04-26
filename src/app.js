@@ -1,7 +1,8 @@
-const {readFile} = require('./readFile');
-const {setFile} = require('./setFile');
-const {transformDataMint} = require('./mintTransform');
-const {transformDataUSBank} = require('./usBankTransform');
+const { readFile } = require('./readFile');
+const { setFile } = require('./setFile');
+const { transformDataMint } = require('./mintTransform');
+const { transformDataUSBank } = require('./usBankTransform');
+const { executeUpload } = require('./fileUpload');
 const dh = require('./dateHelper');
 
 const _dh = new dh.dateHelper(new Date('03-01-2021'));
@@ -19,7 +20,11 @@ const orchestrateData = async () => {
     //Need to find way to remove header row from usbank data.
 
     let combinedData = transformedDataMint + "\n" + transformedDataUSBank
-    await setFile(`${__dirname}/output/transactions_output_${mm+1}${yy}.csv`, combinedData);
+    let fileName = `transactions_output_${mm + 1}${yy}.csv`
+    await setFile(`${__dirname}/output/${fileName}`, combinedData);
+
+    await executeUpload(combinedData, fileName);
+
 }
 
 orchestrateData();
