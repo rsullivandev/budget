@@ -12,7 +12,7 @@
   "scripts": {
     "test": "jest",
     "start": "node ./src/app.js",
-    "start_fetch_mint": "node -r dotenv/config ./src/mintLogin.js",
+    "start_fetch_mint": "node -r dotenv/config ./src/mintFetch.js",
     "start_fetch_usbank": "node -r dotenv/config ./src/usBankFetch.js",
     "start_transform_mint": "node -r dotenv/config ./src/app.js",
     "start_transform_usbank": "node -r dotenv/config ./src/usBankTransform"
