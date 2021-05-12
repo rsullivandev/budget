@@ -21,10 +21,10 @@ async function readLine() {
 
   return new Promise(resolve => {
 
-      rl.question('Enter captcha: ', (answer) => {
-        rl.close();
-        resolve(answer)
-      });
+    rl.question('Enter captcha: ', (answer) => {
+      rl.close();
+      resolve(answer)
+    });
   })
 }
 
@@ -54,18 +54,30 @@ async function readLine() {
     page.waitForTimeout(15000),
   ]);
 
-  await page.waitForSelector('#ius-mfa-options-submit-btn',{timeout: 10000})
   await page.waitForTimeout(10000);
+  if( await page.$('#ius-mfa-options-submit-btn') !== null) {
+    await page.click('#ius-mfa-options-submit-btn')
+    const mfaCode = await readLine();
+    await page.type('#ius-mfa-confirm-code', mfaCode);
+    const [response3] = await Promise.all([
+      page.keyboard.press('Enter'),
+      page.waitForTimeout(15000),
+    ]);
+  }
+
+  // await page.waitForSelector('#ius-mfa-options-submit-btn', { timeout: 10000 })
+  // await page.waitForTimeout(10000);
+  // await page.click('#ius-mfa-options-submit-btn')
 
   //TODO: Need to click enter button here....Waiting for 10 seconds for manual click at the moment
 
-  const mfaCode = await readLine();
-  await page.type('#ius-mfa-confirm-code', mfaCode);
-  
-  const [response3] = await Promise.all([
-    page.keyboard.press('Enter'),
-    page.waitForTimeout(15000),
-  ]);
+  // const mfaCode = await readLine();
+  // await page.type('#ius-mfa-confirm-code', mfaCode);
+
+  // const [response3] = await Promise.all([
+  //   page.keyboard.press('Enter'),
+  //   page.waitForTimeout(15000),
+  // ]);
 
 
 
@@ -74,12 +86,12 @@ async function readLine() {
   const downloadedURL = `https://mint.intuit.com/transactionDownload.event?startDate=${mm}%2F01%2F${yyyy}&endDate=${mm}%2F${dd}%2F${yyyy}&queryNew=&offset=0&filterType=cash&comparableType=8`;
   console.log(downloadedURL);
   const downloadedContent = await page.evaluate(async downloadedURL => {
-    const fetchResp = await fetch(downloadedURL, {credentials: 'include'});
+    const fetchResp = await fetch(downloadedURL, { credentials: 'include' });
     return await fetchResp.text();
   }, downloadedURL);
 
 
   fs.writeFileSync(`${__dirname}/input/mint/transactions_input_${mm}${yy}.csv`, downloadedContent);
 
-  await browser.close();  
+  await browser.close();
 })();
