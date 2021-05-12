@@ -54,6 +54,8 @@ async function readLine() {
     page.waitForTimeout(15000),
   ]);
 
+  
+  //wait 10 seconds for MFA screen to appear. If not, proceed to Mint
   await page.waitForTimeout(10000);
   if( await page.$('#ius-mfa-options-submit-btn') !== null) {
     await page.click('#ius-mfa-options-submit-btn')
