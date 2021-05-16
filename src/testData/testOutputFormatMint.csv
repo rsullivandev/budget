@@ -21,7 +21,7 @@ Date,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescriptio
 2021-03-23,Amazon,37.44,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget
 2021-03-22,Potbelly Sandwich Works,-16.26,Fast Food,,,debit,Withdrawal Debit Card/LEVELUPPOT,Ashley - REWARDS CHECKING,FoodBudget
 2021-03-22,McDonald's,-2.34,Fast Food,,,debit,Withdrawal Debit Card/MCDONALD'S,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-22,Vanguard,-6000,IRA - Ashley,,,debit,VANGUARD BUY     INVESTMENT 9171,Rob - CHASE CHECKING,IRAContribution
+2021-03-22,Vanguard,-6000,IRA - Ashley,,,debit,VANGUARD BUY     INVESTMENT 9171,Rob - CHASE CHECKING,Amortized
 2021-03-22,BP,-17.3,Gas & Fuel,,,debit,BP#9734542GALENA GAS BP,Rob - Freedom,ShoppingBudget
 2021-03-22,SKIP-A-LONG - DAVENPORT C,-2403.82,Babysitter & Daycare,,,debit,SKIP-A-LONG - DAVENPORT C,Rob - Freedom,ChildCare
 2021-03-22,KWIK STAR 29900002998,-18,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget

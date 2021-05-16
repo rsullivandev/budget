@@ -21,7 +21,7 @@ Date,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescriptio
 2021-03-23,Amazon,37.44,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget
 2021-03-22,Potbelly Sandwich Works,-16.26,Fast Food,,,debit,Withdrawal Debit Card/LEVELUPPOT,Ashley - REWARDS CHECKING,FoodBudget
 2021-03-22,McDonald's,-2.34,Fast Food,,,debit,Withdrawal Debit Card/MCDONALD'S,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-22,Vanguard,-6000,IRA - Ashley,,,debit,VANGUARD BUY     INVESTMENT 9171,Rob - CHASE CHECKING,IRAContribution
+2021-03-22,Vanguard,-6000,IRA - Ashley,,,debit,VANGUARD BUY     INVESTMENT 9171,Rob - CHASE CHECKING,Amortized
 2021-03-22,BP,-17.3,Gas & Fuel,,,debit,BP#9734542GALENA GAS BP,Rob - Freedom,ShoppingBudget
 2021-03-22,SKIP-A-LONG - DAVENPORT C,-2403.82,Babysitter & Daycare,,,debit,SKIP-A-LONG - DAVENPORT C,Rob - Freedom,ChildCare
 2021-03-22,KWIK STAR 29900002998,-18,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget
@@ -83,10 +83,10 @@ Date,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescriptio
 2021-03-01,ELECTRONIC WITHDRAWAL IOWA STATE ED AS,-75.30,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,UnionDues
 2021-03-01,CHECK,-901.42,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,Miscellaneous
 2021-03-05,WEB AUTHORIZED PMT VENMO,-20.00,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,Shopping
-2021-03-05,ELECTRONIC WITHDRAWAL VANGUARD BUY,-450.00,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,IRAContribution
+2021-03-05,ELECTRONIC WITHDRAWAL VANGUARD BUY,-450.00,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,Amortized
 2021-03-10,WEB AUTHORIZED PMT VENMO,-125.00,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,HouseCleaning
 2021-03-16,MONTHLY MAINTENANCE FEE,-24.95,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,Miscellaneous
 2021-03-16,MONTHLY MAINTENANCE FEE WAIVED,24.95,,,,CREDIT,Download from usbank.com.,Ashley - US Bank,Miscellaneous
 2021-03-16,INTEREST PAID THIS PERIOD,0.19,,,,CREDIT,Download from usbank.com.,Ashley - US Bank,Income
-2021-03-22,WEB AUTHORIZED PMT VANGUARD BUY,-600.00,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,IRAContribution
+2021-03-22,WEB AUTHORIZED PMT VANGUARD BUY,-600.00,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,Amortized
 2021-03-24,CHECK,-90.00,,,,DEBIT,Download from usbank.com.,Ashley - US Bank,Amortized

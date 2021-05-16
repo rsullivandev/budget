@@ -1,5 +1,5 @@
 const applyUSBankCategoryRules = (element) => {
-    if(element.Name.includes("VANGUARD BUY")) return "IRAContribution"
+    if(element.Name.includes("VANGUARD BUY")) return "Amortized"
 
     if(element.Name.includes("VENMO") && element.Amount.includes("-125.00")) return "HouseCleaning"
     if(element.Name.includes("VENMO")) return "Shopping"

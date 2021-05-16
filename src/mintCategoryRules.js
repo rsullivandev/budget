@@ -13,7 +13,6 @@ const applyCategoryRules = (element) => {
     //Bills
     else if(element.Category == 'Mortgage & Rent') return 'Mortgage';
     else if(element.Category == 'Babysitter & Daycare') return 'ChildCare';
-    else if(element.Category == 'IRA - Ashley') return 'IRAContribution';
     else if(element.Category == 'Auto Payment') return 'AutoPayment';
     else if(element.Category == 'Television') return 'Television';
     else if(element.Category == 'Energy') return 'Energy';
@@ -33,8 +32,9 @@ const applyCategoryRules = (element) => {
     else if(element.Category == 'Utilities' || element.Category == 'Auto Insurance' ||
     element.Category.includes("Registration") || element.Category == 'Hair' ||
     element.Category.includes('Pet') || element.Category == "Veterinarian" || element.Category == "Auto Service" ||
-    element.category == "Amazon Prime" || element.Category == "Ring Insurance"||
-    element.category == "Apple Developer Account" || element.Category == "Xbox") return 'Amortized'
+    element.Category == "Amazon Prime" || element.Category == "Ring Insurance"||
+    element.Category == "Apple Developer Account" || element.Category == "Xbox" ||
+    element.Category == "IRA - Ashley") return 'Amortized';
 
     else return "Miscellaneous"
 }
