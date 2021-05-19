@@ -4,6 +4,7 @@
     "dotenv": "^8.2.0",
     "googleapis": "^39.2.0",
     "lodash": "^4.17.21",
+    "mariadb": "^2.5.3",
     "puppeteer": "^8.0.0"
   },
   "name": "budget-app",
