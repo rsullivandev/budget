@@ -1,33 +1,22 @@
-const mariadb = require('mariadb');
 const { readFile } = require('./src/readFile');
 const { transformDataMint } = require('./src/mintTransform');
-const { setFile } = require('./src/setFile');
+const pool = require('./src/db');
 
-COLUMNS = ['date', 'description', 'amount', 'category', 'label', 'notes', 'transaction_type', 'original_description', 'account', 'budget_category']
+COLUMNS = ['date', 'description', 'amount', 'category', 'label', 'notes', 'transaction_type', 'original_description', 'account', 'budget_category', 'source']
+placeholders = '';
+
+for (i = 0; i < COLUMNS.length; i++) {
+  placeholders += "?,"
+}
+placeholders = placeholders.slice(0, placeholders.length - 1);
 
 
-
-const pool = mariadb.createPool({
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_DATABASE,
-  connectionLimit: 5
-});
-async function asyncFunction() {
+const transactionsDAO = async () => {
   let dataMint = await readFile(`${__dirname}/src/input/mint/transactions_input_0421.csv`);
   let transformedDataMint = transformDataMint(dataMint);
 
-  let data = transformedDataMint.split('\n');
-  data.shift();
-  let dataArray = [];
-
-  data.forEach(element => {
-    items = element.split(",")
-    dataArray.push(items);
-  })
-
-
-  let stmt = `INSERT INTO transactions(date, description, amount, category, label, notes, transaction_type, original_description, account, budget_category, source) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
+  let stmt = `INSERT INTO transactions(${COLUMNS}) VALUES (${placeholders})`;
+  let dataArray = prepDataForInsert(transformedDataMint);
 
 
   let conn;
@@ -43,6 +32,19 @@ async function asyncFunction() {
   }
 }
 
+const prepDataForInsert = (transformedDataMint) => {
+  let data = transformedDataMint.split('\n');
+  data.shift();
+  let dataArray = [];
 
-asyncFunction();
+  data.forEach(element => {
+    items = element.split(",");
+    dataArray.push(items);
+  });
+  return dataArray;
+}
+
+
+transactionsDAO();
+
 
