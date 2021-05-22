@@ -1,6 +1,8 @@
 node_modules
-transactions*
-Transactions*
+src/input/*/transactions*
+src/input/*/Transactions*
+src/output/transactions*
+src/output/Transactions*
 .env
 token*
 credentials*

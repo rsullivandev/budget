@@ -1,21 +1,13 @@
-const { readFile } = require('./src/readFile');
-const { transformDataMint } = require('./src/mintTransform');
-const pool = require('./src/db');
-
-COLUMNS = ['date', 'description', 'amount', 'category', 'label', 'notes', 'transaction_type', 'original_description', 'account', 'budget_category', 'source']
-placeholders = '';
-
-for (i = 0; i < COLUMNS.length; i++) {
-  placeholders += "?,"
-}
-placeholders = placeholders.slice(0, placeholders.length - 1);
-
+const { readFile } = require('./readFile');
+const { transformDataMint } = require('./mintTransform');
+const pool = require('./db');
+const { getColumns, getPlaceholders } = require('./models/transactions');
 
 const transactionsDAO = async () => {
-  let dataMint = await readFile(`${__dirname}/src/input/mint/transactions_input_0421.csv`);
+  let dataMint = await readFile(`${__dirname}/input/mint/transactions_input_0421.csv`);
   let transformedDataMint = transformDataMint(dataMint);
 
-  let stmt = `INSERT INTO transactions(${COLUMNS}) VALUES (${placeholders})`;
+  let stmt = `INSERT INTO transactions(${getColumns()}) VALUES (${getPlaceholders()})`;
   let dataArray = prepDataForInsert(transformedDataMint);
 
 
@@ -25,7 +17,7 @@ const transactionsDAO = async () => {
     const res = await conn.batch(stmt, dataArray);
     console.log(res);
   } catch (err) {
-    console.error(err);
+    console.error("error during database connection: ", err);
     throw err;
   } finally {
     if (conn) return conn.end();
