@@ -24,11 +24,10 @@ async function asyncFunction() {
   data.forEach(element => {
     items = element.split(",")
     dataArray.push(items);
-    console.log(items);
   })
 
 
-  let stmt = `INSERT INTO transactions(date, description, amount, category, label, notes, transaction_type, original_description, account, budget_category) VALUES (?,?,?,?,?,?,?,?,?,?)`;
+  let stmt = `INSERT INTO transactions(date, description, amount, category, label, notes, transaction_type, original_description, account, budget_category, source) VALUES (?,?,?,?,?,?,?,?,?,?,?)`;
 
 
   let conn;

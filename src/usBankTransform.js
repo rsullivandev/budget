@@ -26,6 +26,7 @@ const transformDataUSBank = (data) => {
         temp.OriginalDescription = element.Memo;
         temp.AccountName = "Ashley - US Bank"
         temp.BudgetCategory = applyUSBankCategoryRules(element);
+        temp.Source = "USBank"
 
 
         formattedData.push(temp);

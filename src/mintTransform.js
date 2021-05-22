@@ -27,6 +27,9 @@ const transformDataMint = (data) => {
 
         //Add Budgeting Category
         element.BudgetCategory = applyCategoryRules(element);
+
+        //Add Source Category
+        element.Source = "Mint"
     });
 
     const income = d3.filter(dataTransformed, function (d) { return d.TransactionType == 'credit' });
