@@ -1,80 +1,80 @@
-Date,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescription,AccountName,BudgetCategory
-2021-03-31,Deposit Dividend Split Rate/Annual Percentage Yield Ea,0.11,Investments,,,credit,Deposit Dividend Split Rate/Annu,Rob - REWARDS CHECKING,Income
-2021-03-31,Deposit Dividend 0.050%/Annual Percentage Yield Earned,0.11,Investments,,,credit,Deposit Dividend 0.050%/Annual P,Rob - SHARE SAVINGS,Income
-2021-03-31,JOHN DEERE WORLD PAYROLL PPD ID: 9362382580,2822.46,Paycheck,,,credit,JOHN DEERE WORLD PAYROLL,Rob - CHASE CHECKING,Income
-2021-03-31,Jimmy John's,-15.38,Fast Food,,,debit,Withdrawal Debit Card/JIMMY JOHN,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-31,ULTA,-45.43,Personal Care,,,debit,Withdrawal Debit Card/ULTA.COM 8,Ashley - REWARDS CHECKING,Miscellaneous
-2021-03-30,"To Qu ad Cities Pediatrics, PC 03/30",-100.15,Doctor,,,debit,Online Payment 11473982004 To Qu,Rob - CHASE CHECKING,Miscellaneous
-2021-03-29,Amazon,-28.95,Shopping,,,debit,AMZN Mktp US*145SL8743,CREDIT CARD,ShoppingBudget
-2021-03-28,Amazon,-21.38,Shopping,,,debit,AMZN Mktp US*9K1R227O3,Rob - Freedom,ShoppingBudget
-2021-03-26,Wal-Mart,-5.26,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-26,Wal-Mart,-51.28,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-25,Withdrawal Debit Card/VILLAGE INN 110042 303-296-2121,-31.62,Restaurants,,,debit,Withdrawal Debit Card/VILLAGE IN,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-25,Papa John's,-27.6,Fast Food,,,debit,Withdrawal Debit Card/PAPA JOHNS,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-24,Internal Revenue Service,6211,Federal Tax,,,credit,IRS  TREAS 310     TAX REF,Rob - CHASE CHECKING,Income
-2021-03-24,Netflix,-14.97,Entertainment,,,debit,Recurring Withdrawal Debit Card/,Ashley - REWARDS CHECKING,Entertainment
-2021-03-23,Withdrawal Debit Card/GRANITE CITY DAVENP 6 DAVENPORT,-11.69,Restaurants,,,debit,Withdrawal Debit Card/GRANITE CI,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-23,Eye Care Pavilion,-7.41,Eyecare,,,debit,Withdrawal Debit Card/EYE CARE P,Ashley - REWARDS CHECKING,Miscellaneous
-2021-03-23,Amazon,23.79,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget
-2021-03-23,Amazon,35.62,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget
-2021-03-23,Amazon,12.9,Shopping,,,credit,Amazon.com,CREDIT CARD,ShoppingBudget
-2021-03-23,Amazon,37.44,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget
-2021-03-22,Potbelly Sandwich Works,-16.26,Fast Food,,,debit,Withdrawal Debit Card/LEVELUPPOT,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-22,McDonald's,-2.34,Fast Food,,,debit,Withdrawal Debit Card/MCDONALD'S,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-22,Vanguard,-6000,IRA - Ashley,,,debit,VANGUARD BUY     INVESTMENT 9171,Rob - CHASE CHECKING,Amortized
-2021-03-22,BP,-17.3,Gas & Fuel,,,debit,BP#9734542GALENA GAS BP,Rob - Freedom,ShoppingBudget
-2021-03-22,SKIP-A-LONG - DAVENPORT C,-2403.82,Babysitter & Daycare,,,debit,SKIP-A-LONG - DAVENPORT C,Rob - Freedom,ChildCare
-2021-03-22,KWIK STAR 29900002998,-18,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget
-2021-03-21,Amazon,-11,Shopping,,,debit,Amazon.com*9D5IA6253,CREDIT CARD,ShoppingBudget
-2021-03-21,Amazon,-4.54,Shopping,,,debit,Amazon.com*9M1T32TG3,CREDIT CARD,ShoppingBudget
-2021-03-21,Amazon,-51.67,Shopping,,,debit,AMZN Mktp US*803OS52O3,CREDIT CARD,ShoppingBudget
-2021-03-21,Apple,-1.06,Hobbies,,,debit,PP*APPLE.COM/BILL,Ashley - CREDIT CARD,ShoppingBudget
-2021-03-21,THE PADDLING POOCH LLC,-55,Pet Grooming,,,debit,THE PADDLING POOCH LLC,Ashley - CREDIT CARD,Amortized
-2021-03-21,State Farm,-60.97,Auto Insurance,,,debit,STATE FARM  INSURANCE,Rob - Freedom,AutoInsuranceRob
-2021-03-21,Wal-Mart,-3.13,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-19,Wal-Mart,-39.21,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-19,Wal-Mart,-58,Home Supplies,,,debit,WALMART GROCERY,Rob - Freedom,ShoppingBudget
-2021-03-19,Wal-Mart,-38,Baby Supplies,,,debit,WALMART GROCERY,Rob - Freedom,BabySuppliesBudget
-2021-03-19,Lowe's,-63.11,Home Improvement,,,debit,LOWES #00107*,Rob - Freedom,ShoppingBudget
-2021-03-19,Wal-Mart,-19.55,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-18,Intuit,-117.7,Misc Expenses,,Taxes 2021 Software Turbo tax,debit,PAYPAL *INTUIT INC TURBOT,Rob - Freedom,Miscellaneous
-2021-03-18,KWIK STAR 29900002998,-28.07,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget
-2021-03-18,Amazon,-15.24,Shopping,,,debit,Amazon.com*0T71L0M53,CREDIT CARD,ShoppingBudget
-2021-03-17,Amazon,-20.11,Shopping,,,debit,Amazon.com*KT0ZX7ET3,Rob - Freedom,ShoppingBudget
-2021-03-16,Midamerican Energy,-142,Energy,,,debit,MIDAMERICAN      ENERGY     5408,Rob - CHASE CHECKING,Energy
-2021-03-15,American Wall,-33.39,Water,,,debit,IOWA-AMERICAN WA PAYMENT,Rob - CHASE CHECKING,Water
-2021-03-15,JOHN DEERE WORLD PAYROLL PPD ID: 9362382580,2822.48,Paycheck,,,credit,JOHN DEERE WORLD PAYROLL,Rob - CHASE CHECKING,Income
-2021-03-15,To Sh aw Electric 03/15,-175,Furnishings,,,debit,Online Payment 11377854909 To Sh,Rob - CHASE CHECKING,ShoppingBudget
-2021-03-15,Mediacom,-84.99,Internet,,$20 overage,debit,MEDIACOM - CHILL EFT PAYMNT 0340,Rob - CHASE CHECKING,Internet
-2021-03-15,INTEREST PAYMENT,0.06,Interest Income,,,credit,INTEREST PAYMENT,Rob - CHASE SAVINGS,Income
-2021-03-15,Amazon,-15.12,Shopping,,,debit,Amazon.com*QK5UA8FA3,CREDIT CARD,ShoppingBudget
-2021-03-15,Jimmy John's,-20.58,Fast Food,,,debit,Withdrawal Debit Card/JIMMY JOHN,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-14,Wal-Mart,-97.5,Home Supplies,,,debit,WALMART GROCERY,Rob - Freedom,ShoppingBudget
-2021-03-14,Wal-Mart,-25,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-14,OLDE TOWNE BAKERY,-37.12,Shopping,,Cece cake,debit,OLDE TOWNE BAKERY,Rob - Freedom,ShoppingBudget
-2021-03-14,Hy-Vee,-5.99,Groceries,,,debit,HY-VEE DAVENPORT 1108,Rob - Freedom,FoodBudget
-2021-03-14,Culvers of Bettendorf,-10.99,Fast Food,,,debit,CULVERS OF BETTENDORF,Rob - Freedom,FoodBudget
-2021-03-14,SWEETTOOTHS,-59.68,Shopping,,,debit,PAYPAL *SWEETTOOTHS,Ashley - CREDIT CARD,ShoppingBudget
-2021-03-14,Amazon,-205.18,Shopping,,,debit,AMZN Mktp US*M59OR7FA3,CREDIT CARD,ShoppingBudget
-2021-03-12,Withdrawal Debit Card/GENESIS HEALTH SYSTEM BETTENDORF,-20,Doctor,,,debit,Withdrawal Debit Card/GENESIS HE,Ashley - REWARDS CHECKING,Miscellaneous
-2021-03-11,Wal-Mart,-48.31,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-10,SCOTTCOFAMILYY MBRSHP FEE PPD ID: 1420703278,-60,Gym,,,debit,SCOTTCOFAMILYY   MBRSHP FEE,Rob - CHASE CHECKING,Gym
-2021-03-10,Papa John's,-17.84,Fast Food,,,debit,Withdrawal Debit Card/PAPA JOHNS,Ashley - REWARDS CHECKING,FoodBudget
-2021-03-09,Bed Bath & Beyond,-46.6,Shopping,,,debit,BED BATH & BEYOND #651,Ashley - CREDIT CARD,ShoppingBudget
-2021-03-08,AZTECA 3,-24.27,Restaurants,,,debit,AZTECA 3,Rob - Freedom,FoodBudget
-2021-03-08,Honda,-262.35,Auto Payment,,,debit,HONDA PMT        8005426632,Rob - CHASE CHECKING,AutoPayment
-2021-03-07,CENTRAL STANDARD,-24.01,Restaurants,,,debit,CENTRAL STANDARD,Rob - Freedom,FoodBudget
-2021-03-07,Wal-Mart,-83.69,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-07,Wal-Mart,-75.99,Baby Supplies,,,debit,WALMART.COM AX,Rob - Freedom,BabySuppliesBudget
-2021-03-07,Amazon,-12.9,Shopping,,,debit,Amazon.com*SB02P89P3,CREDIT CARD,ShoppingBudget
-2021-03-07,Amazon,-29,Shopping,,,debit,AMZN Mktp US*LY3YY9SI3,CREDIT CARD,ShoppingBudget
-2021-03-05,AT&T,-149.85,Television,,,debit,ATT*BILL PAYMENT,Rob - Freedom,Television
-2021-03-05,Wal-Mart,3.74,Groceries,,,credit,WALMART GROCERY,Rob - Freedom,FoodBudget
-2021-03-05,Spotify,-10.69,Entertainment,,,debit,Spotify USA,Rob - MileagePlus,Entertainment
-2021-03-04,Amazon web services,-1.06,Hobbies,,,debit,Amazon web services,Rob - Freedom,ShoppingBudget
-2021-03-04,KWIK STAR 29900002998,-39.69,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget
-2021-03-04,Amazon,-21.39,Shopping,,,debit,AMZN Mktp US*UU1D923D3,CREDIT CARD,ShoppingBudget
-2021-03-03,Panera Bread,-26.98,Fast Food,,,debit,PANERA BREAD #203201 O,Ashley - CREDIT CARD,FoodBudget
-2021-03-02,CITIZENS MTG payment 8103 029313 WEB ID: 16-1146859,-1903.96,Mortgage & Rent,,,debit,CITIZENS         MTG PMT    8103,Rob - CHASE CHECKING,Mortgage
-2021-03-02,Great Clips,-19.98,Hair,,,debit,4852 GREAT CLIPS AT CELEB,Rob - Freedom,Amortized
-2021-03-01,QuickPay with Zelle payment to B rian Damato 11106130218,-73,Mobile Phone,,,debit,QuickPay with Zelle payment to B,Rob - CHASE CHECKING,Phone
+Date,Description,Amount,Category,Labels,Notes,TransactionType,OriginalDescription,AccountName,BudgetCategory,Source
+2021-03-31,Deposit Dividend Split Rate/Annual Percentage Yield Ea,0.11,Investments,,,credit,Deposit Dividend Split Rate/Annu,Rob - REWARDS CHECKING,Income,Mint
+2021-03-31,Deposit Dividend 0.050%/Annual Percentage Yield Earned,0.11,Investments,,,credit,Deposit Dividend 0.050%/Annual P,Rob - SHARE SAVINGS,Income,Mint
+2021-03-31,JOHN DEERE WORLD PAYROLL PPD ID: 9362382580,2822.46,Paycheck,,,credit,JOHN DEERE WORLD PAYROLL,Rob - CHASE CHECKING,Income,Mint
+2021-03-31,Jimmy John's,-15.38,Fast Food,,,debit,Withdrawal Debit Card/JIMMY JOHN,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-31,ULTA,-45.43,Personal Care,,,debit,Withdrawal Debit Card/ULTA.COM 8,Ashley - REWARDS CHECKING,Miscellaneous,Mint
+2021-03-30,"To Qu ad Cities Pediatrics, PC 03/30",-100.15,Doctor,,,debit,Online Payment 11473982004 To Qu,Rob - CHASE CHECKING,Miscellaneous,Mint
+2021-03-29,Amazon,-28.95,Shopping,,,debit,AMZN Mktp US*145SL8743,CREDIT CARD,ShoppingBudget,Mint
+2021-03-28,Amazon,-21.38,Shopping,,,debit,AMZN Mktp US*9K1R227O3,Rob - Freedom,ShoppingBudget,Mint
+2021-03-26,Wal-Mart,-5.26,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-26,Wal-Mart,-51.28,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-25,Withdrawal Debit Card/VILLAGE INN 110042 303-296-2121,-31.62,Restaurants,,,debit,Withdrawal Debit Card/VILLAGE IN,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-25,Papa John's,-27.6,Fast Food,,,debit,Withdrawal Debit Card/PAPA JOHNS,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-24,Internal Revenue Service,6211,Federal Tax,,,credit,IRS  TREAS 310     TAX REF,Rob - CHASE CHECKING,Income,Mint
+2021-03-24,Netflix,-14.97,Entertainment,,,debit,Recurring Withdrawal Debit Card/,Ashley - REWARDS CHECKING,Entertainment,Mint
+2021-03-23,Withdrawal Debit Card/GRANITE CITY DAVENP 6 DAVENPORT,-11.69,Restaurants,,,debit,Withdrawal Debit Card/GRANITE CI,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-23,Eye Care Pavilion,-7.41,Eyecare,,,debit,Withdrawal Debit Card/EYE CARE P,Ashley - REWARDS CHECKING,Miscellaneous,Mint
+2021-03-23,Amazon,23.79,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget,Mint
+2021-03-23,Amazon,35.62,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget,Mint
+2021-03-23,Amazon,12.9,Shopping,,,credit,Amazon.com,CREDIT CARD,ShoppingBudget,Mint
+2021-03-23,Amazon,37.44,Shopping,,,credit,AMZN Mktp US,CREDIT CARD,ShoppingBudget,Mint
+2021-03-22,Potbelly Sandwich Works,-16.26,Fast Food,,,debit,Withdrawal Debit Card/LEVELUPPOT,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-22,McDonald's,-2.34,Fast Food,,,debit,Withdrawal Debit Card/MCDONALD'S,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-22,Vanguard,-6000,IRA - Ashley,,,debit,VANGUARD BUY     INVESTMENT 9171,Rob - CHASE CHECKING,Amortized,Mint
+2021-03-22,BP,-17.3,Gas & Fuel,,,debit,BP#9734542GALENA GAS BP,Rob - Freedom,ShoppingBudget,Mint
+2021-03-22,SKIP-A-LONG - DAVENPORT C,-2403.82,Babysitter & Daycare,,,debit,SKIP-A-LONG - DAVENPORT C,Rob - Freedom,ChildCare,Mint
+2021-03-22,KWIK STAR 29900002998,-18,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget,Mint
+2021-03-21,Amazon,-11,Shopping,,,debit,Amazon.com*9D5IA6253,CREDIT CARD,ShoppingBudget,Mint
+2021-03-21,Amazon,-4.54,Shopping,,,debit,Amazon.com*9M1T32TG3,CREDIT CARD,ShoppingBudget,Mint
+2021-03-21,Amazon,-51.67,Shopping,,,debit,AMZN Mktp US*803OS52O3,CREDIT CARD,ShoppingBudget,Mint
+2021-03-21,Apple,-1.06,Hobbies,,,debit,PP*APPLE.COM/BILL,Ashley - CREDIT CARD,ShoppingBudget,Mint
+2021-03-21,THE PADDLING POOCH LLC,-55,Pet Grooming,,,debit,THE PADDLING POOCH LLC,Ashley - CREDIT CARD,Amortized,Mint
+2021-03-21,State Farm,-60.97,Auto Insurance,,,debit,STATE FARM  INSURANCE,Rob - Freedom,AutoInsuranceRob,Mint
+2021-03-21,Wal-Mart,-3.13,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-19,Wal-Mart,-39.21,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-19,Wal-Mart,-58,Home Supplies,,,debit,WALMART GROCERY,Rob - Freedom,ShoppingBudget,Mint
+2021-03-19,Wal-Mart,-38,Baby Supplies,,,debit,WALMART GROCERY,Rob - Freedom,BabySuppliesBudget,Mint
+2021-03-19,Lowe's,-63.11,Home Improvement,,,debit,LOWES #00107*,Rob - Freedom,ShoppingBudget,Mint
+2021-03-19,Wal-Mart,-19.55,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-18,Intuit,-117.7,Misc Expenses,,Taxes 2021 Software Turbo tax,debit,PAYPAL *INTUIT INC TURBOT,Rob - Freedom,Miscellaneous,Mint
+2021-03-18,KWIK STAR 29900002998,-28.07,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget,Mint
+2021-03-18,Amazon,-15.24,Shopping,,,debit,Amazon.com*0T71L0M53,CREDIT CARD,ShoppingBudget,Mint
+2021-03-17,Amazon,-20.11,Shopping,,,debit,Amazon.com*KT0ZX7ET3,Rob - Freedom,ShoppingBudget,Mint
+2021-03-16,Midamerican Energy,-142,Energy,,,debit,MIDAMERICAN      ENERGY     5408,Rob - CHASE CHECKING,Energy,Mint
+2021-03-15,American Wall,-33.39,Water,,,debit,IOWA-AMERICAN WA PAYMENT,Rob - CHASE CHECKING,Water,Mint
+2021-03-15,JOHN DEERE WORLD PAYROLL PPD ID: 9362382580,2822.48,Paycheck,,,credit,JOHN DEERE WORLD PAYROLL,Rob - CHASE CHECKING,Income,Mint
+2021-03-15,To Sh aw Electric 03/15,-175,Furnishings,,,debit,Online Payment 11377854909 To Sh,Rob - CHASE CHECKING,ShoppingBudget,Mint
+2021-03-15,Mediacom,-84.99,Internet,,$20 overage,debit,MEDIACOM - CHILL EFT PAYMNT 0340,Rob - CHASE CHECKING,Internet,Mint
+2021-03-15,INTEREST PAYMENT,0.06,Interest Income,,,credit,INTEREST PAYMENT,Rob - CHASE SAVINGS,Income,Mint
+2021-03-15,Amazon,-15.12,Shopping,,,debit,Amazon.com*QK5UA8FA3,CREDIT CARD,ShoppingBudget,Mint
+2021-03-15,Jimmy John's,-20.58,Fast Food,,,debit,Withdrawal Debit Card/JIMMY JOHN,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-14,Wal-Mart,-97.5,Home Supplies,,,debit,WALMART GROCERY,Rob - Freedom,ShoppingBudget,Mint
+2021-03-14,Wal-Mart,-25,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-14,OLDE TOWNE BAKERY,-37.12,Shopping,,Cece cake,debit,OLDE TOWNE BAKERY,Rob - Freedom,ShoppingBudget,Mint
+2021-03-14,Hy-Vee,-5.99,Groceries,,,debit,HY-VEE DAVENPORT 1108,Rob - Freedom,FoodBudget,Mint
+2021-03-14,Culvers of Bettendorf,-10.99,Fast Food,,,debit,CULVERS OF BETTENDORF,Rob - Freedom,FoodBudget,Mint
+2021-03-14,SWEETTOOTHS,-59.68,Shopping,,,debit,PAYPAL *SWEETTOOTHS,Ashley - CREDIT CARD,ShoppingBudget,Mint
+2021-03-14,Amazon,-205.18,Shopping,,,debit,AMZN Mktp US*M59OR7FA3,CREDIT CARD,ShoppingBudget,Mint
+2021-03-12,Withdrawal Debit Card/GENESIS HEALTH SYSTEM BETTENDORF,-20,Doctor,,,debit,Withdrawal Debit Card/GENESIS HE,Ashley - REWARDS CHECKING,Miscellaneous,Mint
+2021-03-11,Wal-Mart,-48.31,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-10,SCOTTCOFAMILYY MBRSHP FEE PPD ID: 1420703278,-60,Gym,,,debit,SCOTTCOFAMILYY   MBRSHP FEE,Rob - CHASE CHECKING,Gym,Mint
+2021-03-10,Papa John's,-17.84,Fast Food,,,debit,Withdrawal Debit Card/PAPA JOHNS,Ashley - REWARDS CHECKING,FoodBudget,Mint
+2021-03-09,Bed Bath & Beyond,-46.6,Shopping,,,debit,BED BATH & BEYOND #651,Ashley - CREDIT CARD,ShoppingBudget,Mint
+2021-03-08,AZTECA 3,-24.27,Restaurants,,,debit,AZTECA 3,Rob - Freedom,FoodBudget,Mint
+2021-03-08,Honda,-262.35,Auto Payment,,,debit,HONDA PMT        8005426632,Rob - CHASE CHECKING,AutoPayment,Mint
+2021-03-07,CENTRAL STANDARD,-24.01,Restaurants,,,debit,CENTRAL STANDARD,Rob - Freedom,FoodBudget,Mint
+2021-03-07,Wal-Mart,-83.69,Groceries,,,debit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-07,Wal-Mart,-75.99,Baby Supplies,,,debit,WALMART.COM AX,Rob - Freedom,BabySuppliesBudget,Mint
+2021-03-07,Amazon,-12.9,Shopping,,,debit,Amazon.com*SB02P89P3,CREDIT CARD,ShoppingBudget,Mint
+2021-03-07,Amazon,-29,Shopping,,,debit,AMZN Mktp US*LY3YY9SI3,CREDIT CARD,ShoppingBudget,Mint
+2021-03-05,AT&T,-149.85,Television,,,debit,ATT*BILL PAYMENT,Rob - Freedom,Television,Mint
+2021-03-05,Wal-Mart,3.74,Groceries,,,credit,WALMART GROCERY,Rob - Freedom,FoodBudget,Mint
+2021-03-05,Spotify,-10.69,Entertainment,,,debit,Spotify USA,Rob - MileagePlus,Entertainment,Mint
+2021-03-04,Amazon web services,-1.06,Hobbies,,,debit,Amazon web services,Rob - Freedom,ShoppingBudget,Mint
+2021-03-04,KWIK STAR 29900002998,-39.69,Gas & Fuel,,,debit,KWIK STAR  29900002998,Rob - Freedom,ShoppingBudget,Mint
+2021-03-04,Amazon,-21.39,Shopping,,,debit,AMZN Mktp US*UU1D923D3,CREDIT CARD,ShoppingBudget,Mint
+2021-03-03,Panera Bread,-26.98,Fast Food,,,debit,PANERA BREAD #203201 O,Ashley - CREDIT CARD,FoodBudget,Mint
+2021-03-02,CITIZENS MTG payment 8103 029313 WEB ID: 16-1146859,-1903.96,Mortgage & Rent,,,debit,CITIZENS         MTG PMT    8103,Rob - CHASE CHECKING,Mortgage,Mint
+2021-03-02,Great Clips,-19.98,Hair,,,debit,4852 GREAT CLIPS AT CELEB,Rob - Freedom,Amortized,Mint
+2021-03-01,QuickPay with Zelle payment to B rian Damato 11106130218,-73,Mobile Phone,,,debit,QuickPay with Zelle payment to B,Rob - CHASE CHECKING,Phone,Mint
