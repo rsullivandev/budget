@@ -1,5 +1,5 @@
 // const dh = require(`${__dirname}/dateHelper`);
-const dh = require(`dateHelper`);
+const dh = require(`services/dateHelper`);
 
 console.log(`${__dirname}`);
 

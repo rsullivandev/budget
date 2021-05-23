@@ -1,9 +1,9 @@
-const { readFile } = require('./readFile');
-const { setFile } = require('./setFile');
+const { readFile } = require('./services/readFile');
+const { setFile } = require('./services/setFile');
 const { transformDataMint } = require('./services/mintTransform');
 const { transformDataUSBank } = require('./services/usBankTransform');
-const { executeUpload } = require('./fileUpload');
-const dh = require('./dateHelper');
+const { executeUpload } = require('./services/fileUpload');
+const dh = require('./services/dateHelper');
 
 const _dh = new dh.dateHelper(new Date('04-01-2021'));
 const mm = _dh.getMonth();

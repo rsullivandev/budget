@@ -1,6 +1,6 @@
 const fs = require('fs').promises;
 const d3 = require('d3');
-const { readFile } = require('readFile');
+const { readFile } = require('services/readFile');
 const { transformDataMint } = require('services/mintTransform');
 const { transformDataUSBank } = require('services/usBankTransform');
 
