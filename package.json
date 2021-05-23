@@ -11,7 +11,7 @@
   "version": "1.0.0",
   "main": "./src/app.js",
   "scripts": {
-    "test": "jest",
+    "test": "NODE_PATH=src/ jest",
     "start": "node ./src/app.js",
     "start_fetch_mint": "node -r dotenv/config ./src/mintFetch.js",
     "start_fetch_usbank": "node -r dotenv/config ./src/usBankFetch.js",

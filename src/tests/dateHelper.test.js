@@ -1,4 +1,7 @@
-const dh = require('./dateHelper');
+// const dh = require(`${__dirname}/dateHelper`);
+const dh = require(`dateHelper`);
+
+console.log(`${__dirname}`);
 
 
 test('check date returned - February', () => {

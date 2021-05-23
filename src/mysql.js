@@ -1,8 +1,8 @@
 const { readFile } = require('./readFile');
-const { transformDataMint } = require('./mintTransform');
+const { transformDataMint } = require('./services/mintTransform');
 const { getColumns, getPlaceholders } = require('./models/transactions');
 const { prepDataForInsert } = require("./services/prepDataForInsert");
-const pool = require('./db');
+const pool = require('./config/db');
 
 const transactionsDAO = async () => {
   let dataMint = await readFile(`${__dirname}/input/mint/transactions_input_0421.csv`);

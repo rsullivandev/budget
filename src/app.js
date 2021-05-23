@@ -1,7 +1,7 @@
 const { readFile } = require('./readFile');
 const { setFile } = require('./setFile');
-const { transformDataMint } = require('./mintTransform');
-const { transformDataUSBank } = require('./usBankTransform');
+const { transformDataMint } = require('./services/mintTransform');
+const { transformDataUSBank } = require('./services/usBankTransform');
 const { executeUpload } = require('./fileUpload');
 const dh = require('./dateHelper');
 

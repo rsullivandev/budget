@@ -1,8 +1,8 @@
 const fs = require('fs').promises;
 const d3 = require('d3');
-const { readFile } = require('./readFile');
-const { transformDataMint } = require('./mintTransform');
-const { transformDataUSBank } = require('./usBankTransform');
+const { readFile } = require('readFile');
+const { transformDataMint } = require('services/mintTransform');
+const { transformDataUSBank } = require('services/usBankTransform');
 
 test('test mint conversion rules', async () => {
     let data = await readFile(`${__dirname}/testData/testInputMintData.csv`);
