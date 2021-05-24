@@ -11,12 +11,13 @@
   "version": "1.0.0",
   "main": "./src/app.js",
   "scripts": {
-    "test": "NODE_PATH=src/ jest",
-    "start": "node ./src/app.js",
-    "start_fetch_mint": "node -r dotenv/config ./src/mintFetch.js",
-    "start_fetch_usbank": "node -r dotenv/config ./src/usBankFetch.js",
-    "start_transform_mint": "node -r dotenv/config ./src/app.js",
-    "start_transform_usbank": "node -r dotenv/config ./src/usBankTransform"
+    "test": "NODE_PATH=src/ jest --setupFiles dotenv/config",
+    "start": "NODE_PATH=src/ node ./src/app.js",
+    "start_fetch_mint": "NODE_PATH=src/ node -r dotenv/config ./src/services/mintFetch.js",
+    "start_fetch_usbank": "NODE_PATH=src/ node -r dotenv/config ./src/services/usBankFetch.js",
+    "start_transform_mint": "NODE_PATH=src/ node -r dotenv/config ./src/app.js",
+    "start_transform_usbank": "NODE_PATH=src/ node -r dotenv/config ./src/services/usBankTransform",
+    "start_mysql_test": "NODE_PATH=src/ node -r dotenv/config ./src/mysql"
   },
   "author": "",
   "license": "ISC",
