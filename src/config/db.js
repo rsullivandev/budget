@@ -6,14 +6,24 @@ const pool = mariadb.createPool({
     password: process.env.DB_PASS,
     database: process.env.DB_DATABASE,
     connectionLimit: 5
-  });
+});
 
 module.exports = {
     getConnection: async () => {
         try {
             return conn = await pool.getConnection();
         }
-        catch(e){
+        catch (e) {
+            console.error(e);
+            return e
+        }
+    },
+
+    endConnection: async () => {
+        try {
+            await pool.end()
+        }
+        catch (e) {
             console.error(e);
             return e
         }

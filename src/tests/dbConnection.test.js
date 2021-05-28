@@ -1,16 +1,8 @@
-// `const pool = require('config/db');
-const mariadb = require('mariadb');
+const pool = require('config/db');
 
 describe('database tests', () => {
 
     let conn;
-    const pool = mariadb.createPool({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_DATABASE,
-        connectionLimit: 5
-    });
 
     beforeAll(async () => {
         try {
@@ -22,7 +14,7 @@ describe('database tests', () => {
 
     afterAll(async () => {
         conn.end();
-        pool.end();
+        pool.endConnection();
     })
 
     test('database connection successful', async () => {
