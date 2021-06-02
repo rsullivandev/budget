@@ -1,35 +1,6 @@
 <!DOCTYPE html>
-<h1>Upload file</h1>
-<p>This is an upload page.</p>
-<form action='/v2/files/new' method='post' enctype='multipart/form-data'>
-    <label>Source of Transactions</label>
-    <select id=select-source name='source'>
-        <option value=''>Please select source</option>
-        <option value='Mint' selected>Mint</option>
-        <option value='USBank'>USBank</option>
-    </select>
-    <label>Select Month</label>
-    <select id='select-month' name='month'>
-        <option value="">Please Select Month</option>
-        <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May" selected>May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-        <option value="December">December</option>
-    </select>
-    <select id='select-year' name='year'>
-        <option value='2021' selected>2021</option>
-    </select>
-    <label>Transaction file</label>
-    <input type='file' id='myFile' name='filename'>
-
-    <input type='submit'>
-
-</form>
+<h1>Rob Mint</h1>
+<p>Welcome to Rob Mint Budgeting Tracker</p>
+<a href='/files/new'>Upload Transactions</a>
+<a href='/transactions'>View Transactions</a>
+<a href='/files'>View Previous Uploads</a>
