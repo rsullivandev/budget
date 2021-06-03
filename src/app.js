@@ -17,9 +17,7 @@ const orchestrateData = async () => {
 
     let transformedDataUSBank = transformDataUSBank(dataUSBank);
 
-    transformedDataUSBank = transformedDataUSBank.substring(transformedDataUSBank.indexOf('\n')+1);
-
-    //Need to find way to remove header row from usbank data.
+    transformedDataUSBank = transformedDataUSBank.substring(transformedDataUSBank.indexOf('\n')+1); // remove header row since we're combining
 
     let combinedData = transformedDataMint + "\n" + transformedDataUSBank
 
