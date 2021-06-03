@@ -5,7 +5,7 @@ const { transformDataUSBank } = require('./services/usBankTransform');
 const { executeUpload } = require('./services/fileUpload');
 const dh = require('./services/dateHelper');
 
-const _dh = new dh.dateHelper(new Date('05-01-2021'));
+const _dh = new dh.dateHelper(new Date('04-01-2021'));
 const mm = _dh.getMonth();
 const yy = _dh.getYearShort();
 
@@ -17,9 +17,14 @@ const orchestrateData = async () => {
 
     let transformedDataUSBank = transformDataUSBank(dataUSBank);
 
+    transformedDataUSBank = transformedDataUSBank.substring(transformedDataUSBank.indexOf('\n')+1);
+
     //Need to find way to remove header row from usbank data.
 
     let combinedData = transformedDataMint + "\n" + transformedDataUSBank
+
+    console.log(combinedData);
+
     let fileName = `transactions_output_${mm}${yy}.csv`
     await setFile(`${__dirname}/output/${fileName}`, combinedData);
 

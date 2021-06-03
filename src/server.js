@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
         cb(null, `${__dirname}/input/${req.body.source.toLowerCase()}`);
     },
     filename: function (req, file, cb) {
-        cb(null, `transactions_input_${_dh.getMonth()}${_dh.getYearShort()}_${Date.now()}.csv`);
+        cb(null, `transactions_input_${_dh.getMonth()}${_dh.getYearShort()}.csv`);
     }
 })
 

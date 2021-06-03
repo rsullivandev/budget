@@ -38,10 +38,6 @@ const transformDataMint = (data) => {
     const spending = d3.filter(dataTransformed, function (d) { return d.TransactionType == 'debit' });
     let totalSpending = d3.sum(spending, function (d) { return d.Amount });
 
-    console.log("Income: ", d3.format('.2f')(totalIncome));
-    console.log("Outflow: ", d3.format('.2f')(totalSpending));
-    console.log("Net: ", d3.format('.2f')(totalIncome + totalSpending));
-
     formattedOutput = d3.csvFormat(dataTransformed);
     return formattedOutput;
 }
