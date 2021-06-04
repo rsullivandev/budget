@@ -6,12 +6,14 @@ const { executeUpload } = require('./services/fileUpload');
 const { transactionsDAO } = require('services/transactionsDAO');
 const dh = require('./services/dateHelper');
 
-const _dh = new dh.dateHelper(new Date('04-01-2021'));
-const mm = _dh.getMonth();
-const yy = _dh.getYearShort();
+
+const orchestrateData = async (uploadIndicator = false, date = '04-01-2021') => {
+
+    const _dh = new dh.dateHelper(new Date(date));
+    const mm = _dh.getMonth();
+    const yy = _dh.getYearShort();
 
 
-const orchestrateData = async (uploadIndicator) => {
     let dataMint = await readFile(`${__dirname}/input/mint/transactions_input_${mm}${yy}.csv`);
     let transformedDataMint = transformDataMint(dataMint);
     let dataUSBank = await readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`);
@@ -34,4 +36,4 @@ const orchestrateData = async (uploadIndicator) => {
 
 }
 
-orchestrateData(process.env.UPLOAD);
+orchestrateData(process.env.UPLOAD, process.env.DATE);
