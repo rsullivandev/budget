@@ -11,7 +11,7 @@ const mm = _dh.getMonth();
 const yy = _dh.getYearShort();
 
 
-const orchestrateData = async () => {
+const orchestrateData = async (uploadIndicator) => {
     let dataMint = await readFile(`${__dirname}/input/mint/transactions_input_${mm}${yy}.csv`);
     let transformedDataMint = transformDataMint(dataMint);
     let dataUSBank = await readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`);
@@ -27,8 +27,11 @@ const orchestrateData = async () => {
     let fileName = `transactions_output_${mm}${yy}.csv`
     await setFile(`${__dirname}/output/${fileName}`, combinedData);
 
-    // await executeUpload(combinedData, fileName);
+    if (uploadIndicator == "true") {
+        console.log('hit');
+        await executeUpload(combinedData, fileName);
+    }
 
 }
 
-orchestrateData();
+orchestrateData(process.env.UPLOAD);
