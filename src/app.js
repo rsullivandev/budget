@@ -3,6 +3,7 @@ const { setFile } = require('./services/setFile');
 const { transformDataMint } = require('./services/mintTransform');
 const { transformDataUSBank } = require('./services/usBankTransform');
 const { executeUpload } = require('./services/fileUpload');
+const { transactionsDAO } = require('services/transactionsDAO');
 const dh = require('./services/dateHelper');
 
 const _dh = new dh.dateHelper(new Date('04-01-2021'));
@@ -17,16 +18,16 @@ const orchestrateData = async () => {
 
     let transformedDataUSBank = transformDataUSBank(dataUSBank);
 
-    transformedDataUSBank = transformedDataUSBank.substring(transformedDataUSBank.indexOf('\n')+1); // remove header row since we're combining
+    transformedDataUSBank = transformedDataUSBank.substring(transformedDataUSBank.indexOf('\n') + 1); // remove header row since we're combining
 
     let combinedData = transformedDataMint + "\n" + transformedDataUSBank
 
-    console.log(combinedData);
+    await transactionsDAO(combinedData);
 
     let fileName = `transactions_output_${mm}${yy}.csv`
     await setFile(`${__dirname}/output/${fileName}`, combinedData);
 
-    await executeUpload(combinedData, fileName);
+    // await executeUpload(combinedData, fileName);
 
 }
 

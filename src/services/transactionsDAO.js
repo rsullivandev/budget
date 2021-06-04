@@ -4,12 +4,10 @@ const { getColumns, getPlaceholders } = require('models/transactions');
 const { prepDataForInsert } = require("services/prepDataForInsert");
 const pool = require('config/db');
 
-const transactionsDAO = async () => {
-  let dataMint = await readFile(`${__dirname}/input/mint/transactions_input_0421.csv`);
-  let transformedDataMint = transformDataMint(dataMint);
+const transactionsDAO = async transactions => {
 
   let stmt = `INSERT INTO transactions(${getColumns()}) VALUES (${getPlaceholders()})`;
-  let dataArray = prepDataForInsert(transformedDataMint);
+  let dataArray = prepDataForInsert(transactions);
 
   let conn;
   try {
@@ -24,6 +22,7 @@ const transactionsDAO = async () => {
   }
 }
 
-transactionsDAO();
-
+module.exports = {
+  transactionsDAO: transactionsDAO
+}
 
