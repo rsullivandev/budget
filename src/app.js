@@ -13,7 +13,6 @@ const orchestrateData = async (uploadIndicator = false, date = '04-01-2021') => 
     const mm = _dh.getMonth();
     const yy = _dh.getYearShort();
 
-
     let dataMint = await readFile(`${__dirname}/input/mint/transactions_input_${mm}${yy}.csv`);
     let transformedDataMint = transformDataMint(dataMint);
     let dataUSBank = await readFile(`${__dirname}/input/usbank/transactions_input_${mm}${yy}.csv`);
