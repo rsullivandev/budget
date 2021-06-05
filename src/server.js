@@ -6,13 +6,12 @@ const port = process.env.PORT || 3005;
 const dh = require('services/dateHelper')
 const multer = require('multer');
 
-const _dh = new dh.dateHelper(new Date('05-01-2021'))
-
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, `${__dirname}/input/${req.body.source.toLowerCase()}`);
     },
     filename: function (req, file, cb) {
+        const _dh = new dh.dateHelper(new Date(`${req.body.month} 1 ${req.body.year}`))
         cb(null, `transactions_input_${_dh.getMonth()}${_dh.getYearShort()}.csv`);
     }
 })
