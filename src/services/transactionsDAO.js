@@ -6,7 +6,7 @@ const pool = require('config/db');
 
 const transactionsDAO = async transactions => {
 
-  let stmt = `INSERT INTO transactions(${getColumns()}) VALUES (${getPlaceholders()})`;
+  let stmt = `INSERT INTO transactions(${getColumns()}) VALUES (${getPlaceholders()}) ON DUPLICATE KEY UPDATE id=id`;
   let dataArray = prepDataForInsert(transactions);
 
   let conn;
