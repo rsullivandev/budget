@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<h1>Categorize Transactions</h1>
+<p>This is a page to categorize transactions.</p>
+<form action='/transformedTransactions/new' method='post'>
+    <label>Select Month</label>
+    <select id='select-month' name='month'>
+        <option value="">Please Select Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+        <option value="March">March</option>
+        <option value="April">April</option>
+        <option value="May" selected>May</option>
+        <option value="June">June</option>
+        <option value="July">July</option>
+        <option value="August">August</option>
+        <option value="September">September</option>
+        <option value="October">October</option>
+        <option value="November">November</option>
+        <option value="December">December</option>
+    </select>
+    <select id='select-year' name='year'>
+        <option value='2021' selected>2021</option>
+    </select>
+    <input type='submit'>
+
+</form>

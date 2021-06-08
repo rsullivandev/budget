@@ -4,6 +4,7 @@ const { createWriteStream } = require('fs');
 const app = express();
 const port = process.env.PORT || 3005;
 const dh = require('services/dateHelper')
+const { orchestrateData } = require('services/orchestrateData');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
@@ -25,6 +26,8 @@ const fileFilter = (req, file, cb) => {
 }
 
 const upload = multer({ storage: storage, fileFilter: fileFilter });
+
+app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res) => {
@@ -53,6 +56,20 @@ app.post('/files/new', upload.single('filename'), (req, res, next) => {
 
 app.get('/transactions', (req, res) => {
     res.sendFile(`${__dirname}/views/transactions.html`);
+})
+
+app.get('/transformedTransactions/new', (req, res) => {
+    res.sendFile(`${__dirname}/views/transformedTransactions.html`);
+})
+
+app.post('/transformedTransactions/new', (req, res) => {
+    const _dh = new dh.dateHelper(new Date(`${req.body.month} 1 ${req.body.year}`))
+
+    //add in error handling
+
+    orchestrateData("false", `${_dh.getMonth()}-01-${_dh.getYearFull()}`);
+
+    res.status(200).send(`transactions categorized`)
 })
 
 
