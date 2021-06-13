@@ -40,7 +40,14 @@ describe('sequelize ORM tests', () => {
     })
 
     test('ORM connection successful', async () => {
-        // let conn = await sequelize.authenticate();
-        expect(sequelize.authenticate()).not.toThrow();
+        
+        try{
+        let conn = await sequelize.authenticate();
+        } catch (e) {
+            throw e
+        }
+        finally{
+            expect(1).toBe(1);
+        }
     })
 })
