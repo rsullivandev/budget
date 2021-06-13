@@ -1,5 +1,6 @@
 const pool = require('config/db');
 const { Sequelize } = require('sequelize');
+const { checkSequelize, closeSequelize } = require('models/sequelizeTest');
 
 describe('mariadb driver tests', () => {
 
@@ -30,24 +31,15 @@ describe('mariadb driver tests', () => {
 
 describe('sequelize ORM tests', () => {
 
-    const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASS, {
-        host: process.env.DB_HOST,
-        dialect: 'mariadb'
-    });
-
-    afterAll(async () => {
-        sequelize.close();
-    })
-
-    test('ORM connection successful', async () => {
-        
-        try{
-        let conn = await sequelize.authenticate();
+    test('Sequelize connected', async () => {
+        try {
+            let conn = await checkSequelize()
+            await closeSequelize()
+            expect(conn).toBe(true);
         } catch (e) {
             throw e
         }
-        finally{
-            expect(1).toBe(1);
-        }
     })
+
+
 })
