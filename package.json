@@ -22,7 +22,8 @@
     "start_transform_mint": "NODE_PATH=src/ node -r dotenv/config ./src/app.js",
     "start_transform_usbank": "NODE_PATH=src/ node -r dotenv/config ./src/services/usBankTransform",
     "start_mysql_test": "NODE_PATH=src/ node -r dotenv/config ./src/mysql",
-    "start_sequelize_test": "NODE_PATH=src/ node -r dotenv/config ./src/models/sequelizeTest"
+    "start_sequelize_test": "NODE_PATH=src/ node -r dotenv/config ./src/models/sequelizeTest",
+    "start_sequelize_init": "NODE_PATH=src/ node -r dotenv/config ./src/scripts/db_setup"
   },
   "author": "",
   "license": "ISC",
