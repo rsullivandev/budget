@@ -6,7 +6,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
 });
 
 const modelDefiners = [
-    require('./sequelizeTransactions')
+    require('./transaction')
 ]
 
 

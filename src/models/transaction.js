@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
-    sequelize.define('Transaction_ORM', {
+    sequelize.define('transaction', {
         id: {
             type: DataTypes.MEDIUMINT,
             primaryKey: true,
