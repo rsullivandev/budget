@@ -1,32 +1,14 @@
-const { readFile } = require('services/readFile');
-const { transformDataMint } = require('services/mintTransform');
-const { getColumns, getPlaceholders } = require('models/transaction');
 const { prepDataForInsert } = require("services/prepDataForInsert");
-const pool = require('config/db');
 
 const sequelize = require('models/sequelize');
 
-const transactionsDAO = async transactions => {
+const transactionsDAO = async transactionString => {
 
-  // let stmt = `INSERT INTO transactions(${getColumns()}) VALUES (${getPlaceholders()}) ON DUPLICATE KEY UPDATE id=id`;
-  let dataArray = prepDataForInsert(transactions);
+  let dataArray = prepDataForInsert(transactionString);
+
+  await sequelize.models.transaction.bulkCreate(dataArray, {updateOnDuplicate: ["id"]});
 
 
-  // console.log(dataArray);
-
-  await sequelize.models.transaction.bulkCreate(transactions);
-
-  // let conn;
-  // try {
-  //   conn = await pool.getConnection();
-  //   const res = await conn.batch(stmt, dataArray);
-  //   console.log(res);
-  // } catch (err) {
-  //   console.error("error during database connection: ", err);
-  //   throw err;
-  // } finally {
-  //   if (conn) return conn.end();
-  // }
 }
 
 module.exports = {

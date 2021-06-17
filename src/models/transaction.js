@@ -9,12 +9,15 @@ module.exports = (sequelize) => {
         },
         date: {
             type: DataTypes.DATE,
+            unique: "uniqueTransaction"
         },
         description: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            unique: "uniqueTransaction"
         },
         amount: {
-            type: DataTypes.DECIMAL(10, 2)
+            type: DataTypes.DECIMAL(10, 2),
+            unique: "uniqueTransaction"
         },
         category: {
             type: DataTypes.STRING
