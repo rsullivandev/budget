@@ -6,10 +6,6 @@ module.exports = (sequelize) => {
             primaryKey: true,
             autoIncrement: true
         },
-        date: {
-            type: DataTypes.DATEONLY,
-            unique: "uniqueBudget"
-        },
         item: {
             type: DataTypes.STRING,
             unique: "uniqueBudget"

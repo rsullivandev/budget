@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+const { applyExtraSetup } = require('models/extraSetup');
 
 const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASS, {
     host: process.env.DB_HOST,
@@ -6,7 +7,9 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
 });
 
 const modelDefiners = [
-    require('./transaction')
+    require('./transaction'),
+    require('./budget'),
+    require('./budgetItem')
 ]
 
 
@@ -14,6 +17,6 @@ modelDefiners.forEach(modelDefiner => {
     modelDefiner(sequelize);
 })
 
-//applyExtraSetup(sequelize)
+applyExtraSetup(sequelize)
 
 module.exports = sequelize;
