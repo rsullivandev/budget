@@ -16,6 +16,12 @@ module.exports = (sequelize) => {
         actualAmount: {
             type: DataTypes.DECIMAL(10,2)
         },
+        netAmount: {
+            type: DataTypes.VIRTUAL,
+            get () {
+                return this.plannedAmount - this.actualAmount
+            }
+        },
         notes: {
             type: DataTypes.STRING
         }
