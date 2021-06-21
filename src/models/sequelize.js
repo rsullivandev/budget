@@ -9,7 +9,7 @@ const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, pr
 const modelDefiners = [
     require('./transaction'),
     require('./budget'),
-    require('./budgetItem')
+    require('./category')
 ]
 
 

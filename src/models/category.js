@@ -1,16 +1,16 @@
 const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
-    sequelize.define('budget', {
+    sequelize.define('category', {
         id: {
             type: DataTypes.MEDIUMINT,
             primaryKey: true,
             autoIncrement: true
         },
-        date: {
-            type: DataTypes.DATEONLY,
+        categoryName: {
+            type: DataTypes.STRING,
         },
-        plannedAmount: {
-            type: DataTypes.DECIMAL(10,2)
+        description: {
+            type: DataTypes.STRING
         }
     })
 }

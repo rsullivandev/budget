@@ -1,10 +1,10 @@
 const applyExtraSetup = sequelize => {
-    const { budget, budgetItem } = sequelize.models;
+    const { budget, category } = sequelize.models;
 
-    budget.hasMany(budgetItem, {
+    category.hasMany(budget, {
         allowNull: false
     });
-    budgetItem.belongsTo(budget);
+    budget.belongsTo(category);
 }
 
 module.exports = {

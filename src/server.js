@@ -49,22 +49,22 @@ app.get('/api/transactions/:id', async (req, res) => {
     const transaction = await models.transaction.findByPk(req.params.id);
     res.status(200).json(transaction);
 })
-app.get('/api/budgetItems', async (req, res) => {
-    const budgetItems = await models.budgetItem.findAll({include: [models.budget]});
-    res.status(200).json(budgetItems);
+app.get('/api/categories', async (req, res) => {
+    const categories = await models.category.findAll();
+    res.status(200).json(categories);
 })
 
-app.get('/api/budgetItems/:id', async (req, res) => {
-    const budgetItems = await models.budgetItem.findByPk(req.params.id);
-    res.status(200).json(budgetItems);
+app.get('/api/categories/:id', async (req, res) => {
+    const categories = await models.category.findByPk(req.params.id);
+    res.status(200).json(categories);
 })
 app.get('/api/budgets', async (req, res) => {
-    const budgets = await models.budget.findAll();
+    const budgets = await models.budget.findAll({include: [models.category]});
     res.status(200).json(budgets);
 })
 
 app.get('/api/budgets/:id', async (req, res) => {
-    const budgets = await models.budget.findByPk(req.params.id);
+    const budgets = await models.budget.findByPk(req.params.id, {include: [models.category]});
     res.status(200).json(budgets);
 })
 
