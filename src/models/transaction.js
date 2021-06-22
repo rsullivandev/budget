@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
             type: DataTypes.DECIMAL(10, 2),
             unique: "uniqueTransaction"
         },
-        category: {
+        initialCategory: {
             type: DataTypes.STRING
         },
         label: {
@@ -35,9 +35,6 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
         },
         account: {
-            type: DataTypes.STRING
-        },
-        budget_category: {
             type: DataTypes.STRING
         },
         source: {

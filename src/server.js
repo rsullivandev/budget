@@ -41,12 +41,12 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/api/transactions', async (req, res) => {
-    const transactions = await models.transaction.findAll();
+    const transactions = await models.transaction.findAll({include: [models.category]});
     res.status(200).json(transactions);
 })
 
 app.get('/api/transactions/:id', async (req, res) => {
-    const transaction = await models.transaction.findByPk(req.params.id);
+    const transaction = await models.transaction.findByPk(req.params.id, {include: [models.category]});
     res.status(200).json(transaction);
 })
 app.get('/api/categories', async (req, res) => {
