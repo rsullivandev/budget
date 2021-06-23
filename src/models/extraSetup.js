@@ -1,13 +1,24 @@
 const applyExtraSetup = sequelize => {
-    const { budget, category, transaction } = sequelize.models;
+    const { budgetHeader, budgetItem, category, transaction } = sequelize.models;
 
-    category.hasMany(budget, {
+    budgetHeader.hasMany(budgetItem);
+    budgetItem.belongsTo(budgetHeader);
+
+    category.hasMany(budgetItem, {
         allowNull: false
     });
-    budget.belongsTo(category);
+    budgetItem.belongsTo(category);
 
     category.hasMany(transaction)
     transaction.belongsTo(category);
+
+    budgetHeader.hasMany(transaction, {
+        allowNull: false
+    });
+
+    transaction.belongsTo(budgetHeader);
+
+
 }
 
 module.exports = {

@@ -41,12 +41,12 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/api/transactions', async (req, res) => {
-    const transactions = await models.transaction.findAll({include: [models.category]});
+    const transactions = await models.transaction.findAll({include: [models.category, models.budgetHeader]});
     res.status(200).json(transactions);
 })
 
 app.get('/api/transactions/:id', async (req, res) => {
-    const transaction = await models.transaction.findByPk(req.params.id, {include: [models.category]});
+    const transaction = await models.transaction.findByPk(req.params.id, {include: [models.category, models.budgetHeader]});
     res.status(200).json(transaction);
 })
 app.get('/api/categories', async (req, res) => {
@@ -59,12 +59,12 @@ app.get('/api/categories/:id', async (req, res) => {
     res.status(200).json(categories);
 })
 app.get('/api/budgets', async (req, res) => {
-    const budgets = await models.budget.findAll({include: [models.category]});
+    const budgets = await models.budgetItem.findAll({include: [models.category, models.budgetHeader]});
     res.status(200).json(budgets);
 })
 
 app.get('/api/budgets/:id', async (req, res) => {
-    const budgets = await models.budget.findByPk(req.params.id, {include: [models.category]});
+    const budgets = await models.budgetItem.findByPk(req.params.id, {include: [models.category, models.budgetHeader]});
     res.status(200).json(budgets);
 })
 
