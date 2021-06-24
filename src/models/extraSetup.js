@@ -1,5 +1,5 @@
 const applyExtraSetup = sequelize => {
-    const { budgetHeader, budgetItem, category, transaction } = sequelize.models;
+    const { budgetHeader, budgetItem, category, transaction, accrual } = sequelize.models;
 
     budgetHeader.hasMany(budgetItem);
     budgetItem.belongsTo(budgetHeader);
@@ -8,6 +8,11 @@ const applyExtraSetup = sequelize => {
         allowNull: false
     });
     budgetItem.belongsTo(category);
+
+    category.hasOne(accrual, {
+        allowNull: true
+    });
+    accrual.belongsTo(category);
 
     category.hasMany(transaction)
     transaction.belongsTo(category);

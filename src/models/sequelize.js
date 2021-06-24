@@ -10,7 +10,8 @@ const modelDefiners = [
     require('./transaction'),
     require('./budgetHeader'),
     require('./category'),
-    require('./budgetItem')
+    require('./budgetItem'),
+    require('./accrual')
 ]
 
 

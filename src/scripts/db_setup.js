@@ -6,16 +6,61 @@ const reset = async () => {
     await sequelize.sync({ force: true });
 
     await sequelize.models.category.bulkCreate([
-        { categoryName: "ShoppingBudget", description: "Random stuff on Amazon that isn't food" },
-        { categoryName: "FoodBudget", description: "Groceries and Restaurants" },
-        { categoryName: "KidBudget", description: "Stuff for the kids" },
-        { categoryName: "Phone", description: "Mobile phone subscription" },
-        { categoryName: "Television", description: "Television cable subscription" },
-        { categoryName: "HouseCleaning", description: "House cleaners" },
+        //Monthly
+        { categoryName: "Mortgage", description: "Mortgage payment", budgetType: "monthly" },
+        { categoryName: "ChildCare", description: "Day care tuition", budgetType: "monthly" },
+        { categoryName: "Television", description: "Television cable subscription", budgetType: "monthly" },
+        { categoryName: "Energy", description: "Utlity bill - Energy", budgetType: "monthly" },
+        { categoryName: "HouseCleaning", description: "House cleaners", budgetType: "monthly" },
+        { categoryName: "Phone", description: "Mobile phone subscription", budgetType: "monthly" },
+        { categoryName: "RobsAutoInsurance", description: "Rob's Auto Insurance Bill", budgetType: "monthly" },
+        { categoryName: "Internet", description: "Utility bill - Internet", budgetType: "monthly" },
+        { categoryName: "Gym", description: "Gym bill", budgetType: "monthly" },
+        { categoryName: "Water", description: "Utility bill - Water", budgetType: "monthly" },
+        { categoryName: "Netflix", description: "Netflix monthly bill", budgetType: "monthly" },
+        { categoryName: "Spotify", description: "Spotify monthly bill", budgetType: "monthly" },
+        { categoryName: "ShoppingBudget", description: "Monthly budget for shopping", budgetType: "monthly" },
+        { categoryName: "FoodBudget", description: "Monthly budget for food", budgetType: "monthly" },
+        { categoryName: "KidBudget", description: "Monthly budget for kids", budgetType: "monthly" },
+        { categoryName: "Accrual", description: "Monthly transfer to accrual", budgetType: "monthly" },
+        { categoryName: "Miscellaneous", description: "Monthly buffer budget", budgetType: "monthly" },
+        { categoryName: "Income", description: "Monthly income - paychecks, bonuses, etc", budgetType: "monthly" },
+        //Periodic
+        { categoryName: "TrashSewer", description: "Utility bill - Trash", budgetType: "accrual" },
+        { categoryName: "AshleyAutoInsurance", description: "Ashley's Auto Insurance bill", budgetType: "accrual" },
+        { categoryName: "AshleyHair", description: "Ashley's hair appointment", budgetType: "accrual" },
+        { categoryName: "AshleyCarRegistration", description: "Ashley's car registration", budgetType: "accrual" },
+        { categoryName: "RobCarRegistration", description: "Rob's car registration", budgetType: "accrual" },
+        { categoryName: "JacquesWellnessCheck", description: "Jacques' wellness check up", budgetType: "accrual" },
+        { categoryName: "JacquesGrooming", description: "Jacques' grooming appointment", budgetType: "accrual" },
+        { categoryName: "RobCarService", description: "Rob's car service", budgetType: "accrual" },
+        { categoryName: "JacquesPreventativeMedicine", description: "Jacques' preventative medicine", budgetType: "accrual" },
+        { categoryName: "AmazonPrime", description: "Amazon Prime Membership", budgetType: "accrual" },
+        { categoryName: "RingInsurance", description: "Ring insurance", budgetType: "accrual" },
+        { categoryName: "AppleDeveloper", description: "Apple Developer account", budgetType: "accrual" },
+        { categoryName: "AshleyIRA", description: "Contribution to Ashley's IRA", budgetType: "accrual" },
+        { categoryName: "Xbox", description: "Xbox Live", budgetType: "accrual" },
+    ])
+
+    await sequelize.models.accrual.bulkCreate([
+        { categoryId: 19, periodicity: 3, totalAmount: 150 },
+        { categoryId: 20, periodicity: 6, totalAmount: 300 },
+        { categoryId: 21, periodicity: 2, totalAmount: 95 },
+        { categoryId: 22, periodicity: 12, totalAmount: 406 },
+        { categoryId: 23, periodicity: 12, totalAmount: 336 },
+        { categoryId: 24, periodicity: 12, totalAmount: 332 },
+        { categoryId: 25, periodicity: 2, totalAmount: 53 },
+        { categoryId: 26, periodicity: 11, totalAmount: 280 },
+        { categoryId: 27, periodicity: 12, totalAmount: 277 },
+        { categoryId: 28, periodicity: 12, totalAmount: 119 },
+        { categoryId: 29, periodicity: 12, totalAmount: 116 },
+        { categoryId: 30, periodicity: 12, totalAmount: 106 },
+        { categoryId: 31, periodicity: 12, totalAmount: 6000 },
+        { categoryId: 32, periodicity: 12, totalAmount: 64 },
     ])
 
     await sequelize.models.budgetHeader.bulkCreate([
-        {date: "2021-04-01"}
+        { date: "2021-04-01" }
     ])
 
     await sequelize.models.budgetItem.bulkCreate([

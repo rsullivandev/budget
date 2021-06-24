@@ -50,12 +50,12 @@ app.get('/api/transactions/:id', async (req, res) => {
     res.status(200).json(transaction);
 })
 app.get('/api/categories', async (req, res) => {
-    const categories = await models.category.findAll();
+    const categories = await models.category.findAll({include: [models.accrual]});
     res.status(200).json(categories);
 })
 
 app.get('/api/categories/:id', async (req, res) => {
-    const categories = await models.category.findByPk(req.params.id);
+    const categories = await models.category.findByPk(req.params.id, {include: [models.accrual]});
     res.status(200).json(categories);
 })
 app.get('/api/budgets', async (req, res) => {

@@ -11,6 +11,9 @@ module.exports = (sequelize) => {
         },
         description: {
             type: DataTypes.STRING
+        },
+        budgetType: {
+            type: DataTypes.STRING
         }
     })
 }
