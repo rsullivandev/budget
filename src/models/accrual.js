@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
         monthlyAmount: {
             type: DataTypes.VIRTUAL,
             get(){
-                return this.getDataValue("totalAmount") / this.getDataValue("periodicity")
+                return Math.round(this.getDataValue("totalAmount") / this.getDataValue("periodicity"))
             }
         }
 

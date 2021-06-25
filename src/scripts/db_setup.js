@@ -63,13 +63,42 @@ const reset = async () => {
         { date: "2021-04-01" }
     ])
 
+    const accruals = await sequelize.models.accrual.findAll({});
+    let accrualBudget = 0;
+    accruals.forEach(accrual => {
+        accrualBudget += accrual.monthlyAmount;
+    });
+
+
     await sequelize.models.budgetItem.bulkCreate([
         { budgetHeaderId: 1, categoryId: 1, plannedAmount: 800.00 },
         { budgetHeaderId: 1, categoryId: 2, plannedAmount: 700.00 },
         { budgetHeaderId: 1, categoryId: 3, plannedAmount: 44.00 },
         { budgetHeaderId: 1, categoryId: 4, plannedAmount: 73.00 },
         { budgetHeaderId: 1, categoryId: 5, plannedAmount: 142.00 },
-        { budgetHeaderId: 1, categoryId: 6, plannedAmount: 125.00 }
+        { budgetHeaderId: 1, categoryId: 6, plannedAmount: 125.00 },
+        { budgetHeaderId: 1, categoryId: 7, plannedAmount: 200.00 },
+        { budgetHeaderId: 1, categoryId: 8, plannedAmount: 150.00 },
+        { budgetHeaderId: 1, categoryId: 9, plannedAmount: 75.00 },
+        { budgetHeaderId: 1, categoryId: 10, plannedAmount: 80.00 },
+        { budgetHeaderId: 1, categoryId: 11, plannedAmount: 125.00 },
+        { budgetHeaderId: 1, categoryId: 12, plannedAmount: 350.00 },
+        { budgetHeaderId: 1, categoryId: 13, plannedAmount: 93.00 },
+        { budgetHeaderId: 1, categoryId: 14, plannedAmount: 80.00 },
+        { budgetHeaderId: 1, categoryId: 15, plannedAmount: 73.00 },
+        { budgetHeaderId: 1, categoryId: 16, plannedAmount: accrualBudget }, //accrual
+    ])
+
+    const budgetItems = await sequelize.models.budgetItem.findAll({});
+    let sum = 0;
+    budgetItems.forEach(budgetItem => {
+        sum += budgetItem.plannedAmount
+    })
+    const miscBudget = sum * .1
+
+    await sequelize.models.budgetItem.bulkCreate([
+        {budgetHeaderId: 1, categoryId: 17, plannedAmount: miscBudget},
+        {budgetHeaderId: 1, categoryId: 18, plannedAmount: 5000}, //income
     ])
 
     await sequelize.models.transaction.bulkCreate([
