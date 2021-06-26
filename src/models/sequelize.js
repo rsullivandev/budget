@@ -11,7 +11,8 @@ const modelDefiners = [
     require('./budgetHeader'),
     require('./category'),
     require('./budgetItem'),
-    require('./accrual')
+    require('./accrual'),
+    require('./balance')
 ]
 
 

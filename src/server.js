@@ -67,6 +67,15 @@ app.get('/api/budgets/:id', async (req, res) => {
     const budgets = await models.budgetHeader.findByPk(req.params.id, {include: [{model: models.budgetItem, include: {model: models.category}}]});
     res.status(200).json(budgets);
 })
+app.get('/api/balances', async (req, res) => {
+    const balances = await models.balance.findAll();
+    res.status(200).json(balances);
+})
+
+app.get('/api/balances/:id', async (req, res) => {
+    const balances = await models.balance.findByPk(req.params.id);
+    res.status(200).json(balances);
+})
 
 
 

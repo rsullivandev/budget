@@ -107,6 +107,11 @@ const reset = async () => {
         { date: '2021-06-10', budgetHeaderId: 1, description: 'insurance bill', amount: 60.00, categoryId: 6, label: '', notes: '', transaction_type: 'debit', original_description: '', account: 'account 3', initialCategory: 'insurance', source: 'mint' }
     ])
 
+    await sequelize.models.balance.bulkCreate([
+        { accountType: 'Accrual Escrow', currentBalance: 200.00},
+        { accountType: 'Cash', currentBalance: 1000.00},
+        { accountType: 'Water Heater', currentBalance: 170.00}
+    ])
 }
 
 reset();
