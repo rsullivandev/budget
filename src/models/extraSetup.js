@@ -23,6 +23,11 @@ const applyExtraSetup = sequelize => {
 
     transaction.belongsTo(budgetHeader);
 
+    budgetItem.hasMany(transaction, {
+        allowNull: false
+    });
+    transaction.belongsTo(budgetItem);
+
 
 }
 

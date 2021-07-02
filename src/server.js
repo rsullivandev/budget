@@ -7,6 +7,7 @@ const dh = require('services/dateHelper')
 const { orchestrateData } = require('services/orchestrateData');
 const multer = require('multer');
 const { models } = require('models/sequelize')
+const Sequelize = require('sequelize')
 
 // const start = async () => {
 
@@ -41,32 +42,69 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/api/transactions', async (req, res) => {
-    const transactions = await models.transaction.findAll({include: [models.category, models.budgetHeader]});
+    const transactions = await models.transaction.findAll({ include: [models.category, models.budgetHeader] });
     res.status(200).json(transactions);
 })
 
 app.get('/api/transactions/:id', async (req, res) => {
-    const transaction = await models.transaction.findByPk(req.params.id, {include: [models.category, models.budgetHeader]});
+    const transaction = await models.transaction.findByPk(req.params.id, { include: [models.category, models.budgetHeader] });
     res.status(200).json(transaction);
 })
 app.get('/api/categories', async (req, res) => {
-    const categories = await models.category.findAll({include: [models.accrual]});
+    const categories = await models.category.findAll({ include: [models.accrual] });
     res.status(200).json(categories);
 })
 
 app.get('/api/categories/:id', async (req, res) => {
-    const categories = await models.category.findByPk(req.params.id, {include: [models.accrual]});
+    const categories = await models.category.findByPk(req.params.id, { include: [models.accrual] });
     res.status(200).json(categories);
 })
 app.get('/api/budgets', async (req, res) => {
-    const budgets = await models.budgetHeader.findAll({include: [{model: models.budgetItem, include: {model: models.category}}]});
+    const budgets = await models.budgetHeader.findAll({ include: [{ model: models.budgetItem, include: { model: models.category } }] });
     res.status(200).json(budgets);
 })
 
 app.get('/api/budgets/:id', async (req, res) => {
-    const budgets = await models.budgetHeader.findByPk(req.params.id, {include: [{model: models.budgetItem, include: {model: models.category}}]});
+    const budgets = await models.budgetHeader.findByPk(req.params.id, { include: [{ model: models.budgetItem, include: { model: models.category } }] });
     res.status(200).json(budgets);
 })
+app.get('/api/budgetItems', async (req, res) => {
+    const budgetItems = await models.budgetItem.findAll({
+        attributes: [
+            'id',
+            'plannedAmount',
+            [Sequelize.fn('SUM', Sequelize.col('transactions.amount')), 'actualAmount']
+        ],
+        include: [
+            {
+                model: models.transaction,
+                // attributes: []
+            }
+        ],
+        group: ['id']
+    });
+    res.status(200).json(budgetItems);
+})
+
+app.get('/api/budgetItems/:id', async (req, res) => {
+    const budgetItems = await models.budgetItem.findByPk(req.params.id, {
+        attributes: [
+            'id',
+            'plannedAmount',
+            [Sequelize.fn('SUM', Sequelize.col('transactions.amount')), 'actualAmount']
+        ],
+        include: [
+            {
+                model: models.transaction,
+                // attributes: []
+            }
+        ],
+        group: ['id']
+    });
+    res.status(200).json(budgetItems);
+})
+
+
 app.get('/api/balances', async (req, res) => {
     const balances = await models.balance.findAll();
     res.status(200).json(balances);
@@ -76,8 +114,6 @@ app.get('/api/balances/:id', async (req, res) => {
     const balances = await models.balance.findByPk(req.params.id);
     res.status(200).json(balances);
 })
-
-
 
 app.get('/files', (req, res) => {
     res.sendFile(`${__dirname}/views/files.html`);

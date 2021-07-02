@@ -102,9 +102,9 @@ const reset = async () => {
     ])
 
     await sequelize.models.transaction.bulkCreate([
-        { date: '2021-06-12', budgetHeaderId: 1, description: 'phone bill', amount: 72.00, categoryId: 4, label: '', notes: '', transaction_type: 'debit', original_description: '', account: 'account 1', initialCategory: 'mobile', source: 'mint' },
-        { date: '2021-06-11', budgetHeaderId: 1, description: 'tv bill', amount: 140.00, categoryId: 5, label: '', notes: '', transaction_type: 'debit', original_description: '', account: 'account 2', initialCategory: 'mobile', source: 'usbank' },
-        { date: '2021-06-10', budgetHeaderId: 1, description: 'insurance bill', amount: 60.00, categoryId: 6, label: '', notes: '', transaction_type: 'debit', original_description: '', account: 'account 3', initialCategory: 'insurance', source: 'mint' }
+        { date: '2021-06-12', budgetHeaderId: 1, budgetItemId: 4, description: 'phone bill', amount: 72.00, categoryId: 4, label: '', notes: '', transaction_type: 'debit', original_description: '', account: 'account 1', initialCategory: 'mobile', source: 'mint' },
+        { date: '2021-06-11', budgetHeaderId: 1, budgetItemId: 5, description: 'tv bill', amount: 140.00, categoryId: 5, label: '', notes: '', transaction_type: 'debit', original_description: '', account: 'account 2', initialCategory: 'mobile', source: 'usbank' },
+        { date: '2021-06-10', budgetHeaderId: 1, budgetItemId: 6, description: 'insurance bill', amount: 60.00, categoryId: 6, label: '', notes: '', transaction_type: 'debit', original_description: '', account: 'account 3', initialCategory: 'insurance', source: 'mint' }
     ])
 
     await sequelize.models.balance.bulkCreate([
