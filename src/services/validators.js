@@ -18,9 +18,28 @@ const validateDate = (date) => {
     else return false
 }
 
+const validateCategoryName = (categoryName) => {
+    if (/^[A-Za-z0-9]+$/.test(categoryName)) return true
+    else return false
+}
+
+const validateDescription = (description) => {
+    if (/^.+$/.test(description)) return true
+    else return false
+}
+
+const validateBudgetType = (budgetType) => {
+    if (budgetType == 'credit' || budgetType == 'debit') return true
+    else return false
+}
+
+
 module.exports = {
     validateCategoryId: validateCategoryId,
     validateBudgetHeaderId: validateBudgetHeaderId,
     validatePlannedAmount: validatePlannedAmount,
-    validateDate: validateDate
+    validateDate: validateDate,
+    validateCategoryName: validateCategoryName,
+    validateDescription: validateDescription,
+    validateBudgetType: validateBudgetType
 }
