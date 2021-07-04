@@ -47,7 +47,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const categoryId = req.body.categoryId;
     const budgetHeaderId = req.body.budgetHeaderId;
-    const plannedAmount = (Math.round(req.body.plannedAmount * 100) / 100).toFixed(2);
+    let plannedAmount = req.body.plannedAmount;
 
 
     if (validators.validateCategoryId(categoryId) == false) {
@@ -64,6 +64,8 @@ router.post('/', async (req, res) => {
         res.status(400).json(`Error: Please submit valid amount with two decimal places - e.g. 43.25`)
         return;
     }
+
+    plannedAmount = (Math.round(req.body.plannedAmount * 100) / 100).toFixed(2);
 
     try {
         const record = await sequelize.models.budgetItem.create({

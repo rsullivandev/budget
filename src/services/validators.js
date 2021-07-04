@@ -9,7 +9,7 @@ const validateBudgetHeaderId = (budgetHeaderId) => {
 }
 
 const validatePlannedAmount = (plannedAmount) => {
-    if (/^[0-9]+.[0-9]{2}$/.test(plannedAmount)) return true
+    if (/^[0-9]+$/.test(plannedAmount) || /^[0-9]+\.[0-9]+$/.test(plannedAmount))  return true
     else return false
 }
 
