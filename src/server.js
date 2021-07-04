@@ -33,6 +33,7 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.use('/api/budgetHeaders', budgetHeaders);
 app.use('/api/transactions', transactions);
