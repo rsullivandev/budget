@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sequelize = require('models/sequelize')
+const { models } = require('models/sequelize')
 const validators = require('services/validators')
 
 
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        const record = await sequelize.models.budgetHeader.create({ date: date })
+        const record = await models.budgetHeader.create({ date: date })
 
         res.status(201).json(`Budget for ${record.date} has been created!`);
     } catch (e) {

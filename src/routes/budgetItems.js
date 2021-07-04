@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sequelize = require('models/sequelize');
+const { models, Sequelize } = require('models/sequelize');
 const validators = require('services/validators');
 
 router.get('/', async (req, res) => {
@@ -68,7 +68,7 @@ router.post('/', async (req, res) => {
     plannedAmount = (Math.round(req.body.plannedAmount * 100) / 100).toFixed(2);
 
     try {
-        const record = await sequelize.models.budgetItem.create({
+        const record = await models.budgetItem.create({
             budgetHeaderId: budgetHeaderId,
             categoryId: categoryId,
             plannedAmount: plannedAmount

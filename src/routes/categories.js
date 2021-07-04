@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sequelize = require('models/sequelize');
+const { models } = require('models/sequelize');
 const validators = require('services/validators');
 
 router.get('/', async (req, res) => {
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
     }
 
     try {
-        const record = await sequelize.models.category.create({
+        const record = await models.category.create({
             categoryName: categoryName,
             description: description,
             budgetType: budgetType
