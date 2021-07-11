@@ -8,8 +8,13 @@ const validateBudgetHeaderId = (budgetHeaderId) => {
     else return false
 }
 
-const validatePlannedAmount = (plannedAmount) => {
-    if (/^[0-9]+$/.test(plannedAmount) || /^[0-9]+\.[0-9]+$/.test(plannedAmount))  return true
+const validateBudgetItemId = (budgetItemId) => {
+    if (/^[0-9]+$/.test(budgetHeaderId)) return true
+    else return false
+}
+
+const validateAmount = (amount) => {
+    if (/^[0-9]+$/.test(amount) || /^[0-9]+\.[0-9]+$/.test(amount)) return true
     else return false
 }
 
@@ -28,8 +33,13 @@ const validateDescription = (description) => {
     else return false
 }
 
-const validateBudgetType = (budgetType) => {
-    if (budgetType == 'credit' || budgetType == 'debit') return true
+const validateType = (type) => {
+    if (type == 'credit' || type == 'debit') return true
+    else return false
+}
+
+const validateSource = (source) => {
+    if (source == 'USBank' || type == 'Mint') return true
     else return false
 }
 
@@ -37,9 +47,10 @@ const validateBudgetType = (budgetType) => {
 module.exports = {
     validateCategoryId: validateCategoryId,
     validateBudgetHeaderId: validateBudgetHeaderId,
-    validatePlannedAmount: validatePlannedAmount,
+    validateAmount: validateAmount,
     validateDate: validateDate,
     validateCategoryName: validateCategoryName,
     validateDescription: validateDescription,
-    validateBudgetType: validateBudgetType
+    validateType: validateType,
+    validateSource: validateSource
 }

@@ -48,6 +48,7 @@ router.post('/', async (req, res) => {
     const categoryId = req.body.categoryId;
     const budgetHeaderId = req.body.budgetHeaderId;
     let plannedAmount = req.body.plannedAmount;
+    //TODO - Unhandled error when plannedAmount is either not present. Need to look at formatting sequence
 
 
     if (validators.validateCategoryId(categoryId) == false) {
@@ -60,7 +61,7 @@ router.post('/', async (req, res) => {
         return
     }
 
-    if (validators.validatePlannedAmount(plannedAmount) == false) {
+    if (validators.validateAmount(plannedAmount) == false) {
         res.status(400).json(`Error: Please submit valid amount with two decimal places - e.g. 43.25`)
         return;
     }

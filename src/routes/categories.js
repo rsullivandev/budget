@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
         res.status(400).json(`Error: Please submit valid description`)
         return
     }
-    if (validators.validateBudgetType(budgetType) == false) {
+    if (validators.validateType(budgetType) == false) {
         res.status(400).json(`Error: Please submit valid type: 'credit or 'debit'`)
         return
     }
