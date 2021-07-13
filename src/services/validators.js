@@ -3,6 +3,11 @@ const validateCategoryId = (categoryId) => {
     else return false
 }
 
+const validateBalanceType = (balanceType) => {
+    if (balanceType === "cash" || balanceType === "accrual" || balanceType === "goal") return true
+    else return false
+}
+
 const validateBudgetHeaderId = (budgetHeaderId) => {
     if (/^[0-9]+$/.test(budgetHeaderId)) return true
     else return false
@@ -46,6 +51,7 @@ const validateSource = (source) => {
 
 module.exports = {
     validateCategoryId: validateCategoryId,
+    validateBalanceType: validateBalanceType,
     validateBudgetHeaderId: validateBudgetHeaderId,
     validateBudgetItemId: validateBudgetItemId,
     validateAmount: validateAmount,
