@@ -1,3 +1,5 @@
+//TODO centralize error message in validators
+
 const validateCategoryId = (categoryId) => {
     if (/^[0-9]+$/.test(categoryId)) return true
     else return false

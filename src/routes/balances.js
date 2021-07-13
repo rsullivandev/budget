@@ -42,5 +42,37 @@ router.post('/', async (req, res) => {
 
 })
 
+router.put('/:id', async (req, res) => {
+    const record = {
+        id: req.params.id,
+        accountType: req.body.accountType,
+        currentBalance: req.body.currentBalance
+    }
+
+
+    if (validators.validateBalanceType(record.accountType) == false) {
+        res.status(400).json(`Error: Please submit valid balance type: cash, accrual or goal.`)
+        return
+    }
+
+    if (validators.validateAmount(record.currentBalance) == false) {
+        res.status(400).json(`Error: Please submit valid amount with two decimal places - e.g. 43.25`)
+        return
+    }
+
+    record.currentBalance = (Math.round(record.currentBalance * 100) / 100).toFixed(2);
+
+    try {
+        const createdRecord = await models.balance.update(record, {
+            where: {id: record.id}
+        });
+        res.sendStatus(204);
+    } catch (e) {
+        console.log(e);
+        res.status(400).json(`An error occurred while posting transaction: ${e.name}`)
+    }
+
+})
+
 
 module.exports = router;
