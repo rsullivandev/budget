@@ -26,83 +26,83 @@ router.post('/', async (req, res) => {
         categoryId: req.body.categoryId,
         label: req.body.label,
         notes: req.body.notes,
-        transactionType: req.body.transaction_type,
-        originalDescription: req.body.original_description,
+        transactionType: req.body.transactionType,
+        originalDescription: req.body.originalDescription,
         account: req.body.account,
         initialCategory: req.body.initialCategory,
         source: req.body.source,
     }
 
-    if (validators.validateDate(date) == false) {
+    if (validators.validateDate(record.date) == false) {
         res.status(400).json(`Error: Please submit date as yyyy-mm-dd.`)
         return
     }
 
-    if (validators.validateBudgetHeaderId(budgetHeaderId) == false) {
+    if (validators.validateBudgetHeaderId(record.budgetHeaderId) == false) {
         res.status(400).json(`Error: Please submit valid budget header ID`)
         return
     }
 
-    if (validators.validateBudgetItemId(budgetItemId) == false) {
+    if (validators.validateBudgetItemId(record.budgetItemId) == false) {
         res.status(400).json(`Error: Please submit valid budget header ID`)
         return
     }
 
-    if (validators.validateDescription(description) == false) {
+    if (validators.validateDescription(record.description) == false) {
         res.status(400).json(`Error: Please submit valid description`)
         return
     }
 
-    if (validators.validateAmount(amount) == false) {
+    if (validators.validateAmount(record.amount) == false) {
         res.status(400).json(`Error: Please submit valid amount with two decimal places - e.g. 43.25`)
         return;
     }
 
-    if (validators.validateCategoryId(categoryId) == false) {
+    if (validators.validateCategoryId(record.categoryId) == false) {
         res.status(400).json(`Error: Please submit valid category Id`)
         return
     }
 
-    if (validators.validateDescription(label) == false) {
+    if (validators.validateDescription(record.label) == false) {
         res.status(400).json(`Error: Please submit valid label`)
         return
     }
 
-    if (validators.validateDescription(notes) == false) {
+    if (validators.validateDescription(record.notes) == false) {
         res.status(400).json(`Error: Please submit valid note description`)
         return
     }
 
-    if (validators.validateType(transactionType) == false) {
+    if (validators.validateType(record.transactionType) == false) {
         res.status(400).json(`Error: Please submit valid transaction type: 'credit or 'debit'`)
         return
     }
 
-    if (validators.validateDescription(originalDescription) == false) {
+    if (validators.validateDescription(record.originalDescription) == false) {
         res.status(400).json(`Error: Please submit valid note original description`)
         return
     }
 
-    if (validators.validateDescription(originalDescription) == false) {
-        res.status(400).json(`Error: Please submit valid note original description`)
+    if (validators.validateDescription(record.account) == false) {
+        res.status(400).json(`Error: Please submit valid account name`)
         return
     }
 
-    if (validators.validateDescription(initialCategory) == false) {
+    if (validators.validateDescription(record.initialCategory) == false) {
         res.status(400).json(`Error: Please submit valid initial cateogry`)
         return
     }
 
-    if (validators.validateSource(source) == false) {
+    if (validators.validateSource(record.source) == false) {
         res.status(400).json(`Error: Please submit valid transaction source - Mint or USBank`)
         return
     }
 
-    record.amount = (Math.round(req.body.plannedAmount * 100) / 100).toFixed(2);
+    record.amount = (Math.round(record.amount * 100) / 100).toFixed(2);
 
     try {
-        const createdRecord = await models.category.create(record);
-        res.status(201).json(`Transaction ${createdRecord.id} has been posted for the amount ${amount}`)
+        const createdRecord = await models.transaction.create(record);
+        res.status(201).json(`Transaction ${createdRecord.id} has been posted for the amount ${record.amount}`)
     } catch (e) {
         console.log(e);
         res.status(400).json(`An error occurred while posting transaction: ${e.name}`)

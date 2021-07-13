@@ -9,7 +9,7 @@ const validateBudgetHeaderId = (budgetHeaderId) => {
 }
 
 const validateBudgetItemId = (budgetItemId) => {
-    if (/^[0-9]+$/.test(budgetHeaderId)) return true
+    if (/^[0-9]+$/.test(budgetItemId)) return true
     else return false
 }
 
@@ -29,17 +29,17 @@ const validateCategoryName = (categoryName) => {
 }
 
 const validateDescription = (description) => {
-    if (/^.+$/.test(description)) return true
+    if (/^.*$/.test(description)) return true
     else return false
 }
 
 const validateType = (type) => {
-    if (type == 'credit' || type == 'debit') return true
+    if (type === 'credit' || type === 'debit') return true
     else return false
 }
 
 const validateSource = (source) => {
-    if (source == 'USBank' || type == 'Mint') return true
+    if (source === 'USBank' || source === 'Mint') return true
     else return false
 }
 
@@ -47,6 +47,7 @@ const validateSource = (source) => {
 module.exports = {
     validateCategoryId: validateCategoryId,
     validateBudgetHeaderId: validateBudgetHeaderId,
+    validateBudgetItemId: validateBudgetItemId,
     validateAmount: validateAmount,
     validateDate: validateDate,
     validateCategoryName: validateCategoryName,
