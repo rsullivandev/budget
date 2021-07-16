@@ -1,7 +1,10 @@
+const EventEmitter = require('events');
 const express = require('express');
 const router = express.Router();
 const { models } = require('models/sequelize');
 const validators = require('services/validators');
+
+const myEmitter = new EventEmitter();
 
 
 router.get('/', async (req, res) => {
@@ -102,7 +105,8 @@ router.post('/', async (req, res) => {
 
     try {
         const createdRecord = await models.transaction.create(record);
-        res.status(201).json(`Transaction ${createdRecord.id} has been posted for the amount ${record.amount}`)
+        // res.status(201).json(`Transaction ${createdRecord.id} has been posted for the amount ${record.amount}`)
+        myEmitter.emit('transaction', record.amount)
     } catch (e) {
         console.log(e);
         res.status(400).json(`An error occurred while posting transaction: ${e.name}`)
