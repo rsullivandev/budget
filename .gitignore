@@ -6,3 +6,4 @@ src/output/Transactions*
 .env
 token*
 credentials*
+.vscode/*
