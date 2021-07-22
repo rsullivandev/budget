@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const transaction = await models.transaction.findByPk(req.params.id, { include: [models.category, models.budgetHeader] });
-    res.status(200).json(transaction);
+    res.status(200).json([transaction]);
 })
 
 

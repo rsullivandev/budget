@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const budgets = await models.budgetHeader.findByPk(req.params.id, { include: [{ model: models.budgetItem, include: { model: models.category } }] });
-    res.status(200).json(budgets);
+    res.status(200).json([budgets]);
 })
 
 router.post('/', async (req, res) => {

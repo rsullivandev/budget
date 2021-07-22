@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const budgetHeaders = require('routes/budgetHeaders');
 const transactions = require('routes/transactions');
 const categories = require('routes/categories');
@@ -34,6 +35,9 @@ const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors({
+    origin: 'http://localhost:3001'
+}));
 
 app.use('/api/budgetHeaders', budgetHeaders);
 app.use('/api/transactions', transactions);
