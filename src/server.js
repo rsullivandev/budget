@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const budgetHeaders = require('routes/budgetHeaders');
 const transactions = require('routes/transactions');
 const categories = require('routes/categories');
@@ -39,6 +40,9 @@ app.use(cors({
     origin: 'http://localhost:3001'
 }));
 
+app.use(express.static('dist'))
+
+
 app.use('/api/budgetHeaders', budgetHeaders);
 app.use('/api/transactions', transactions);
 app.use('/api/categories', categories);
@@ -48,6 +52,12 @@ app.use('/api/balances', balances);
 
 app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/views/index.html`);
+});
+
+app.get('/bundle', (req, res) => {
+    console.log(__dirname);
+    res.sendFile(path.join(__dirname, '../dist', 'index.html'))
+
 });
 app.get('/health', (req, res) => {
     res.status(200).send(`Server up and running`);

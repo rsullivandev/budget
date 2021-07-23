@@ -7,3 +7,4 @@ src/output/Transactions*
 token*
 credentials*
 .vscode/*
+dist

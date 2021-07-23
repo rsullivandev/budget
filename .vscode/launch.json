@@ -12,6 +12,7 @@
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/src/server.js",
+            // "program": "${workspaceFolder}/src/services/adjustAccrual.js",
             "envFile": "${workspaceFolder}/.env",
             "env": {"NODE_PATH": "${workspaceFolder}/src"}
         }
