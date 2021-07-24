@@ -55,7 +55,6 @@ app.get('/', (req, res) => {
 });
 
 app.get('/bundle', (req, res) => {
-    console.log(__dirname);
     res.sendFile(path.join(__dirname, '../dist', 'index.html'))
 
 });
