@@ -6,7 +6,7 @@ const columns = [
     { field: 'date', headerName: 'Date', descrition: "The month this budget is effective for - set for a given month and year.", flex: .2,
         valueFormatter: (params) => { //TODO need to find a better way to store dates in UTC.
             const date = new Date(params.value);
-            return `${date.getUTCMonth()+1}/${date.getUTCFullYear()}`
+            return `${("0" + (date.getUTCMonth() + 1)).slice(-2)}/${date.getUTCFullYear()}` //Adding 0 digit for single digit months
         }},
     { field: 'planned', headerName: 'Planned Amount', description: "The total amount planned to be spent for this budget", flex: .2},
     { field: 'actual', headerName: 'Actual Amount', description: "The actual amount spent for this budget", flex: .2},
