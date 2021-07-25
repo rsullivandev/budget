@@ -4,7 +4,7 @@ import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
 const columns = [
     { field: 'id', headerName: 'Id', description: "A unique identifier for this budget", flex: .2},
     { field: 'date', headerName: 'Date', descrition: "The month this budget is effective for - set for a given month and year.", flex: .2,
-        valueFormatter: (params) => {
+        valueFormatter: (params) => { //TODO need to find a better way to store dates in UTC.
             const date = new Date(params.value);
             return `${date.getUTCMonth()+1}/${date.getUTCFullYear()}`
         }},
