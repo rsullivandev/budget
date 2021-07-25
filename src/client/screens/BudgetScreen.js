@@ -8,9 +8,21 @@ const columns = [
             const date = new Date(params.value);
             return `${("0" + (date.getUTCMonth() + 1)).slice(-2)}/${date.getUTCFullYear()}` //Adding 0 digit for single digit months
         }},
-    { field: 'planned', headerName: 'Planned Amount', description: "The total amount planned to be spent for this budget", flex: .2},
-    { field: 'actual', headerName: 'Actual Amount', description: "The actual amount spent for this budget", flex: .2},
-    { field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2},
+    { field: 'planned', headerName: 'Planned Amount', description: "The total amount planned to be spent for this budget", flex: .2,
+        valueGetter: (params) => {
+            //TODO sum budgetItem planned amounts
+            return 0;
+        }},
+    { field: 'actual', headerName: 'Actual Amount', description: "The actual amount spent for this budget", flex: .2,
+        valueGetter: (params) => {
+            //TODO sum transaction actual amounts per item
+            return 0
+        }},
+    { field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2,
+        valueGetter: (params) => {
+            //TODO subtract actual amount and planned amount
+            return 0;
+        }},
 
 ];
 
@@ -26,12 +38,14 @@ export default class BudgetScreen extends React.Component {
     componentDidMount = async () => {
         try {
             const data = await (await fetch('/api/budgetHeaders')).json();
-            const filteredArray = data.map(item => {
-                return { id: item.id, date: item.date, planned: "", actual: "", net: "" }
-            })
-            console.log(filteredArray);
+            console.log(data);
+            // const filteredArray = data.map(item => {
+            //     return { id: item.id, date: item.date, planned: "", actual: "", net: "" }
+            // })
+            // console.log(filteredArray);
             this.setState({
-                budget: filteredArray
+                // budget: filteredArray
+                budget: data
             })
         } catch (e) {
             console.log(e);
