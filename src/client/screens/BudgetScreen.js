@@ -31,7 +31,7 @@ const columns = [
         valueGetter: (params) => {
             console.log(params);
             let sum = params.getValue(params.id, "planned") - params.getValue(params.id, "actual");
-            return sum;
+            return (Math.round(sum * 100) / 100).toFixed(2);
         }},
 
 ];
