@@ -10,18 +10,28 @@ const columns = [
         }},
     { field: 'planned', headerName: 'Planned Amount', description: "The total amount planned to be spent for this budget", flex: .2,
         valueGetter: (params) => {
-            //TODO sum budgetItem planned amounts
-            return 0;
+            let sum = 0;
+            params.row.budgetItems.forEach(item => {
+                sum += item.plannedAmount;
+            });
+            return (Math.round(sum * 100) / 100).toFixed(2);
         }},
     { field: 'actual', headerName: 'Actual Amount', description: "The actual amount spent for this budget", flex: .2,
         valueGetter: (params) => {
-            //TODO sum transaction actual amounts per item
-            return 0
+            let sum = 0;
+            params.row.budgetItems.forEach(item => {
+                item.transactions.forEach(transaction => {
+                    sum += transaction.amount;
+                })
+            });
+
+            return (Math.round(sum * 100) / 100).toFixed(2);
         }},
     { field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2,
         valueGetter: (params) => {
-            //TODO subtract actual amount and planned amount
-            return 0;
+            console.log(params);
+            let sum = params.getValue(params.id, "planned") - params.getValue(params.id, "actual");
+            return sum;
         }},
 
 ];

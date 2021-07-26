@@ -5,7 +5,7 @@ const validators = require('services/validators')
 
 
 router.get('/', async (req, res) => {
-    const budgets = await models.budgetHeader.findAll({ include: [{ model: models.budgetItem, include: { model: models.category } }] });
+    const budgets = await models.budgetHeader.findAll({ include: [{ model: models.budgetItem, include: [{ model: models.category }, {model: models.transaction}] }] });
     res.status(200).json(budgets);
 })
 
