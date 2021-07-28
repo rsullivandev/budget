@@ -16,12 +16,14 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
 
-    const date = req.body.date;
 
-    if (validators.validateDate(date) == false) {
-        res.status(400).json(`Error: Please submit date as yyyy-mm-dd.`)
+    if (validators.validateDate(req.body.date) == false) {
+        res.status(400).json(`Error: Please submit date as yyyy-mm-dd or yyyy-mm-ddThh:mm:ss:mmmZ.`)
         return
     }
+
+    let date = new Date(req.body.date).setDate(01);
+    date = new Date(date);
 
     try {
         const record = await models.budgetHeader.create({ date: date })
@@ -30,7 +32,7 @@ router.post('/', async (req, res) => {
     } catch (e) {
         if (e.name === 'SequelizeUniqueConstraintError') {
             console.log(e)
-            res.status(400).json(`A budget for ${date} already exists!`)
+            res.status(400).json(`A budget for ${date.getMonth()+1}/${date.getFullYear()} already exists!`)
         } else {
             console.log(e)
             res.status(400).json(`An error occurred while creating budget: ${e.name}`)

@@ -38,7 +38,6 @@ const columns = [
     {
         field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2,
         valueGetter: (params) => {
-            console.log(params);
             let sum = params.getValue(params.id, "planned") - params.getValue(params.id, "actual");
             return (Math.round(sum * 100) / 100).toFixed(2);
         }
@@ -58,13 +57,7 @@ export default class BudgetScreen extends React.Component {
     componentDidMount = async () => {
         try {
             const data = await (await fetch('/api/budgetHeaders')).json();
-            console.log(data);
-            // const filteredArray = data.map(item => {
-            //     return { id: item.id, date: item.date, planned: "", actual: "", net: "" }
-            // })
-            // console.log(filteredArray);
             this.setState({
-                // budget: filteredArray
                 budget: data
             })
         } catch (e) {

@@ -26,7 +26,7 @@ const validateAmount = (amount) => {
 }
 
 const validateDate = (date) => {
-    if (/^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$/.test(date)) return true
+    if (/^[0-9]{4}-[0-1][0-9]-[0-3][0-9]$/.test(date) || /^[0-9]{4}-[0-1][0-9]-[0-3][0-9]T[0-9]{2}:[0-9]{2}:[0-9]{3}Z$/) return true
     else return false
 }
 
