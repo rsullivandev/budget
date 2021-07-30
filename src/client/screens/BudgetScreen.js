@@ -65,6 +65,10 @@ export default class BudgetScreen extends React.Component {
         }
     }
 
+    handleClick = async () => {
+        console.log("Clicked!");
+    }
+
 
     render() {
         const { budget } = this.state;
@@ -73,7 +77,7 @@ export default class BudgetScreen extends React.Component {
                 <div style={{ display: 'flex', height: '100%' }}>
                     <div style={{ flexGrow: 1 }}>
                         <Button variant="contained" color="primary">New Budget</Button>
-                        <DataGrid columns={columns} rows={budget} />
+                        <DataGrid columns={columns} rows={budget} onRowClick={this.handleClick} />
                         <NewBudgetForm />
                     </div>
                 </div>
