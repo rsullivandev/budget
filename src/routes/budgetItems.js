@@ -16,6 +16,9 @@ router.get('/', async (req, res) => {
             {
                 model: models.transaction,
                 // attributes: []
+            },
+            {
+                model: models.category,
             }
         ],
         group: ['id']
@@ -36,6 +39,9 @@ router.get('/:id', async (req, res) => {
             {
                 model: models.transaction,
                 // attributes: []
+            },
+            {
+                model: models.category,
             }
         ],
         group: ['id']
