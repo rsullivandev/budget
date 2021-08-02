@@ -2,6 +2,8 @@ import React from 'react';
 import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core'
 import NewBudgetForm from '../components/newBudget.js'
+import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
+
 
 const columns = [
     { field: 'id', headerName: 'Id', description: "A unique identifier for this budget", flex: .2 },
@@ -45,13 +47,16 @@ const columns = [
 
 ];
 
-export default class BudgetScreen extends React.Component {
+// const history = useHistory();
+
+class BudgetScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             budget: []
         }
     }
+
 
 
     componentDidMount = async () => {
@@ -65,23 +70,27 @@ export default class BudgetScreen extends React.Component {
         }
     }
 
-    handleClick = async () => {
+    handleClick = async (event) => {
         console.log("Clicked!");
+        console.log(event);
+        this.props.history.push(`/budgets/${event.id}`)
     }
 
 
     render() {
         const { budget } = this.state;
         return (
-            <div style={{ height: 400, width: '100%' }}>
-                <div style={{ display: 'flex', height: '100%' }}>
-                    <div style={{ flexGrow: 1 }}>
-                        <Button variant="contained" color="primary">New Budget</Button>
-                        <DataGrid columns={columns} rows={budget} onRowClick={this.handleClick} />
-                        <NewBudgetForm />
+                <div style={{ height: 400, width: '100%' }}>
+                    <div style={{ display: 'flex', height: '100%' }}>
+                        <div style={{ flexGrow: 1 }}>
+                            <Button variant="contained" color="primary">New Budget</Button>
+                            <DataGrid columns={columns} rows={budget} onRowClick={this.handleClick} />
+                            <NewBudgetForm />
+                        </div>
                     </div>
-                </div>
-            </div >
+                </div >
         )
     }
 }
+
+export default withRouter(BudgetScreen);
