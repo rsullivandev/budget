@@ -3,7 +3,7 @@ import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core'
 import NewBudgetForm from '../components/newBudget.js'
 import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
-import { budgetDateFormatter } from '../services/dateFormatter.js';
+import { budgetDateFormatter, currencyFormatter } from '../services/formatter.js';
 
 
 
@@ -22,7 +22,8 @@ const columns = [
             params.row.budgetItems.forEach(item => {
                 sum += item.plannedAmount;
             });
-            return (Math.round(sum * 100) / 100).toFixed(2);
+            // return (Math.round(sum * 100) / 100).toFixed(2);
+            return currencyFormatter(sum);
         }
     },
     {
@@ -35,14 +36,14 @@ const columns = [
                 })
             });
 
-            return (Math.round(sum * 100) / 100).toFixed(2);
+            return currencyFormatter(sum);
         }
     },
     {
         field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2,
         valueGetter: (params) => {
             let sum = params.getValue(params.id, "planned") - params.getValue(params.id, "actual");
-            return (Math.round(sum * 100) / 100).toFixed(2);
+            return currencyFormatter(sum)
         }
     },
 
@@ -86,6 +87,7 @@ class BudgetScreen extends React.Component {
                     <div style={{ display: 'flex', height: '100%' }}>
                         <div style={{ flexGrow: 1 }}>
                             <Button variant="contained" color="primary">New Budget</Button>
+                            <h2>Budgets</h2>
                             <DataGrid columns={columns} rows={budget} onRowClick={this.handleClick} />
                             <NewBudgetForm />
                         </div>

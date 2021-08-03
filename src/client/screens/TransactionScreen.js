@@ -2,7 +2,7 @@ import React from 'react';
 import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core'
 import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
-import { budgetDateFormatter } from '../services/dateFormatter.js';
+import { budgetDateFormatter } from '../services/formatter.js';
 
 const columns = [
     { field: 'id', headerName: 'Id', description: "A unique identifier for this transaction", flex: .1 },
@@ -69,6 +69,7 @@ export default class TransactionScreen extends React.Component {
             <div style={{ height: 400, width: '100%' }}>
                 <div style={{ display: 'flex', height: '100%' }}>
                     <div style={{ flexGrow: 1 }}>
+                        <h2>Transactions</h2>
                         <DataGrid columns={columns} rows={transactions} onRowClick={this.handleClick} />
                     </div>
                 </div>

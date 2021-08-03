@@ -2,6 +2,7 @@ import React from 'react';
 import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core'
 import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
+import { currencyFormatter } from '../services/formatter.js';
 
 const columns = [
     { field: 'id', headerName: 'Id', description: "A unique identifier for this budget", flex: .1 },
@@ -24,7 +25,7 @@ const columns = [
         field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2,
         valueGetter: (params) => {
             let sum = params.getValue(params.id, "plannedAmount") - params.getValue(params.id, "actualAmount");
-            return (Math.round(sum * 100) / 100).toFixed(2);
+            return currencyFormatter(sum)
         }
     },
 
@@ -62,6 +63,7 @@ class BudgetItemScreen extends React.Component {
             <div style={{ height: 400, width: '100%' }}>
                 <div style={{ display: 'flex', height: '100%' }}>
                     <div style={{ flexGrow: 1 }}>
+                        <h2>Items</h2>
                         <DataGrid columns={columns} rows={items} onRowClick={this.handleClick} />
                     </div>
                 </div>
