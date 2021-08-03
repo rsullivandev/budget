@@ -67,6 +67,8 @@ class BudgetScreen extends React.Component {
             this.setState({
                 budget: data
             })
+
+            this.props.props.setBudgetState(data);
         } catch (e) {
             console.log(e);
         }
@@ -83,18 +85,17 @@ class BudgetScreen extends React.Component {
     render() {
         const { budget } = this.state;
         return (
-                <div style={{ height: 400, width: '100%' }}>
-                    <div style={{ display: 'flex', height: '100%' }}>
-                        <div style={{ flexGrow: 1 }}>
-                            <Button variant="contained" color="primary">New Budget</Button>
-                            <h2>Budgets</h2>
-                            <DataGrid columns={columns} rows={budget} onRowClick={this.handleClick} />
-                            <NewBudgetForm />
-                        </div>
+            <div style={{ height: 400, width: '100%' }}>
+                <div style={{ display: 'flex', height: '100%' }}>
+                    <div style={{ flexGrow: 1 }}>
+                        <h2>Budgets</h2>
+                        <DataGrid columns={columns} rows={budget} onRowClick={this.handleClick} />
+                        <NewBudgetForm />
                     </div>
-                </div >
+                </div>
+            </div >
         )
     }
 }
 
-export default withRouter(BudgetScreen);
+export default withRouter(BudgetScreen); //needed for click handler to update history

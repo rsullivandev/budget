@@ -59,6 +59,10 @@ class BudgetItemScreen extends React.Component {
 
     render() {
         const { items } = this.state;
+        const {props} = this.props;
+
+        console.log(props);
+
         return (
             <div style={{ height: 400, width: '100%' }}>
                 <div style={{ display: 'flex', height: '100%' }}>
