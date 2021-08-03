@@ -3,6 +3,8 @@ import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core'
 import NewBudgetForm from '../components/newBudget.js'
 import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
+import { budgetDateFormatter } from '../services/dateFormatter.js';
+
 
 
 const columns = [
@@ -10,8 +12,7 @@ const columns = [
     {
         field: 'date', headerName: 'Date', descrition: "The month this budget is effective for - set for a given month and year.", flex: .2,
         valueFormatter: (params) => { //TODO need to find a better way to store dates in UTC.
-            const date = new Date(params.value);
-            return `${("0" + (date.getUTCMonth() + 1)).slice(-2)}/${date.getUTCFullYear()}` //Adding 0 digit for single digit months
+            return budgetDateFormatter(params.value);
         }
     },
     {

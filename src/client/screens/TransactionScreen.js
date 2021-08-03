@@ -2,6 +2,7 @@ import React from 'react';
 import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core'
 import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
+import { budgetDateFormatter } from '../services/dateFormatter.js';
 
 const columns = [
     { field: 'id', headerName: 'Id', description: "A unique identifier for this transaction", flex: .1 },
@@ -14,22 +15,26 @@ const columns = [
     },
     { field: 'description', headerName: 'Description', description: "The descriptiono of this transaction", flex: .1 },
     { field: 'amount', headerName: 'Amount', description: "The value of this transaction", flex: .1 },
-
-    //TODO - figure out how to show links back to budget and category if data contains records
-    // - with no linkage.
-
-    // {
-    //     field: 'budget', headerName: 'Budget', description: "The budget this transaction belongs to", flex: .1,
-    //     valueGetter: (params) => {
-    //         return params.row.budgetHeader.date
-    //     }
-    // },
-    // {
-    //     field: 'category', headerName: 'Category', description: "The type of the line item", flex: .2,
-    //     valueGetter: (params) => {
-    //         return params.row.category.categoryName
-    //     }
-    // }
+    {
+        field: 'budget', headerName: 'Budget', description: "The budget this transaction belongs to", flex: .1,
+        valueGetter: (params) => {
+            if (params.row.budgetHeader != null) {
+                return budgetDateFormatter(params.row.budgetHeader.date);
+            } else {
+                return ""
+            }
+        }
+    },
+    {
+        field: 'category', headerName: 'Category', description: "The type of the line item", flex: .2,
+        valueGetter: (params) => {
+            if (params.row.category != null) {
+                return params.row.category.categoryName;
+            } else {
+                return "";
+            }
+        }
+    }
 ];
 
 export default class TransactionScreen extends React.Component {
@@ -63,7 +68,7 @@ export default class TransactionScreen extends React.Component {
         return (
             <div style={{ height: 400, width: '100%' }}>
                 <div style={{ display: 'flex', height: '100%' }}>
-                    <div style={{ flexGrow: 1 }}>S
+                    <div style={{ flexGrow: 1 }}>
                         <DataGrid columns={columns} rows={transactions} onRowClick={this.handleClick} />
                     </div>
                 </div>
