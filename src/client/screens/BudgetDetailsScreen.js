@@ -20,7 +20,20 @@ const columns = [
         }
     },
     { field: 'plannedAmount', headerName: 'Planned Amount', description: "The total amount planned to be spent for this item", flex: .2 },
-    { field: 'actualAmount', headerName: 'Actual Amount', description: "The actual amount spent for this item", flex: .2 },
+    {
+        field: 'actualAmount', headerName: 'Actual Amount', description: "The actual amount spent for this item", flex: .2,
+        valueGetter: (params) => {
+            if (params.row.transactions != null) {
+                let sum = 0;
+                params.row.transactions.forEach(transaction => {
+                    sum += transaction.amount;
+                })
+                return currencyFormatter(sum);
+            } else {
+                return "";
+            }
+        }
+    },
     {
         field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2,
         valueGetter: (params) => {
@@ -31,7 +44,7 @@ const columns = [
 
 ];
 
-class BudgetItemScreen extends React.Component {
+class BudgetDetailsScreen extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -40,10 +53,12 @@ class BudgetItemScreen extends React.Component {
     }
 
     componentDidMount = async () => {
+        console.log(this.props.props)
+        const { id } = this.props.match.params;
         try {
-            const data = await (await fetch('/api/budgetItems')).json();
+            const data = await (await fetch(`/api/budgetHeaders/${id}`)).json();
             this.setState({
-                items: data
+                items: data[0].budgetItems
             })
         } catch (e) {
             console.log(e);
@@ -59,7 +74,7 @@ class BudgetItemScreen extends React.Component {
 
     render() {
         const { items } = this.state;
-        const {props} = this.props;
+        const { props } = this.props;
 
         console.log(props);
 
@@ -67,7 +82,7 @@ class BudgetItemScreen extends React.Component {
             <div style={{ height: 400, width: '100%' }}>
                 <div style={{ display: 'flex', height: '100%' }}>
                     <div style={{ flexGrow: 1 }}>
-                        <h2>Items</h2>
+                        <h2>Budget {this.props.match.params.id} Details</h2>
                         <DataGrid columns={columns} rows={items} onRowClick={this.handleClick} />
                     </div>
                 </div>
@@ -76,4 +91,4 @@ class BudgetItemScreen extends React.Component {
     }
 }
 
-export default withRouter(BudgetItemScreen);
+export default withRouter(BudgetDetailsScreen);

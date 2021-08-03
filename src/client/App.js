@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter as Router, Switch, Route, Redirect, Link, useRouteMatch, useParams, NavLink } from "react-router-dom";
 import BudgetScreen from './screens/BudgetScreen.js';
-import BudgetItemScreen from './screens/BudgetItemScreen.js';
+import BudgetItemScreen from './screens/BudgetDetailsScreen.js';
 import TransactionScreen from './screens/TransactionScreen.js';
 
 export default class App extends React.Component {
@@ -22,7 +22,7 @@ export default class App extends React.Component {
 
     setSelectedBudget = (selectedBudget) => {
         this.setState({
-            selectedBudget: item
+            selectedBudget: selectedBudget
         })
     }
 
