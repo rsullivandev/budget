@@ -75,6 +75,7 @@ app.post('/files/new', upload.single('filename'), (req, res, next) => {
         res.status(400).send('Error: Please select a csv file for upload.');
     } else {
         const date = new Date(`${req.body.month} 1, ${req.body.year}`);
+        //TODO - split orchestrate data out so that it is only triggered when all files are uploaded
         orchestrateData(process.env.UPLOAD, date)
         res.status(200).send(`file sourced from ${req.body.source} uploaded successfully`);
     }
