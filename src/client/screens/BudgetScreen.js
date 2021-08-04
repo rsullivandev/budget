@@ -77,7 +77,7 @@ class BudgetScreen extends React.Component {
     handleClick = async (event) => {
         console.log("Clicked!");
         console.log(event);
-        this.props.props.setSelectedBudget(event.id)
+        // this.props.props.setSelectedBudget(event.id)
         // this.props.history.push(`/about`)
         this.props.history.push(`/budgets/${event.id}`)
     }

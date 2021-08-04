@@ -18,8 +18,8 @@ const columns = [
     {
         field: 'budget', headerName: 'Budget', description: "The budget this transaction belongs to", flex: .1,
         valueGetter: (params) => {
-            if (params.row.budgetHeader != null) {
-                return budgetDateFormatter(params.row.budgetHeader.date);
+            if (params.row != null) {
+                return params.row.budgetHeaderId
             } else {
                 return ""
             }
@@ -28,8 +28,8 @@ const columns = [
     {
         field: 'category', headerName: 'Category', description: "The type of the line item", flex: .2,
         valueGetter: (params) => {
-            if (params.row.category != null) {
-                return params.row.category.categoryName;
+            if (params.row != null) {
+                return params.row.categoryId;
             } else {
                 return "";
             }
@@ -37,7 +37,7 @@ const columns = [
     }
 ];
 
-export default class TransactionScreen extends React.Component {
+class ItemDetailsScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -47,9 +47,10 @@ export default class TransactionScreen extends React.Component {
 
     componentDidMount = async () => {
         try {
-            const data = await (await fetch('/api/transactions')).json();
+            const {id } = this.props.match.params;
+            const data = await (await fetch(`/api/budgetItems/${id}`)).json();
             this.setState({
-                transactions: data
+                transactions: data[0].transactions
             })
         } catch (e) {
             console.log(e);
@@ -78,3 +79,5 @@ export default class TransactionScreen extends React.Component {
     }
 
 }
+
+export default withRouter(ItemDetailsScreen);

@@ -66,17 +66,15 @@ class BudgetDetailsScreen extends React.Component {
     }
 
     handleClick = async (event) => {
+        const {id} = this.props.match.params;
         console.log("Clicked!");
         console.log(event);
-        this.props.history.push(`/transactions`)
-        // this.props.history.push(`/budgets/${event.id}`)
+        // this.props.history.push(`/transactions`)
+        this.props.history.push(`/budgets/${id}/items/${event.id}`)
     }
 
     render() {
         const { items } = this.state;
-        const { props } = this.props;
-
-        console.log(props);
 
         return (
             <div style={{ height: 400, width: '100%' }}>

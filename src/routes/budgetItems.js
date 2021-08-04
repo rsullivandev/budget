@@ -46,7 +46,7 @@ router.get('/:id', async (req, res) => {
         ],
         group: ['id']
     });
-    res.status(200).json(budgetItems);
+    res.status(200).json([budgetItems]);
 })
 
 

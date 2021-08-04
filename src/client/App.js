@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { HashRouter as Router, Switch, Route, Redirect, Link, useRouteMatch, useParams, NavLink } from "react-router-dom";
 import BudgetScreen from './screens/BudgetScreen.js';
 import BudgetItemScreen from './screens/BudgetDetailsScreen.js';
-import TransactionScreen from './screens/TransactionScreen.js';
+import ItemDetailsScreen from './screens/ItemDetailsScreen.js';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,21 +20,22 @@ export default class App extends React.Component {
         })
     }
 
-    setSelectedBudget = (selectedBudget) => {
-        this.setState({
-            selectedBudget: selectedBudget
-        })
-    }
+    // setSelectedBudget = (selectedBudget) => {
+    //     this.setState({
+    //         selectedBudget: selectedBudget
+    //     })
+    // }
 
-
+//TODO - Add breadcrumb nav
+//TODO - Show spending categories as negative, income as postive
 
 
     render() {
         let props = {
             budget: this.state.budget,
             setBudgetState: this.setBudgetState,
-            selectedBudget: this.state.selectedBudget,
-            setSelectedBudget: this.setSelectedBudget
+            // selectedBudget: this.state.selectedBudget,
+            // setSelectedBudget: this.setSelectedBudget
         }
         return (
             <div>
@@ -47,8 +48,8 @@ export default class App extends React.Component {
                 <Switch>
                     <Route exact path='/'><Redirect to='/budgets' /></Route>
                     <Route exact path='/budgets'><BudgetScreen props={props}/></Route>
-                    <Route path='/budgets/:id'><BudgetItemScreen props={props}/></Route>
-                    <Route path='/transactions'><TransactionScreen props={props}/></Route>
+                    <Route exact path='/budgets/:id'><BudgetItemScreen props={props}/></Route>
+                    <Route path='/budgets/:id/items/:id'><ItemDetailsScreen props={props}/></Route>
                 </Switch>
             </div>
         )
