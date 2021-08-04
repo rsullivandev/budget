@@ -27,7 +27,7 @@ export default class App extends React.Component {
     // }
 
 //TODO - Add breadcrumb nav
-//TODO - Show spending categories as negative, income as postive
+//TODO - Update database on transaction import
 
 
     render() {

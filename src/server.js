@@ -74,8 +74,9 @@ app.post('/files/new', upload.single('filename'), (req, res, next) => {
     if (!req.file) {
         res.status(400).send('Error: Please select a csv file for upload.');
     } else {
-        const data = req.body.source;
-        res.status(200).send(`file sourced from ${data} uploaded successfully`);
+        const date = new Date(`${req.body.month} 1, ${req.body.year}`);
+        orchestrateData(process.env.UPLOAD, date)
+        res.status(200).send(`file sourced from ${req.body.source} uploaded successfully`);
     }
 });
 
