@@ -6,6 +6,7 @@ const transactions = require('routes/transactions');
 const categories = require('routes/categories');
 const budgetItems = require('routes/budgetItems');
 const balances = require('routes/balances');
+const files = require('routes/files');
 
 const app = express();
 const port = process.env.PORT || 3005;
@@ -48,6 +49,7 @@ app.use('/api/transactions', transactions);
 app.use('/api/categories', categories);
 app.use('/api/budgetItems', budgetItems);
 app.use('/api/balances', balances);
+app.use('/api/files', files);
 
 
 app.get('/', (req, res) => {
@@ -74,9 +76,9 @@ app.post('/files/new', upload.single('filename'), (req, res, next) => {
     if (!req.file) {
         res.status(400).send('Error: Please select a csv file for upload.');
     } else {
-        const date = new Date(`${req.body.month} 1, ${req.body.year}`);
+        // const date = new Date(`${req.body.month} 1, ${req.body.year}`);
         //TODO - split orchestrate data out so that it is only triggered when all files are uploaded
-        orchestrateData(process.env.UPLOAD, date)
+        // orchestrateData(process.env.UPLOAD, date)
         res.status(200).send(`file sourced from ${req.body.source} uploaded successfully`);
     }
 });

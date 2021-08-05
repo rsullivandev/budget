@@ -4,6 +4,7 @@ const { models } = require('models/sequelize');
 const validators = require('services/validators');
 const myEmitter = require('utils/emitter.js');
 const subscriptions = require('utils/subscriptions.js');
+const { readdir } = require('fs/promises');
 
 
 router.get('/', async (req, res) => {
@@ -14,6 +15,38 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     const transaction = await models.transaction.findByPk(req.params.id, { include: [models.category, models.budgetHeader] });
     res.status(200).json([transaction]);
+})
+
+
+router.post('/bulkUploads', async (req, res) => {
+    console.log(req.body);
+    try {
+        const mintList = await readdir(`${__dirname}/../input/mint`);
+        const usBankList = await readdir(`${__dirname}/../input/usbank`);
+
+        let validRecord = [];
+
+        req.body.forEach(record => {
+            if (record.source === "usBank") {
+                validRecord.push(usBankList.includes(record.file))
+            } else if (record.source === "mint") {
+                validRecord.push(mintList.includes(record.file))
+            }
+        })
+
+        console.log(validRecord);
+
+        if (validRecord.includes(false)) {
+            throw new Error("File not found");
+        }
+        res.status(200).json(`Great!`)
+    } catch (e) {
+        res.status(500).json(`Error! ${e}`)
+    }
+
+
+    //TODO - call orchestrate service
+
 })
 
 
