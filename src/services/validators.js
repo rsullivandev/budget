@@ -1,3 +1,6 @@
+const { readdir } = require('fs/promises');
+
+
 //TODO centralize error message in validators
 
 const validateCategoryId = (categoryId) => {
@@ -50,6 +53,53 @@ const validateSource = (source) => {
     else return false
 }
 
+const validateInputFile = async (files) => {
+    const mintList = await readdir(`${__dirname}/../input/mint`);
+    const usBankList = await readdir(`${__dirname}/../input/usbank`);
+
+    let error = false;
+    let fileDates = [];
+    let date;
+
+    files.forEach(file => {
+        if (error) return false
+        if (file.source === "usBank") {
+            if (!usBankList.includes(file.file)) {
+                error = true;
+            } else {
+                fileDates.push(file.file.slice(-8, -4))
+            }
+        } else if (file.source === "mint") {
+            if (!mintList.includes(file.file)) {
+                error = true;
+            } else {
+                fileDates.push(file.file.slice(-8, -4))
+            }
+        }
+
+
+
+
+
+    })
+
+    if (error) {
+        return false
+    }
+
+    for (let i = 0; i < fileDates.length - 1; i++) {
+        if (fileDates[i] !== fileDates[i + 1]) error = true;
+    }
+
+    if (error) {
+        return false
+    } else {
+        return true
+    }
+
+
+}
+
 
 module.exports = {
     validateCategoryId: validateCategoryId,
@@ -61,5 +111,6 @@ module.exports = {
     validateCategoryName: validateCategoryName,
     validateDescription: validateDescription,
     validateType: validateType,
-    validateSource: validateSource
+    validateSource: validateSource,
+    validateInputFile: validateInputFile
 }

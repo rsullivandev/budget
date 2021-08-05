@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { models } = require('models/sequelize');
 const validators = require('services/validators');
+const { orchestrateData } = require('services/orchestrateData');
 const myEmitter = require('utils/emitter.js');
 const subscriptions = require('utils/subscriptions.js');
 const { readdir } = require('fs/promises');
@@ -21,24 +22,30 @@ router.get('/:id', async (req, res) => {
 router.post('/bulkUploads', async (req, res) => {
     console.log(req.body);
     try {
-        const mintList = await readdir(`${__dirname}/../input/mint`);
-        const usBankList = await readdir(`${__dirname}/../input/usbank`);
+        // const mintList = await readdir(`${__dirname}/../input/mint`);
+        // const usBankList = await readdir(`${__dirname}/../input/usbank`);
 
-        let validRecord = [];
+        // let validRecord = [];
 
-        req.body.forEach(record => {
-            if (record.source === "usBank") {
-                validRecord.push(usBankList.includes(record.file))
-            } else if (record.source === "mint") {
-                validRecord.push(mintList.includes(record.file))
-            }
-        })
+        // req.body.forEach(record => {
+        //     if (record.source === "usBank") {
+        //         validRecord.push(usBankList.includes(record.file))
+        //     } else if (record.source === "mint") {
+        //         validRecord.push(mintList.includes(record.file))
+        //     }
+        // })
 
-        console.log(validRecord);
+        // console.log(validRecord);
 
-        if (validRecord.includes(false)) {
-            throw new Error("File not found");
+        if (await validators.validateInputFile(req.body) == false){
+            res.status(400).json(`Error: File not found or file dates do not match`);
+            return
         }
+
+        // await orchestrateData(false, )
+
+
+
         res.status(200).json(`Great!`)
     } catch (e) {
         res.status(500).json(`Error! ${e}`)
