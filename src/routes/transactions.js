@@ -22,31 +22,22 @@ router.get('/:id', async (req, res) => {
 router.post('/bulkUploads', async (req, res) => {
     console.log(req.body);
     try {
-        // const mintList = await readdir(`${__dirname}/../input/mint`);
-        // const usBankList = await readdir(`${__dirname}/../input/usbank`);
-
-        // let validRecord = [];
-
-        // req.body.forEach(record => {
-        //     if (record.source === "usBank") {
-        //         validRecord.push(usBankList.includes(record.file))
-        //     } else if (record.source === "mint") {
-        //         validRecord.push(mintList.includes(record.file))
-        //     }
-        // })
-
-        // console.log(validRecord);
-
         if (await validators.validateInputFile(req.body) == false){
             res.status(400).json(`Error: File not found or file dates do not match`);
             return
         }
 
-        // await orchestrateData(false, )
+        let dateString = `${req.body[0].file.slice(-8,-6)}-01-${req.body[0].file.slice(-6,-4)}`;
+
+        let date = new Date(dateString)
+
+        await orchestrateData(false, date)
+
+        //TODO - update orchestrate data to link transactions to budget header, etc
+        //TODO - handle errors from orchestrate data? just have it throw error...
 
 
-
-        res.status(200).json(`Great!`)
+        res.status(200).json(`Transactions updated for budget ${dateString}!`)
     } catch (e) {
         res.status(500).json(`Error! ${e}`)
     }
