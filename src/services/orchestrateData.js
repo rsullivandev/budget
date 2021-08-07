@@ -4,9 +4,12 @@ const { transformDataMint } = require('./mintTransform');
 const { transformDataUSBank } = require('./usBankTransform');
 const { executeUpload } = require('./fileUpload');
 const { transactionsDAO } = require('services/transactionsDAO');
+const { budgetHeadersDAO } = require('services/budgetHeadersDAO');
 const dh = require('./dateHelper');
 
 const orchestrateData = async (uploadIndicator = "false", date = '04-01-2021') => {
+
+    //TODO - make reading file inputs more dynamic - right now it expects 1 mint and 1 usbank file to exist.
 
     const _dh = new dh.dateHelper(new Date(date));
     const mm = _dh.getMonth();
@@ -22,7 +25,8 @@ const orchestrateData = async (uploadIndicator = "false", date = '04-01-2021') =
 
     let combinedData = transformedDataMint + "\n" + transformedDataUSBank;
 
-    await transactionsDAO(combinedData);
+    const budgetHeaderId = await budgetHeadersDAO(date);
+    await transactionsDAO(combinedData, budgetHeaderId);
 
     let fileName = `transactions_output_${mm}${yy}.csv`;
     await setFile(`${__dirname}/../output/${fileName}`, combinedData);

@@ -42,9 +42,6 @@ router.post('/bulkUploads', async (req, res) => {
         res.status(500).json(`Error! ${e}`)
     }
 
-
-    //TODO - call orchestrate service
-
 })
 
 

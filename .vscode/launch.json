@@ -7,14 +7,24 @@
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Server",
             "skipFiles": [
                 "<node_internals>/**"
             ],
             "program": "${workspaceFolder}/src/server.js",
-            // "program": "${workspaceFolder}/src/services/adjustAccrual.js",
             "envFile": "${workspaceFolder}/.env",
             "env": {"NODE_PATH": "${workspaceFolder}/src"}
-        }
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Launch BudgetHeaderDAO",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/src/services/budgetHeadersDAO.js",
+            "envFile": "${workspaceFolder}/.env",
+            "env": {"NODE_PATH": "${workspaceFolder}/src"}
+        },
     ]
 }
