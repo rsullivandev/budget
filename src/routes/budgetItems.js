@@ -26,27 +26,17 @@ router.get('/', async (req, res) => {
     res.status(200).json(budgetItems);
 })
 
-//TODO - Transactions for budgetItemId 72 should show 2 transactions, it shows 1
 
 router.get('/:id', async (req, res) => {
     const budgetItems = await models.budgetItem.findByPk(req.params.id, {
-        attributes: [
-            'id',
-            'plannedAmount',
-            [Sequelize.fn('SUM', Sequelize.col('transactions.amount')), 'actualAmount'],
-            'budgetHeaderId',
-            'categoryId'
-        ],
         include: [
             {
                 model: models.transaction,
-                // attributes: []
             },
             {
                 model: models.category,
             }
         ],
-        group: ['id']
     });
     res.status(200).json([budgetItems]);
 })

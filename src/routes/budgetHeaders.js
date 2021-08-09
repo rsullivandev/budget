@@ -5,12 +5,21 @@ const validators = require('services/validators')
 
 
 router.get('/', async (req, res) => {
-    const budgets = await models.budgetHeader.findAll({ include: [{ model: models.budgetItem, include: [{ model: models.category }, {model: models.transaction}] }] });
+    const budgets = await models.budgetHeader.findAll({ include: [{ model: models.budgetItem, include: [{ model: models.category }, { model: models.transaction }] }] });
     res.status(200).json(budgets);
 })
 
 router.get('/:id', async (req, res) => {
-    const budgets = await models.budgetHeader.findByPk(req.params.id, { include: [{ model: models.budgetItem, include: [{ model: models.category }, {model: models.transaction}] }] });
+    const budgets = await models.budgetHeader.findByPk(req.params.id, {
+        include: [
+            {
+                model: models.budgetItem, include: [
+                    { model: models.category },
+                    { model: models.transaction }
+                ]
+            }
+        ]
+    });
     res.status(200).json([budgets]);
 })
 
@@ -32,7 +41,7 @@ router.post('/', async (req, res) => {
     } catch (e) {
         if (e.name === 'SequelizeUniqueConstraintError') {
             console.log(e)
-            res.status(400).json(`A budget for ${date.getMonth()+1}/${date.getFullYear()} already exists!`)
+            res.status(400).json(`A budget for ${date.getMonth() + 1}/${date.getFullYear()} already exists!`)
         } else {
             console.log(e)
             res.status(400).json(`An error occurred while creating budget: ${e.name}`)
