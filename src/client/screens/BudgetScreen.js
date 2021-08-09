@@ -26,6 +26,7 @@ const columns = [
             return currencyFormatter(sum);
         }
     },
+    //TODO - the actual calculation includes income as well as expenses, so it's showing a kind of net calculation for the month. Need to think through what I want to show here.
     {
         field: 'actual', headerName: 'Actual Amount', description: "The actual amount spent for this budget", flex: .2,
         valueGetter: (params) => {
