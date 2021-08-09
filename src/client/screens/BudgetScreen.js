@@ -8,44 +8,83 @@ import { budgetDateFormatter, currencyFormatter } from '../services/formatter.js
 
 
 const columns = [
-    { field: 'id', headerName: 'Id', description: "A unique identifier for this budget", flex: .2 },
+    { field: 'id', headerName: 'Id', description: "A unique identifier for this budget", flex: .05 },
     {
-        field: 'date', headerName: 'Date', descrition: "The month this budget is effective for - set for a given month and year.", flex: .2,
+        field: 'date', headerName: 'Budget Date', description: "The month this budget is effective for - set for a given month and year.", flex: .1,
         valueFormatter: (params) => { //TODO need to find a better way to store dates in UTC.
             return budgetDateFormatter(params.value);
         }
     },
     {
-        field: 'planned', headerName: 'Planned Amount', description: "The total amount planned to be spent for this budget", flex: .2,
+        field: 'plannedIncome', headerName: 'Planned Income', description: "The total income planned for this budget", flex: .1,
         valueGetter: (params) => {
             let sum = 0;
             params.row.budgetItems.forEach(item => {
-                sum += item.plannedAmount;
+                if (item.plannedAmount > 0) {
+                    sum += item.plannedAmount;
+                }
             });
             // return (Math.round(sum * 100) / 100).toFixed(2);
             return currencyFormatter(sum);
         }
     },
     {
-        field: 'actual', headerName: 'Actual Amount', description: "The actual amount spent for this budget", flex: .2,
+        field: 'plannedExpense', headerName: 'Planned Expenses', description: "The total amount planned to be spent for this budget. Expressed as a negative.", flex: .1,
         valueGetter: (params) => {
             let sum = 0;
             params.row.budgetItems.forEach(item => {
-                item.transactions.forEach(transaction => {
-                    sum += transaction.amount;
-                })
+                if (item.plannedAmount < 0) {
+                    sum += item.plannedAmount;
+                }
+            });
+            // return (Math.round(sum * 100) / 100).toFixed(2);
+            return currencyFormatter(sum);
+        }
+    },
+    {
+        field: 'netPlanned', headerName: 'Net Planned', description: "The net difference between planned expenses and actual income for this budget", flex: .1,
+        valueGetter: (params) => {
+            let sum = Number(params.getValue(params.id, "plannedIncome")) + Number(params.getValue(params.id, "plannedExpense"));
+            return currencyFormatter(sum)
+        }
+    },
+    {
+        field: 'actualIncome', headerName: 'Actual Income', description: "The actual income received for this budget", flex: .1,
+        valueGetter: (params) => {
+            let sum = 0;
+            params.row.budgetItems.forEach(item => {
+                if (item.plannedAmount > 0) {
+                    item.transactions.forEach(transaction => {
+                        sum += transaction.amount;
+                    })
+                }
+            });
+
+            return currencyFormatter(sum);
+        }
+    },
+    {
+        field: 'actualExpense', headerName: 'Actual Expenses', description: "The actual amount spent for this budget. Expressed as a negative.", flex: .1,
+        valueGetter: (params) => {
+            let sum = 0;
+            params.row.budgetItems.forEach(item => {
+                if (item.plannedAmount < 0) {
+                    item.transactions.forEach(transaction => {
+                        sum += transaction.amount;
+                    })
+                }
             });
 
             return currencyFormatter(sum);
         }
     },
 
-    //TODO - "Net" is misleading here since the above summaries contain both expenses and incomes, so the the planned and actuals are already netted out. May not need this column?
+
     //TODO - need to align the categories between what is included in the database and what is determined by the orchestration rules. Currently there are some inconsistencies. Rerun May file.
     {
-        field: 'net', headerName: 'Net Amount', description: "The net difference between planned and actual for this budget", flex: .2,
+        field: 'netActuals', headerName: 'Net Actuals', description: "The net difference between actual expenses and actual income for this budget", flex: .1,
         valueGetter: (params) => {
-            let sum = params.getValue(params.id, "actual") - params.getValue(params.id, "planned");
+            let sum = Number(params.getValue(params.id, "actualIncome")) + Number(params.getValue(params.id, "actualExpense"));
             return currencyFormatter(sum)
         }
     },
