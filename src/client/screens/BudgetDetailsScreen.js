@@ -24,10 +24,8 @@ const columns = [
         field: 'actualAmount', headerName: 'Actual Amount', description: "The actual amount spent for this item", flex: 1,
         valueGetter: (params) => {
             if (params.row.transactions != null) {
-                let sum = 0;
-                params.row.transactions.forEach(transaction => {
-                    sum += transaction.amount;
-                })
+
+                const sum = params.row.transactions.reduce((accumulator, currentValue) => accumulator + currentValue.amount, 0);
                 return currencyFormatter(sum);
             } else {
                 return "";
@@ -72,9 +70,15 @@ class BudgetDetailsScreen extends React.Component {
             let actualIncome = 0;
             let netActual = 0;
 
+
+            let temp2 = [].concat(...sortedData).map(record => record.transactions).flat().reduce((a,c) => a += c.amount,0)
+
+        
+
             //TODO - actualAmount does not exist on Record. Can this be captured from the datagrid? otherwise will need to recalculate...
 
             // sortedData.forEach(record => {
+            //     record.transactions
             //     record.actualAmount > 0 ? actualIncome += record.actualAmount : actualExpense += record.actualAmount;
             // })
 
@@ -91,7 +95,7 @@ class BudgetDetailsScreen extends React.Component {
     }
 
     handleClick = async (event) => {
-        const {id} = this.props.match.params;
+        const { id } = this.props.match.params;
         console.log("Clicked!");
         console.log(event);
         // this.props.history.push(`/transactions`)
