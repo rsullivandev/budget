@@ -131,7 +131,7 @@ class BudgetDetailsScreen extends React.Component {
                             <h3>Actual Expense: {this.state.totals.actualExpense}</h3>
                             <h3>Net Position: {this.state.totals.netActual}</h3>
                         </div>
-                        <DataGrid columns={columns} rows={items} onRowClick={this.handleClick} />
+                        <DataGrid columns={columns} rows={items} rowHeight={25} onRowClick={this.handleClick} />
                     </div>
                 </div>
             </div >

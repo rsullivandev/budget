@@ -24,8 +24,10 @@ const columns = [
                     sum += item.plannedAmount;
                 }
             });
-            // return (Math.round(sum * 100) / 100).toFixed(2);
-            return currencyFormatter(sum);
+            return sum
+        },
+        valueFormatter: (params) => {
+            return currencyFormatter(params.value);
         }
     },
     {
@@ -37,15 +39,19 @@ const columns = [
                     sum += item.plannedAmount;
                 }
             });
-            // return (Math.round(sum * 100) / 100).toFixed(2);
-            return currencyFormatter(sum);
+            return sum
+        },
+        valueFormatter: (params) => {
+            return currencyFormatter(params.value);
         }
     },
     {
         field: 'netPlanned', headerName: 'Net Planned', description: "The net difference between planned expenses and actual income for this budget", flex: .1,
         valueGetter: (params) => {
-            let sum = Number(params.getValue(params.id, "plannedIncome")) + Number(params.getValue(params.id, "plannedExpense"));
-            return currencyFormatter(sum)
+            return params.getValue(params.id, "plannedIncome") + params.getValue(params.id, "plannedExpense")
+        },
+        valueFormatter: (params) => {
+            return currencyFormatter(params.value)
         }
     },
     {
@@ -59,8 +65,10 @@ const columns = [
                     })
                 }
             });
-
-            return currencyFormatter(sum);
+            return sum;
+        },
+        valueFormatter: (params) => {
+            return currencyFormatter(params.value);
         }
     },
     {
@@ -74,8 +82,10 @@ const columns = [
                     })
                 }
             });
-
-            return currencyFormatter(sum);
+            return sum
+        },
+        valueFormatter: (params) => {
+            return currencyFormatter(params.value);
         }
     },
 
@@ -84,8 +94,10 @@ const columns = [
     {
         field: 'netActuals', headerName: 'Net Actuals', description: "The net difference between actual expenses and actual income for this budget", flex: .1,
         valueGetter: (params) => {
-            let sum = Number(params.getValue(params.id, "actualIncome")) + Number(params.getValue(params.id, "actualExpense"));
-            return currencyFormatter(sum)
+            return params.getValue(params.id, "actualIncome") + params.getValue(params.id, "actualExpense")
+        },
+        valueFormatter: (params) => {
+            return currencyFormatter(params.value)
         }
     },
 

@@ -71,7 +71,7 @@ class ItemDetailsScreen extends React.Component {
                 <div style={{ display: 'flex', height: '100%' }}>
                     <div style={{ flexGrow: 1 }}>
                         <h2>Transactions</h2>
-                        <DataGrid columns={columns} rows={transactions} onRowClick={this.handleClick} />
+                        <DataGrid columns={columns} rows={transactions} rowHeight={25} onRowClick={this.handleClick} />
                     </div>
                 </div>
             </div >

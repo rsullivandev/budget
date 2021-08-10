@@ -4,8 +4,6 @@ export const budgetDateFormatter = (inputDate) => {
 }
 
 export const currencyFormatter = (inputAmount) => {
-    //TODO - add comma separator for 1,000s
-    // return (Math.round(inputAmount * 100) / 100).toFixed(2);
     let formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD'
