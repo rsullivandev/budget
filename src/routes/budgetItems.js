@@ -35,6 +35,9 @@ router.get('/:id', async (req, res) => {
             },
             {
                 model: models.category,
+            },
+            {
+                model: models.budgetHeader
             }
         ],
     });
