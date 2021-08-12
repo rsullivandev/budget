@@ -1,7 +1,6 @@
 import React from 'react';
 import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
-import { Button } from '@material-ui/core'
-import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { budgetDateFormatter, currencyFormatter } from '../services/formatter.js';
 
 const columns = [
@@ -20,26 +19,6 @@ const columns = [
             return currencyFormatter(params.value)
         }
     }
-    // {
-    //     field: 'budget', headerName: 'Budget', description: "The budget this transaction belongs to", flex: .1,
-    //     valueGetter: (params) => {
-    //         if (params.row != null) {
-    //             return params.row.budgetHeaderId
-    //         } else {
-    //             return ""
-    //         }
-    //     }
-    // },
-    // {
-    //     field: 'category', headerName: 'Category', description: "The type of the line item", flex: .2,
-    //     valueGetter: (params) => {
-    //         if (params.row != null) {
-    //             return params.row.categoryId;
-    //         } else {
-    //             return "";
-    //         }
-    //     }
-    // }
 ];
 
 class ItemDetailsScreen extends React.Component {
