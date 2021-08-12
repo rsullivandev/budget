@@ -35,8 +35,8 @@ class ItemDetailsScreen extends React.Component {
 
     componentDidMount = async () => {
         try {
-            const { id } = this.props.match.params;
-            const data = await (await fetch(`/api/budgetItems/${id}`)).json();
+            const { itemId } = this.props.match.params;
+            const data = await (await fetch(`/api/budgetItems/${itemId}`)).json();
 
             let totalAmount = data[0].transactions.reduce((a, c) => {
                 a += c.amount;
@@ -55,8 +55,8 @@ class ItemDetailsScreen extends React.Component {
     }
 
     handleClick = async (event) => {
-        console.log("Clicked!");
-        console.log(event);
+        // console.log("Clicked!");
+        // console.log(event);
         // this.props.history.push(`/about`)
         // this.props.history.push(`/budgets/${event.id}`)
     }
@@ -69,9 +69,9 @@ class ItemDetailsScreen extends React.Component {
                     <div style={{ flexGrow: 1 }}>
                         <h2>Transactions</h2>
                         <Breadcrumbs aria-label="breadcrumbs">
-                            <Link color='inherit' to='/budgets' onClick={console.log('clicked')}>Dashboard</Link>
-                            <Link color='inherit' to='/budgets/78' onClick={console.log('clicked')}>{this.state.date}</Link>
-                            <Link color='textPrimary' to={`/budgets/78/items/${this.props.match.params.id}`} onClick={console.log('clicked')}>{this.state.category}</Link>
+                            <Link color='inherit' to='/budgets' onClick={this.handleClick}>Dashboard</Link>
+                            <Link color='inherit' to='/budgets/78' onClick={this.handleClick}>{this.state.date}</Link>
+                            <Link color='textPrimary' to={`/budgets/78/items/${this.props.match.params.itemId}`} onClick={this.handleClick}>{this.state.category}</Link>
                         </Breadcrumbs>
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                             <h3>Budget: {this.state.date}</h3>

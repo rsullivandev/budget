@@ -66,10 +66,9 @@ class BudgetDetailsScreen extends React.Component {
     }
 
     componentDidMount = async () => {
-        console.log(this.props.props)
-        const { id } = this.props.match.params;
+        const { budgetId } = this.props.match.params;
         try {
-            const data = await (await fetch(`/api/budgetHeaders/${id}`)).json();
+            const data = await (await fetch(`/api/budgetHeaders/${budgetId}`)).json();
             const sortedData = data[0].budgetItems.sort((a, b) => {
                 return a.plannedAmount - b.plannedAmount;
             });
@@ -112,10 +111,10 @@ class BudgetDetailsScreen extends React.Component {
     }
 
     handleClick = async (event) => {
-        const { id } = this.props.match.params;
-        console.log("Clicked!");
-        console.log(event);
-        this.props.history.push(`/budgets/${id}/items/${event.id}`)
+        const { budgetId } = this.props.match.params;
+        // console.log("Clicked!");
+        // console.log(event);
+        this.props.history.push(`/budgets/${budgetId}/items/${event.id}`)
     }
 
     render() {

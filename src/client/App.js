@@ -1,9 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { HashRouter as Router, Switch, Route, Redirect, Link, useRouteMatch, useParams, NavLink } from "react-router-dom";
-import BudgetScreen from './screens/BudgetScreen.js';
-import BudgetItemScreen from './screens/BudgetDetailsScreen.js';
-import ItemDetailsScreen from './screens/ItemDetailsScreen.js';
+import { Switch, Route, NavLink } from "react-router-dom";
+import routes from './routes.js'
 
 export default class App extends React.Component {
     constructor(props) {
@@ -26,8 +23,8 @@ export default class App extends React.Component {
     //     })
     // }
 
-//TODO - Add breadcrumb nav
-//TODO - Update database on transaction import
+    //TODO - Add breadcrumb nav
+    //TODO - Update database on transaction import
 
 
     render() {
@@ -49,14 +46,53 @@ export default class App extends React.Component {
 
                 </div>
                 <Switch>
-                    <Route exact path='/'><Redirect to='/budgets' /></Route>
+                    {/* <Route exact path='/'><Redirect to='/budgets' /></Route>
                     <Route exact path='/budgets'><BudgetScreen props={props}/></Route>
-                    <Route exact path='/budgets/:id'><BudgetItemScreen props={props}/></Route>
+                    <Route exact path='/budgets/:id'><BudgetDetailsScreen props={props}/></Route>
                     <Route path='/budgets/:id/items/:id'><ItemDetailsScreen props={props}/></Route>
                     <Route exact path='/transactions'><Redirect to='/budgets' /></Route>
-                    <Route exact path='/excrow'><Redirect to='/budgets' /></Route>
+                    <Route exact path='/escrow'><Redirect to='/budgets' /></Route>
                     <Route exact path='/goals'><Redirect to='/budgets' /></Route>
-                    <Route exact path='/categories'><Redirect to='/budgets' /></Route>
+                    <Route exact path='/categories'><Redirect to='/budgets' /></Route> */}
+
+                    {/* //TODO - keep studying routes here...Eventually need to refactor into its own component */}
+
+                    {routes.map(({ path, name, Component }, key) => {
+                        console.log(path);
+                        console.log(routes);
+                        return (
+                        <Route
+                            exact
+                            path={path}
+                            key={key}
+                            render={props => {
+                                const crumbs = routes
+                                    // Get all routes that contain the current one.
+                                    .filter(({ path }) => props.match.path.includes(path))
+                                    // Swap out any dynamic routes with their param values.
+                                    // E.g. "/pizza/:pizzaId" will become "/pizza/1"
+                                    .map(({ path, ...rest }) => ({
+                                        path: Object.keys(props.match.params).length
+                                            ? Object.keys(props.match.params).reduce(
+                                                (path, param) => path.replace(
+                                                    `:${param}`, props.match.params[param]
+                                                ), path
+                                            )
+                                            : path,
+                                        ...rest
+                                    }));
+                                console.log(`Generated crumbs for ${props.match.path}`);
+                                crumbs.map(({ name, path }) => console.log({ name, path }));
+                                return (
+                                    <div className="p-8">
+                                        <Component {...props} />
+                                    </div>
+                                );
+                            }}
+                        />
+                    )})}
+
+
 
                 </Switch>
             </div>
