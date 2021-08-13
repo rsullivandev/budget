@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, NavLink } from "react-router-dom";
 import routes from './routes.js'
 import MyBreadcrumb from './components/MyBreadcrumb.js';
+import Header from './components/Header.js';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -31,7 +32,7 @@ export default class App extends React.Component {
         }
         return (
             <div>
-                <p>Welcome to Rob Mint</p>
+                <Header/>
                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
                     <NavLink style={{ marginRight: '10px' }} to="/budgets">Budgets</NavLink>
                     <NavLink style={{ marginRight: '10px' }} to="/transactions">Transactions</NavLink>
