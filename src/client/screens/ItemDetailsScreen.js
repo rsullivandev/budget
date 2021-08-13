@@ -1,8 +1,7 @@
 import React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { budgetDateFormatter, currencyFormatter } from '../services/formatter.js';
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 
 const columns = [
     { field: 'id', headerName: 'Id', description: "A unique identifier for this transaction", flex: .5 },
@@ -67,12 +66,7 @@ class ItemDetailsScreen extends React.Component {
             <div style={{ height: 400, width: '100%' }}>
                 <div style={{ display: 'flex', height: '100%' }}>
                     <div style={{ flexGrow: 1 }}>
-                        <h2>Transactions</h2>
-                        <Breadcrumbs aria-label="breadcrumbs">
-                            <Link color='inherit' to='/budgets' onClick={this.handleClick}>Dashboard</Link>
-                            <Link color='inherit' to='/budgets/78' onClick={this.handleClick}>{this.state.date}</Link>
-                            <Link color='textPrimary' to={`/budgets/78/items/${this.props.match.params.itemId}`} onClick={this.handleClick}>{this.state.category}</Link>
-                        </Breadcrumbs>
+                        <h2>Item Details</h2>
                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                             <h3>Budget: {this.state.date}</h3>
                             <h3>Category: {this.state.category}</h3>
