@@ -33,14 +33,6 @@ export default class App extends React.Component {
         return (
             <div>
                 <Header/>
-                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'flex-start' }}>
-                    <NavLink style={{ marginRight: '10px' }} to="/budgets">Budgets</NavLink>
-                    <NavLink style={{ marginRight: '10px' }} to="/transactions">Transactions</NavLink>
-                    <NavLink style={{ marginRight: '10px' }} to="/escrow">Escrow</NavLink>
-                    <NavLink style={{ marginRight: '10px' }} to="/goals">Goals</NavLink>
-                    <NavLink style={{ marginRight: '10px' }} to="/categories">Categories</NavLink>
-
-                </div>
                 <Switch>
                     {routes.map(({ path, Component }, key) => {
                         return (
