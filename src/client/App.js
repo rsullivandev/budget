@@ -21,8 +21,6 @@ export default class App extends React.Component {
 
 
     //TODO - Update database on transaction import
-    //TODO - Move Navlinks to a header app bar
-    //TODO - Move breadcrumb layout to better positioning
 
 
     render() {
@@ -32,7 +30,7 @@ export default class App extends React.Component {
         }
         return (
             <div>
-                <Header/>
+                <Header />
                 <Switch>
                     {routes.map(({ path, Component }, key) => {
                         return (
@@ -56,7 +54,7 @@ export default class App extends React.Component {
                                     console.log(`Generated crumbs for ${props.match.path}`);
                                     crumbs.map(({ name, path }) => console.log({ name, path }));
                                     return (
-                                        <div>
+                                        <div style={{marginTop: "1em"}}>
                                             <MyBreadcrumb crumbs={crumbs} />
                                             <Component {...props} />
                                         </div>
