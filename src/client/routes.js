@@ -1,4 +1,5 @@
 import BudgetScreen from './screens/BudgetScreen.js'
+import NewBudgetForm from './components/NewBudgetForm.js'
 import BudgetDetailsScreen from './screens/BudgetDetailsScreen.js'
 import ItemDetailsScreen from './screens/ItemDetailsScreen.js'
 import TransactionScreen from './screens/TransactionScreen.js'
@@ -9,6 +10,7 @@ import EscrowScreen from './screens/EscrowScreen.js'
 export default [
     // { path: "/", name: "Budgets", Component: BudgetScreen },
     { path: "/budgets", name: "Budgets", Component: BudgetScreen },
+    { path: "/budgets/new", name: "New Budget", Component: NewBudgetForm},
     { path: "/budgets/:budgetId", name: "Budget Details", Component: BudgetDetailsScreen },
     { path: "/budgets/:budgetId/items/:itemId", name: "Item Details", Component: ItemDetailsScreen },
     { path: "/transactions", name: "Transactions", Component: TransactionScreen },

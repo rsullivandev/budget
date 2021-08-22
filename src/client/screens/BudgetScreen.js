@@ -1,8 +1,8 @@
 import React from 'react';
-import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
-import { Button } from '@material-ui/core'
-import NewBudgetForm from '../components/newBudget.js'
-import { HashRouter as Router, Switch, Route, Link, useRouteMatch, useHistory, useParams, withRouter } from "react-router-dom";
+import { DataGrid } from '@material-ui/data-grid';
+import { Button } from '@material-ui/core';
+// import NewBudgetForm from '../components/NewBudgetForm.js'
+import { withRouter } from "react-router-dom";
 import { budgetDateFormatter, currencyFormatter } from '../services/formatter.js';
 
 
@@ -142,7 +142,7 @@ class BudgetScreen extends React.Component {
                     <div style={{ flexGrow: 1 }}>
                         <h2>Budgets</h2>
                         <DataGrid columns={columns} rows={budget} onRowClick={this.handleClick} />
-                        <NewBudgetForm />
+                        <Button variant="contained" color="primary" onClick={()=>{this.props.history.push(`/budgets/new`)}}>New Budget</Button>
                     </div>
                 </div>
             </div >
